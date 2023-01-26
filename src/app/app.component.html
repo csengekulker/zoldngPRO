@@ -1,25 +1,20 @@
 <div>
   <ul class="nav justify-content-end col">
     <li class="nav-item bg-dark m-1 rounded col-2 text-center">
-      <a class="nav-link active" aria-current="page" href="/">Home</a>
+      <a class="nav-link" href="/">Home</a>
     </li>
   
     <li class="nav-item bg-dark m-1 rounded col-2 text-center">
       <a class="nav-link" href="/about">About</a>
     </li>
-  
-    <li class="nav-item bg-dark m-1 rounded">
-      <a class="nav-link" target="_blank" href="https://github.com/csengekulker">
-        <i class="bi bi-github"></i>
-      </a>
-    </li>
   </ul>
 </div>
 
 <div class="container">
-  
   <router-outlet></router-outlet>
 
-  <app-about></app-about>
-
+  <!-- <app-about></app-about> -->
+ 
 </div>
+
+<app-footer></app-footer>
