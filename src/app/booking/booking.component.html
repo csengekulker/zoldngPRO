@@ -1,1 +1,78 @@
-<p>booking works!</p>
+<section class="info">
+
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+    <path fill="#273036" fill-opacity="1"
+      d="M0,224L80,186.7C160,149,320,75,480,48C640,21,800,43,960,96C1120,149,1280,235,1360,277.3L1440,320L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z">
+    </path>
+  </svg>
+  <div class="container text-center">
+
+    <h1>Appointment setup</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus esse provident iste sint quibusdam natus
+      tempora nulla voluptatum atque repellat ullam omnis consequatur ab, sunt hic assumenda eos quasi nesciunt!
+      Recusandae quam ducimus repellendus ut quos quia natus dignissimos error, asperiores, quaerat quas sapiente?
+    </p>
+    <p>
+      Architecto corrupti harum ad illo veritatis est, sed aperiam, deleniti omnis id, provident labore inventore amet
+      cumque corporis quis incidunt et? Tempore officia voluptatibus reiciendis ratione dolore cupiditate in pariatur
+      iure? In sit, veritatis neque cum ab placeat accusantium aut, excepturi obcaecati libero cumque atque esse magnam
+      quod assumenda doloribus laudantium sapiente doloremque molestiae corporis vero.
+    </p>
+  </div>
+
+</section>
+
+<section class="form">
+  <div class="container">
+    <form>
+
+      <div class="row">
+        <div class="form-floating col-md-6">
+          <input id="fullName" type="text" placeholder="Teljes név" formControlName="fullName" class="form-control">
+          <label class="form-label" for="fullName">Teljes név</label>
+        </div>
+        <div class="form-floating col-md-6">
+          <input id="email" type="text" placeholder="E-mail address" formControlName="email" class="form-control">
+          <label class="form-label" for="email">E-mail address</label>
+        </div>
+
+        <div class="form-floating col">
+          <input id="email" type="text" placeholder="Address (for billing)" formControlName="email" class="form-control">
+          <label class="form-label" for="email">Address (for billing)</label>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <select class="form-select col-md-6">
+          <option selected>Choose your desired massage service</option>
+          <option value="1">Sved</option>
+          <option value="2">Sport</option>
+          <option value="3">Feet</option>
+        </select>
+
+        <div class="col-md-4">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+            <label class="form-check-label" for="inlineRadio1">1</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+            <label class="form-check-label" for="inlineRadio2">2</label>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- TODO: requiredTrue checkbox -->
+      <!-- TODO: helper texts for each -->
+      <!-- TODO: vedett utvonalak -->
+
+      <div class="mt-3">
+        <button class="btn btn-primary" type="submit">
+          Regisztráció
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
