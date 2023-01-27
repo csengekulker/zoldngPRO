@@ -11,7 +11,9 @@ import { BookingComponent } from './booking/booking.component';
 import { ServicesComponent } from './services/services.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { FeatureComponent } from './feature/feature.component';
-import { IconsComponent } from './icons/icons.component'
+import { IconsComponent } from './icons/icons.component';
+import { NavigationComponent } from './nav/navbar.component';
+import { ButtonsComponent } from './nav/buttons/buttons.component'
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { IconsComponent } from './icons/icons.component'
     ServicesComponent,
     GalleryComponent,
     FeatureComponent,
-    IconsComponent
+    IconsComponent,
+    NavigationComponent,
+    ButtonsComponent
   ],
   imports: [
     BrowserModule,

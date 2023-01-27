@@ -16,26 +16,26 @@ export class FeatureComponent implements OnInit {
   ngOnInit(): void {
     this.features = [
       { 
-        title: "Introduction", 
-        text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
-        button: "button",
+        title: "Introducing myself", 
+        text: "Bemutatkozom, Marti vagyok",
+        button: "References",
         isReversed: false
       },
       { 
         title: "Take a look inside", 
-        text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+        text: "Watch the pictures representing the place",
         button: "Go to gallery",
         isReversed: true
       },
       { 
         title: "Massage services", 
-        text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+        text: "Choose the therapy which suits your needs best",
         button: "Browse",
         isReversed: false
       },
       { 
         title: "Appointments", 
-        text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+        text: "Set up an appointment and come refresh your body and soul",
         button: "Reserve",
         isReversed: true
       },

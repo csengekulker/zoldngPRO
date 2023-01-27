@@ -17,19 +17,19 @@ export class IconsComponent implements OnInit{
     this.icons = [
       {
         path: '../assets/images/vert.png',
-        text: 'Error occurs in the template of component IconsComponent.'
+        text: 'REASONS'
       },
       {
         path: '../assets/images/vert.png',
-        text: 'Error occurs in the template of component IconsComponent.'
+        text: 'TO'
       },
       {
         path: '../assets/images/vert.png',
-        text: 'Error occurs in the template of component IconsComponent.'
+        text: 'TAKE'
       },
       {
         path: '../assets/images/vert.png',
-        text: 'Error occurs in the template of component IconsComponent.'
+        text: 'MASSAGE'
       }
     ]
   }
