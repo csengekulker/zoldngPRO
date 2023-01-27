@@ -1,0 +1,11 @@
+<div class="container text-light text-center">
+
+    <h2>What good a massage makes?</h2>
+
+    <div class="row g-5 text-center mt-4">
+        <div class="col-md-3" *ngFor="let icon of icons">
+            <img class="rowpix" src="{{ icon.path }}" alt="{{alttext}}">
+            <p>{{icon.text}}</p>
+        </div>
+    </div>
+</div>

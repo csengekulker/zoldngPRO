@@ -1,8 +1,7 @@
-<div class="row mb-5" 
-  *ngFor="let feature of features">
+<div class="container">
+  <div class="row mb-5" *ngFor="let feature of features">
 
-    <div class="col-md-8"
-    [ngClass]="{'order-2' : feature.isReversed }">
+    <div class="col-md-8" [ngClass]="{'order-2' : feature.isReversed }">
       <h2>{{feature.title}}</h2>
       <p>{{feature.text}}</p>
       <button class="btn btn-lg btn-outline-danger">{{feature.button}}</button>
@@ -12,5 +11,4 @@
       <img class="featurepix" src="{{path}}" alt="">
     </div>
   </div>
-
-  <!--ngClass="{'order-2' : {{feature.isReversed}} }"  -->
+</div>

@@ -10,7 +10,8 @@ import { FooterComponent } from './footer/footer.component';
 import { BookingComponent } from './booking/booking.component';
 import { ServicesComponent } from './services/services.component';
 import { GalleryComponent } from './gallery/gallery.component';
-import { FeatureComponent } from './feature/feature.component'
+import { FeatureComponent } from './feature/feature.component';
+import { IconsComponent } from './icons/icons.component'
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { FeatureComponent } from './feature/feature.component'
     BookingComponent,
     ServicesComponent,
     GalleryComponent,
-    FeatureComponent
+    FeatureComponent,
+    IconsComponent
   ],
   imports: [
     BrowserModule,
