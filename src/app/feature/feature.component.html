@@ -1,14 +1,14 @@
 <div class="container">
   <div class="row mb-5" *ngFor="let feature of features">
 
-    <div class="col-md-8" [ngClass]="{'order-2' : feature.isReversed }">
+    <div class="col-md-8 " [ngClass]="{'order-2 text-end' : feature.isReversed }">
       <h2>{{feature.title}}</h2>
       <p>{{feature.text}}</p>
       <button class="btn btn-lg btn-outline-danger">{{feature.button}}</button>
     </div>
 
-    <div class="col-md-4">
-      <img class="featurepix" src="{{path}}" alt="">
+    <div class="col-md-4 row " [ngClass]="{'justify-content-end bg-warning' : feature.isReversed }" >
+      <img class="featurepix " src="{{path}}" alt="">
     </div>
   </div>
 </div>
