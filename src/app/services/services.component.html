@@ -4,37 +4,66 @@
   </path>
 </svg>
 
-
-<div class="container text-center">
+<div class="container">
 
   <h1>{{ title }}</h1>
 
-  <div class="col my-5 align-items-center">
-    <div class="mb-3"><img class="massageimg" src="{{path}}" alt=""></div>
-    <h2>Sved massage</h2>
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam, ab. Adipisci maxime cupiditate quae quis
-      veniam voluptatum et quo dolorem. Autem soluta possimus amet ut iste optio vitae sed necessitatibus!</p>
+  <div class="row my-5" *ngFor="let service of services">
+    <div class="mb-3">
+      <img class="massageimg" src="{{path}}" alt="">
+    </div>
 
-    <div class="col">
-      <table class="table table-collapse">
-        <tr class="">
-          <th>Available time (min)</th>
-          <th>30</th>
-          <th>45</th>
-          <th>60</th>
-        </tr>
-        <tr>
-          <th>Prices (HUF)</th>
-          <th>1000</th>
-          <th>5000</th>
-          <th>6000</th>
-        </tr>
+    <div>
+      <h2>{{service.name}}</h2>
+      <div>
+        <h4>Description and process</h4>
+        <p>{{service.description}}</p>
+      </div>
+
+        <div class="row col-md-8 my-3">
+          <div class="col-md-4 my-2">
+            <h4>Recommended</h4>
+            <ul class="list-group">
+              <li class="list-group-item" *ngFor="let reason of service.dos">{{reason}}</li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h4>Not recommended</h4>
+            <ul class="list-group">
+              <li class="list-group-item" *ngFor="let reason of service.donts">{{reason}}</li>
+            </ul>
+          </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-6 justify-content-center text-center">
+      <table class="col table table-hover">
+        <thead>
+          <tr class="">
+            <th>Affected body parts</th>
+            <th>Duration (min)</th>
+            <th>Cost (HUF)</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let variant of service.variants">
+            <td>{{variant.type}}</td>
+            <td>{{variant.duration}}</td>
+            <td>{{variant.price}}</td>
+            <td>
+              <a href="">
+                <button class="btn btn-outline-success">Reserve</button>
+              </a>
+            </td>
+            
+          </tr>
+        </tbody>
       </table>
 
-      <button class="btn btn-outline-success">Book this now</button>
+     
     </div>
   </div>
-
-  
 
 </div>
