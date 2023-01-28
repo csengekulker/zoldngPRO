@@ -1,3 +1,18 @@
 .navbar {
     background-color: #273036;
 }
+
+button {
+    font-weight: 200;
+    background-color: #273036;
+    color: aliceblue;
+}
+
+button:hover {
+    font-weight: 300;
+    transition: font-weight, background-color, color .2s;
+    background-color: aliceblue;
+    color: #273036;
+
+    
+}
