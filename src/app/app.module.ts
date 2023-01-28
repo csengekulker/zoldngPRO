@@ -13,6 +13,7 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { FeatureComponent } from './feature/feature.component';
 import { IconsComponent } from './icons/icons.component';
 import { NavigationComponent } from './nav/navbar.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { NavigationComponent } from './nav/navbar.component';
     GalleryComponent,
     FeatureComponent,
     IconsComponent,
-    NavigationComponent
+    NavigationComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
