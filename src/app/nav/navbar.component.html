@@ -1,21 +1,26 @@
 <div class="navbar sticky-top">
   <ul class="nav justify-content-center col text-center mx-auto ">
-    <!-- <li class="nav-item col-md-1 bg-light rounded " *ngFor="let button of buttons"> -->
       <button class="btn nav-item col-md-2 fs-5 rounded mx-1" *ngFor="let button of buttons">
         <a class="nav-link text-reset" routerLink="{{button[1]}}">{{button[0]}}</a>
       </button>
-    <!-- </li> -->
   </ul>
 </div>
 
 <!-- for smallscreen: toggle collapse at 600px -->
 
-<!-- <div class="navbar sticky-top">
-  <ul class="nav justify-content-center col text-center mx-auto ">
-   
-      <button class="btn nav-item col-md-1 fs-5 rounded mx-2 w-100" *ngFor="let button of buttons">
-        <a class="nav-link text-reset" routerLink="{{button[1]}}">{{button[0]}}</a>
-      </button>
- 
-  </ul>
+<!-- <div class="navbar nav sticky-top">
+
+  <button data-bs-toggle="collapse" type="button" data-bs-target="#collapse" class="btn col-md-1 fs-5 rounded mx-3 w-100">
+    TOGGLE
+  </button>
+
+  <div class="collapse" id="collapse">
+    <ul class="nav justify-content-center col text-center mx-auto ">
+      <li>
+        <button class="btn nav-item col-md-1 fs-5 rounded mx-3 w-100" *ngFor="let button of buttons">
+          <a class="nav-link text-reset" routerLink="{{button[1]}}">{{button[0]}}</a>
+        </button>
+      </li>
+    </ul>
+  </div>
 </div> -->
