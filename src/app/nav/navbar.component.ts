@@ -11,8 +11,28 @@ import { ServicesComponent } from '../services/services.component';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavigationComponent implements OnInit {
+  buttons!: string[][]
+
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+
+    this.buttons = [
+      [
+        'Home',
+        ''
+      ],
+      [
+        'Services',
+        '/services'
+      ],
+      [
+        'Booking',
+        '/booking'
+      ],
+      [
+        'Gallery',
+        '/gallery'
+      ]
+    ]
   }
 
 }
