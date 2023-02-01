@@ -8,7 +8,7 @@ import { ApiService } from '../shared/api.service';
 })
 export class ServicesComponent implements OnInit {
 
-  constructor(private api: ApiService) { }
+  // constructor(private api: ApiService) { }
 
   title = 'Massage Terapies'
 
@@ -19,7 +19,7 @@ export class ServicesComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.api.testing()
+    // this.api.testing()
 
     this.services = [
       {
