@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../shared/api.service';
 
 @Component({
   selector: 'app-services',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./services.component.scss']
 })
 export class ServicesComponent implements OnInit {
+
+  constructor(private api: ApiService) { }
 
   title = 'Massage Terapies'
 
@@ -15,6 +18,9 @@ export class ServicesComponent implements OnInit {
   alttext: string = 'A kép leírása';
 
   ngOnInit(): void {
+
+    this.api.testing()
+
     this.services = [
       {
         name: 'Demo service',
