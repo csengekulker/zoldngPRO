@@ -14,6 +14,10 @@ import { FeatureComponent } from './feature/feature.component';
 import { IconsComponent } from './icons/icons.component';
 import { NavigationComponent } from './nav/navbar.component';
 import { HeaderComponent } from './header/header.component';
+import { InfoComponent } from './info/info.component';
+import { FaqComponent } from './info/faq/faq.component';
+import { PricelistComponent } from './info/pricelist/pricelist.component';
+import { DocsComponent } from './info/docs/docs.component';
 
 @NgModule({
   declarations: [
@@ -27,8 +31,12 @@ import { HeaderComponent } from './header/header.component';
     FeatureComponent,
     IconsComponent,
     NavigationComponent,
-    HeaderComponent
-  ],
+    HeaderComponent,
+    InfoComponent,
+    FaqComponent,
+    PricelistComponent,
+    DocsComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
