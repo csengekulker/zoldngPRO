@@ -31,11 +31,8 @@
         <div class="row">
 
           <div class="col-md-6">
-            <select class="form-select"  *ngFor="let option of options">
+            <select class="form-select">
               <option selected>Choose your desired massage service</option>
-              <optgroup label="{{option.name}}">
-                <option value="2" *ngFor="let variant of option.variants">{{variant}}</option>
-              </optgroup>
             </select>
           </div>
 

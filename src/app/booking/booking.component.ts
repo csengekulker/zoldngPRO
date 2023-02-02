@@ -5,6 +5,12 @@ import { Component } from '@angular/core';
   templateUrl: './booking.component.html',
   styleUrls: ['./booking.component.scss']
 })
-export class BookingComponent {}
+export class BookingComponent {
+  options !: Option[]
+}
 
+interface Option {
+  name: string,
+  variantName: string
+}
 
