@@ -8,6 +8,15 @@
 
   <h1>{{ title }}</h1>
 
+  <table>
+    <tr *ngFor="let product of products">
+        <td>{{ products.id }}</td>
+        <td>{{ products.name }}</td>
+        <td>{{ products.city }}</td>
+        <td>{{ products.salary }}</td>
+    </tr>
+</table>
+
   <div class="row my-5" *ngFor="let service of services">
     <div class="mb-3">
       <img class="massageimg" src="{{path}}" alt="">

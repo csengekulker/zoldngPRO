@@ -9,9 +9,14 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  testing() {
-    console.log("API eleres a servicescomponentbol");
-    
+  getProducts() {
+    let endpoint = 'products'
+    let url = environment.apihost + endpoint
+
+    console.log('GET:' + url);
+  
+
+    return this.http.get<any>(url)
   }
 
   addProducts(data: any) {
@@ -19,23 +24,26 @@ export class ApiService {
     let url = environment.apihost + endpoint;
 
     let token = localStorage.getItem('token');
+
+    console.log(data);
+    
     
     // same as my object arrays 
     let data2 = {
-      name: "billentyűzet",
+      name: "eger",
       itemNumber: "cab34",
       count: 25,
-      price: 8
+      price: 80
     };
 
     let headers = new HttpHeaders({
-      'Content-Type': 'applicaton/json',
-      'Authorization': 'Bearer ' + token
+      'Content-Type': 'application/json',
+      'Authorization': 'none'
     });
 
     let httpOption = {
       headers: headers
     };
-    return this.http.post<any>(url, data2, httpOption);
+    return this.http.post<any>(url, data, httpOption);
   }
 }

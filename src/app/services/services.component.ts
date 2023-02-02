@@ -7,8 +7,8 @@ import { ApiService } from '../shared/api.service';
   styleUrls: ['./services.component.scss']
 })
 export class ServicesComponent implements OnInit {
-
-  // constructor(private api: ApiService) { }
+  products!: any
+  constructor(private api: ApiService) { }
 
   title = 'Massage Terapies'
 
@@ -17,9 +17,34 @@ export class ServicesComponent implements OnInit {
   path: string = '../assets/images/vert.png';
   alttext: string = 'A kép leírása';
 
-  ngOnInit(): void {
+  getProducts() {
+    this.api.getProducts().subscribe({
+      next: data => {
+        this.products = data
+        console.log(data);
+        
+      },
+      error: err => {
+        console.log("Hiba, nincs termek!");
+        
+      }
+    })
+  }
 
-    // this.api.testing()
+  ngOnInit(): void {
+    this.getProducts()
+
+    console.log(this.products);
+    
+
+    let data = {
+      name: "billentyűzet",
+      itemNumber: "cab34",
+      count: 25,
+      price: 8
+    };
+
+    this.api.addProducts(data)
 
     this.services = [
       {
