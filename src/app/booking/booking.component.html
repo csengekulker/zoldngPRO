@@ -7,7 +7,7 @@
   </svg>
   <div class="container text-center">
 
-    <h1>Appointment setup</h1>
+    <h1>suliban dev2</h1>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus esse provident iste sint quibusdam natus
       tempora nulla voluptatum atque repellat ullam omnis consequatur ab, sunt hic assumenda eos quasi nesciunt!
       Recusandae quam ducimus repellendus ut quos quia natus dignissimos error, asperiores, quaerat quas sapiente?
@@ -24,7 +24,7 @@
 
 <section class="form">
   <div class="container">
-    <form>
+    <form [formGroup]="bookingForm" (submit)="formSubmit()">
 
       <div class="col">
 
@@ -71,16 +71,16 @@
 
         <div class="row">
           <div class="col-md-2">
-            <input id="zip" type="number" placeholder="Zipcode/postal code" formControlName="email"
+            <input id="zipcode" type="number" placeholder="Zipcode/postal code" formControlName="zipcode"
               class="form-control">
           </div>
 
           <div class="col-md-4">
-            <input id="city" type="text" placeholder="City" formControlName="email" class="form-control">
+            <input id="city" type="text" placeholder="City" formControlName="city" class="form-control">
           </div>
 
           <div class="col-md-6">
-            <input id="address" type="text" placeholder="Address" formControlName="email" class="form-control">
+            <input id="address" type="text" placeholder="Address" formControlName="address" class="form-control">
           </div>
         </div>
 

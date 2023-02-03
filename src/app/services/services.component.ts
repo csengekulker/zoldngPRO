@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../shared/api.service';
+import { EmitterService } from '../emitter.service';
 
 @Component({
   selector: 'app-services',
@@ -20,8 +21,10 @@ export class ServicesComponent implements OnInit {
   getProducts() {
     this.api.getProducts().subscribe({
       next: data => {
-        this.products = data
-        console.log(data);
+        this.products = data.data
+        console.log(data.data); // sendResponse
+        console.log(this.products);
+
         
       },
       error: err => {
@@ -31,20 +34,36 @@ export class ServicesComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void {
-    this.getProducts()
+  sendDetails() {
+    console.log("mukodik");
+    let type = 'type'
+    let duration = 30
+    let price = 2345
 
-    console.log(this.products);
+    let details = {
+      type: type,
+      duration: duration,
+      price: price
+    }
+
+    
+  }
+
+  ngOnInit(): void {
+
+    // this.getProducts()
+
+    // console.log(this.products);
     
 
-    let data = {
-      name: "billentyűzet",
-      itemNumber: "cab34",
-      count: 25,
-      price: 8
-    };
+    // let data = {
+    //   name: "billentyűzet",
+    //   itemNumber: "cab34",
+    //   count: 25,
+    //   price: 8
+    // };
 
-    this.api.addProducts(data)
+    // this.api.addProducts(data)
 
     this.services = [
       {
@@ -75,6 +94,7 @@ export class ServicesComponent implements OnInit {
       }
     ]
   }
+
 
 }
 
