@@ -20,8 +20,10 @@ export class ServicesComponent implements OnInit {
   getProducts() {
     this.api.getProducts().subscribe({
       next: data => {
-        this.products = data
-        console.log(data);
+        this.products = data.data
+        console.log(data.data); // sendResponse
+        console.log(this.products);
+
         
       },
       error: err => {
@@ -33,9 +35,6 @@ export class ServicesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProducts()
-
-    console.log(this.products);
-    
 
     let data = {
       name: "billentyűzet",
