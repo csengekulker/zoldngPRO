@@ -34,11 +34,10 @@ export class ServicesComponent implements OnInit {
     })
   }
 
-  sendDetails() {
-    console.log("mukodik");
-    let type = 'type'
-    let duration = 30
-    let price = 2345
+  collectServiceDetails(event: any) {
+    let type = event.path[3].childNodes[0].childNodes[0].nodeValue
+    let duration = event.path[3].childNodes[1].childNodes[0].nodeValue
+    let price = event.path[3].childNodes[2].childNodes[0].nodeValue
 
     let details = {
       type: type,
@@ -46,19 +45,18 @@ export class ServicesComponent implements OnInit {
       price: price
     }
 
-    
+    console.log(details);
+  
   }
 
   ngOnInit(): void {
 
-    this.emitter.event.subscribe( ()=> {
-      this.sendDetails()
+    this.emitter.event.subscribe( (e)=> {
+      this.collectServiceDetails(e)
     })
 
-    // this.getProducts()
+    this.getProducts()
 
-    // console.log(this.products);
-    
 
     // let data = {
     //   name: "billentyűzet",
@@ -71,11 +69,14 @@ export class ServicesComponent implements OnInit {
 
     this.services = [
       {
-        name: 'Sved',
-        description: 'Phasellus sed sem sed ligula sagittis consequat et at est. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas ac eros est. Nunc nec fermentum libero, et suscipit erat. Quisque et libero ipsum. Ut ac arcu consequat, egestas quam sit amet, tempor Phasellus sed sem sed ligula sagittis consequat et at est. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas ac eros est. Nunc nec fermentum libero, et suscipit erat. Quisque et libero ipsum. Ut ac arcu consequat, egestas quam sit amet, tempor sapien.Phasellus sed sem sed ligula sagittis consequat et at est. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas ac eros est. Nunc nec fermentum libero, et suscipit erat. Quisque et libero ipsum. Ut ac arcu consequat, egestas quam sit amet, tempor sapien.sapien.',
+        name: 'Svédmasszázs',
+        description: 'mashogy lesz',
         dos: [
-          'Pellentesque habitant morbi tristique senectus et netus',
-          'Pellentesque habitant morbi tristique senectus et netus'
+          '🟢 akik stresszes életvitelt folytatnak, alig van idejük saját magukra',
+          '🟢 akik aktív sportolók és a sportolás következtében testük fáradt, izmaik feszültek és kemények',
+          '🟢 akik testmozgás hiányában szeretnék izmaikat átmozogtatni, megdolgoztatni a svédmasszázs által',
+          '🟢 akik testében sok a merevség, elég egy mozdulat és görcsbe rándul a test',
+          '🟢 akik nem akarnak mást, csak kikapcsolódni pár órára a mindennapi rohanásból és megpihentetni lelküket.'
         ],
         donts: [
           'Curabitur pellentesque facilisis nisl non facilisis',
@@ -84,12 +85,22 @@ export class ServicesComponent implements OnInit {
         ],
         variants: [
           {
-            name: 'full body',
-            duration: 45,
+            name: 'teljes test',
+            duration: 90,
             cost: 2345
           },
           {
-            name: 'back | neck | shoulders',
+            name: 'hát és derék + láb hátsó felszíne + talp',
+            duration: 60,
+            cost: 2345
+          },
+          {
+            name: 'teljes hát | láb | talp',
+            duration: 45,
+            cost: 1234
+          },
+          {
+            name: 'teljes hát | láb | talp',
             duration: 30,
             cost: 1234
           }

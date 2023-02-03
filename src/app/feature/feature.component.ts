@@ -20,7 +20,7 @@ export class FeatureComponent implements OnInit {
         title: "Introducing myself", 
         text: "Bemutatkozom, Marti vagyokCurabitur vitae odio id purus dapibus imperdiet. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean fringilla, tellus sit amet pulvinar imperdiet, felis massa volutpat massa, in laoreet ex turpis sit amet dolor. <br> Vivamus ut placerat magna. Pellentesque eu ante eu lorem tristique mattis quis id odio. Proin et tortor diam. Donec ut mattis nibh. Etiam tellus eros, gravida non congue ut, consectetur in justo. Etiam euismod fringilla leo, vel cursus nibh.",
         button: "References",
-        refPath: '/info/certs',
+        refPath: '/info/docs#certs',
         isReversed: false
       },
       { 
