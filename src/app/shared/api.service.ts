@@ -25,7 +25,7 @@ export class ApiService {
 
     let token = localStorage.getItem('token');
 
-    console.log(data);
+    // console.log(data);
     
     
     // same as my object arrays 

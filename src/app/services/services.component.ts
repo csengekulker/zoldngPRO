@@ -13,7 +13,7 @@ export class ServicesComponent implements OnInit {
 
   title = 'Massage Terapies'
 
-  services!: Service[]
+  public services!: Service[]
 
   path: string = '../assets/images/vert.png';
   alttext: string = 'A kép leírása';
@@ -21,8 +21,10 @@ export class ServicesComponent implements OnInit {
   getProducts() {
     this.api.getProducts().subscribe({
       next: data => {
-        this.products = data
-        console.log(data);
+        this.products = data.data
+        console.log(data.data); // sendResponse
+        console.log(this.products);
+
         
       },
       error: err => {
@@ -32,7 +34,7 @@ export class ServicesComponent implements OnInit {
     })
   }
 
-  sendDetails():Variant {
+  sendDetails() {
     console.log("mukodik");
     let type = 'type'
     let duration = 30
@@ -44,7 +46,6 @@ export class ServicesComponent implements OnInit {
       price: price
     }
 
-    return details
     
   }
 
@@ -70,7 +71,7 @@ export class ServicesComponent implements OnInit {
 
     this.services = [
       {
-        name: 'Demo service',
+        name: 'Sved',
         description: 'Phasellus sed sem sed ligula sagittis consequat et at est. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas ac eros est. Nunc nec fermentum libero, et suscipit erat. Quisque et libero ipsum. Ut ac arcu consequat, egestas quam sit amet, tempor Phasellus sed sem sed ligula sagittis consequat et at est. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas ac eros est. Nunc nec fermentum libero, et suscipit erat. Quisque et libero ipsum. Ut ac arcu consequat, egestas quam sit amet, tempor sapien.Phasellus sed sem sed ligula sagittis consequat et at est. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas ac eros est. Nunc nec fermentum libero, et suscipit erat. Quisque et libero ipsum. Ut ac arcu consequat, egestas quam sit amet, tempor sapien.sapien.',
         dos: [
           'Pellentesque habitant morbi tristique senectus et netus',
@@ -83,14 +84,14 @@ export class ServicesComponent implements OnInit {
         ],
         variants: [
           {
-            type: 'full body',
+            name: 'full body',
             duration: 45,
-            price: 2345
+            cost: 2345
           },
           {
-            type: 'back | neck | shoulders',
+            name: 'back | neck | shoulders',
             duration: 30,
-            price: 1234
+            cost: 1234
           }
         ],
         imagePath: '../assets/images/vert.png'
@@ -101,7 +102,13 @@ export class ServicesComponent implements OnInit {
 
 }
 
-interface Service {
+export interface Variant {
+  name: string,
+  cost: number
+  duration: number,
+}
+
+export interface Service {
   name: string,
   description: string,
   dos: string[],
@@ -110,8 +117,4 @@ interface Service {
   imagePath: string
 }
 
-interface Variant {
-  type: string,
-  duration: number,
-  price: number
-}
+

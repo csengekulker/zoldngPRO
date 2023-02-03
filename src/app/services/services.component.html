@@ -10,10 +10,10 @@
 
   <table>
     <tr *ngFor="let product of products">
-        <td>{{ products.id }}</td>
-        <td>{{ products.name }}</td>
-        <td>{{ products.city }}</td>
-        <td>{{ products.salary }}</td>
+        <td>{{ product.id }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.itemNumber }}</td>
+        <td>{{ product.price }}</td>
     </tr>
 </table>
 
@@ -29,14 +29,14 @@
         <p>{{service.description}}</p>
       </div>
 
-        <div class="row col-md-8 my-3">
+        <div class="row my-3">
           <div class="col-md-4 my-2">
             <h4>Recommended</h4>
             <ul class="list-group">
               <li class="list-group-item" *ngFor="let reason of service.dos">{{reason}}</li>
             </ul>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 my-2">
             <h4>Not recommended</h4>
             <ul class="list-group">
               <li class="list-group-item" *ngFor="let reason of service.donts">{{reason}}</li>
@@ -58,9 +58,9 @@
         </thead>
         <tbody>
           <tr *ngFor="let variant of service.variants">
-            <td>{{variant.type}}</td>
+            <td>{{variant.name}}</td>
             <td>{{variant.duration}}</td>
-            <td>{{variant.price}}</td>
+            <td>{{variant.cost}}</td>
             <td>
               <a routerLink="/services">
                 <button class="btn btn-outline-success" (click)="sendDetails()" >Reserve</button>
