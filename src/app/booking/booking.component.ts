@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ApiService } from '../shared/api.service';
+import { EmitterService } from '../emitter.service';
 
 @Component({
   selector: 'app-booking',
@@ -8,9 +10,32 @@ import { ApiService } from '../shared/api.service';
 })
 export class BookingComponent implements OnInit{
 
-  constructor(private api: ApiService) {}
+  bookings: any
+  bookingForm !: FormGroup
+
+  constructor(
+    private api: ApiService,
+    private formBuilder: FormBuilder,
+    private emitter: EmitterService
+  ) {}
+
+  formSubmit() {}
+
+  receiveDetails() {
+    
+  }
 
   ngOnInit(): void {
+    this.bookingForm = this.formBuilder.group({
+      fullName: [''],
+      dob: [''],
+      email: [''],
+      phone: [''],
+      zipcode: [''],
+      city: [''],
+      address: ['']
+
+    })
   }
 
 

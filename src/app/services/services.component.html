@@ -17,7 +17,7 @@
     </tr>
 </table>
 
-  <div class="row my-5" *ngFor="let service of services">
+  <div class="row my-5" id="service" *ngFor="let service of services">
     <div class="mb-3">
       <img class="massageimg" src="{{path}}" alt="">
     </div>
@@ -62,8 +62,8 @@
             <td>{{variant.duration}}</td>
             <td>{{variant.price}}</td>
             <td>
-              <a href="">
-                <button class="btn btn-outline-success">Reserve</button>
+              <a routerLink="/services">
+                <button class="btn btn-outline-success" (click)="sendDetails()" >Reserve</button>
               </a>
             </td>
             
