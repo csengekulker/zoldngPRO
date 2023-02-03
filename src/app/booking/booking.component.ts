@@ -21,10 +21,6 @@ export class BookingComponent implements OnInit{
 
   formSubmit() {}
 
-  receiveDetails() {
-    
-  }
-
   ngOnInit(): void {
     this.bookingForm = this.formBuilder.group({
       fullName: [''],
