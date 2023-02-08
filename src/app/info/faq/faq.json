@@ -1,0 +1,16 @@
+{
+    "faqs": [
+        {
+            "q": "lorem",
+            "a": "ipsum"
+        },
+        {
+            "q": "dolr",
+            "a": "sit"
+        },
+        {
+            "q": "est",
+            "a": "amet"
+        }
+    ]
+}

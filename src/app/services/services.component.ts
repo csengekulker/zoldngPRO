@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../shared/api.service';
 import { EmitterService } from '../emitter.service';
+import servicesJson from './services.json'
 
 @Component({
   selector: 'app-services',
@@ -67,49 +68,8 @@ export class ServicesComponent implements OnInit {
 
     // this.api.addProducts(data)
 
-    this.services = [
-      {
-        name: 'Svédmasszázs',
-        description: 'mashogy lesz',
-        dos: [
-          '🟢 akik stresszes életvitelt folytatnak, alig van idejük saját magukra',
-          '🟢 akik aktív sportolók és a sportolás következtében testük fáradt, izmaik feszültek és kemények',
-          '🟢 akik testmozgás hiányában szeretnék izmaikat átmozogtatni, megdolgoztatni a svédmasszázs által',
-          '🟢 akik testében sok a merevség, elég egy mozdulat és görcsbe rándul a test',
-          '🟢 akik nem akarnak mást, csak kikapcsolódni pár órára a mindennapi rohanásból és megpihentetni lelküket.'
-        ],
-        donts: [
-          'Curabitur pellentesque facilisis nisl non facilisis',
-          'Pellentesque habitant morbi tristique senectus et netus',
-          'Curabitur pellentesque facilisis nisl non facilisis'
-        ],
-        variants: [
-          {
-            name: 'teljes test',
-            duration: 90,
-            cost: 2345
-          },
-          {
-            name: 'hát és derék + láb hátsó felszíne + talp',
-            duration: 60,
-            cost: 2345
-          },
-          {
-            name: 'teljes hát | láb | talp',
-            duration: 45,
-            cost: 1234
-          },
-          {
-            name: 'teljes hát | láb | talp',
-            duration: 30,
-            cost: 1234
-          }
-        ],
-        imagePath: '../assets/images/vert.png'
-      }
-    ]
+    this.services = servicesJson.services
   }
-
 
 }
 

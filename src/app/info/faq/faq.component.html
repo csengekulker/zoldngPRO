@@ -1,21 +1,20 @@
 <div class="container mt-4">
-    <button class="btn">
-        <a routerLink="/info">Back to info</a>
+    <button class="btn btn-outline-primary">
+        <a class="text-decoration-none" routerLink="/info">Back to info</a>
     </button>
-    <h2>FAQ</h2>
 
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores, obcaecati?</p>
+    <div class="text-center">
+        <h2>FAQ</h2>
 
-    <p>
-        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
-            aria-expanded="true" aria-controls="collapseExample">
-            Button with data-bs-target
-        </button>
-    </p>
-    <div class="collapse" id="collapseExample">
-        <div class="card card-body">
-            Some placeholder content for the collapse component. This panel is hidden by default but revealed when the
-            user activates the relevant trigger.
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores, obcaecati?</p>    
+    </div>
+
+    <div class="faqs" *ngFor="let faq of faqs">
+        <div class="topic my-2 p-2 bg-dark text-light">
+            <h4>{{faq.q}}?</h4>
+            <p>{{faq.a}}!</p>
         </div>
     </div>
+
+
 </div>
