@@ -11,27 +11,32 @@ import servicesJson from '../services/services.json'
 })
 export class BookingComponent implements OnInit{
 
-  services = servicesJson.services
-  serviceNames: string[] = []
-  options: string[] = []
-
-  clientDetails!: Client
-
-  bookingForm = new FormGroup({
-    fullName: new FormControl('', V.required),
-    dob: new FormControl('', V.required),
-    email: new FormControl('', [V.required, V.email]),
-    phone: new FormControl('', V.required),
-    zipCode: new FormControl('', V.required),
-    city: new FormControl('', V.required),
-    address: new FormControl('', V.required)
-  })
+  bookingForm !: FormGroup
 
   constructor(
     private api: ApiService,
     private formBuilder: FormBuilder,
     private emitter: EmitterService
   ) {}
+
+
+  services = servicesJson.services
+  serviceNames: string[] = []
+  options: string[] = []
+
+  clientDetails!: Client
+
+  // bookingForm = new FormGroup({
+  //   fullName: new FormControl('', V.required),
+  //   dob: new FormControl('', V.required),
+  //   email: new FormControl('', [V.required, V.email]),
+  //   phone: new FormControl('', V.required),
+  //   zipCode: new FormControl('', V.required),
+  //   city: new FormControl('', V.required),
+  //   address: new FormControl('', V.required)
+  // })
+
+
 
   collectPersonalDetails() {
 
@@ -65,10 +70,38 @@ export class BookingComponent implements OnInit{
   }
 
   onSubmit() {
-    this.collectPersonalDetails()
+    // this.collectPersonalDetails()
+
+    let data = {
+      name: this.bookingForm.value.fullName,
+      itemNumber: this.bookingForm.value.dob,
+      quantity: this.bookingForm.value.email,
+      price: this.bookingForm.value.phone
+    }
+
+    console.log("submit");
+    
+    this.api.addProducts(data).subscribe({
+      next: (data:any) => {
+        console.log(data.data); // sendResponse
+      },
+      error: err => {
+        console.log("Hiba, nincs termek!");
+      }
+    })
   }
 
   ngOnInit(): void { 
+
+    this.bookingForm = this.formBuilder.group({
+      fullName: (''),
+      dob: (''),
+      email: (''),
+      phone: ('')
+    })
+
+
+    // oninit fill dropdown with options
     for (let i=0; i<this.services.length; i++) {
       let serviceName:string = this.services[i].name
       this.serviceNames.push(serviceName)
@@ -81,8 +114,8 @@ export class BookingComponent implements OnInit{
       }
     }
 
-    console.log(this.serviceNames);
-    console.log(this.options);
+    // console.log(this.serviceNames);
+    // console.log(this.options);
 
   }
 }

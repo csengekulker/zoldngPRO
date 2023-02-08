@@ -10,11 +10,15 @@ import servicesJson from './services.json'
 })
 export class ServicesComponent implements OnInit {
   products!: any
-  constructor(private api: ApiService, private emitter: EmitterService) { }
+
+  constructor(
+    private api: ApiService, 
+    private emitter: EmitterService
+  ) { }
 
   title = 'Massage Terapies'
 
-  public services!: Service[]
+  services!:any // JSON
 
   path: string = '../assets/images/vert.png';
   alttext: string = 'A kép leírása';
@@ -23,50 +27,59 @@ export class ServicesComponent implements OnInit {
     this.api.getProducts().subscribe({
       next: data => {
         this.products = data.data
-        console.log(data.data); // sendResponse
-        console.log(this.products);
-
-        
+        console.log(data.data)
       },
       error: err => {
         console.log("Hiba, nincs termek!");
-        
       }
     })
   }
 
   collectServiceDetails(event: any) {
+    let name = event.path[7].childNodes[1].childNodes[0].innerHTML
     let type = event.path[3].childNodes[0].childNodes[0].nodeValue
     let duration = event.path[3].childNodes[1].childNodes[0].nodeValue
-    let price = event.path[3].childNodes[2].childNodes[0].nodeValue
+    let price = event.path[3].childNodes[2].childNodes[0].nodeValue    
 
     let details = {
+      name: name,
       type: type,
       duration: duration,
       price: price
     }
 
-    console.log(details);
+  
+  }
+
+  addProducts() {
+
+    let data = {
+      name: "billentyűzet",
+      itemNumber: "cab34",
+      quantity: 25,
+      price: 8
+    };
+
+    this.api.addProducts(data).subscribe({
+      next: (data:any) => {
+        this.products = data.data
+        console.log(data.data); 
+      },
+      error: err => {
+        console.log("Hiba, nincs termek!");
+      }
+    })
+
   
   }
 
   ngOnInit(): void {
 
-    this.emitter.event.subscribe( (e)=> {
-      this.collectServiceDetails(e)
-    })
+    // this.emitter.event.subscribe( (e)=> {
+    //   this.collectServiceDetails(e)
+    // })
 
     this.getProducts()
-
-
-    // let data = {
-    //   name: "billentyűzet",
-    //   itemNumber: "cab34",
-    //   count: 25,
-    //   price: 8
-    // };
-
-    // this.api.addProducts(data)
 
     this.services = servicesJson.services
   }
@@ -79,13 +92,13 @@ export interface Variant {
   duration: number,
 }
 
-export interface Service {
-  name: string,
-  description: string,
-  dos: string[],
-  donts: string[]
-  variants: Variant[],
-  imagePath: string
-}
+// export interface Service {
+//   name: string,
+//   description: string,
+//   dos: string[],
+//   donts: string[]
+//   variants: Variant[],
+//   imagePath: string
+// }
 
 

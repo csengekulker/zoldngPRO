@@ -15,7 +15,6 @@ export class ApiService {
 
     console.log('GET:' + url);
   
-
     return this.http.get<any>(url)
   }
 
@@ -23,27 +22,17 @@ export class ApiService {
     let endpoint = 'products';
     let url = environment.apihost + endpoint;
 
-    let token = localStorage.getItem('token');
-
-    // console.log(data);
-    
-    
-    // same as my object arrays 
-    let data2 = {
-      name: "eger",
-      itemNumber: "cab34",
-      count: 25,
-      price: 80
-    };
-
     let headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': 'none'
+      'Content-Type': 'application/json'
     });
 
     let httpOption = {
       headers: headers
     };
+
+    console.log('POST:' + url);
+    console.log(data);
+
     return this.http.post<any>(url, data, httpOption);
   }
 }

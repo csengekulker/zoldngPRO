@@ -2,13 +2,18 @@
     "services": [
         {
             "name": "Svédmasszázs",
-            "description": "mashogy lesz",
+            "description": [
+              "A svédmasszázs egy a nyugati hagyományokon alapuló masszázsfajták közül. Ez a kezelés a legismertebb masszázsterápiák közé tartozik, mert az egész testre kiterjed, az izmok, inak, és ízületek átmasszírozására irányul. Célja a  helyi keringés fokozása. A vérellátás javulása a bőr rugalmasságát is javítja, az izmok vérellátása is fokozódik, ezeken kívül kedvezően hat a légzőközpontra és a vegetatív idegrendszerre is.",
+              "a  Svédmasszázs egy kifejezetten testet átgyúró, izmokat jól megmozgató, erőteljesebben végzett masszázs. Legelterjedtebb fogásai a gyúró, dörzsölő, simító és rezegtető mozdulatok.",
+              "Csökkenti a fájdalmat, felgyorsítja a sérülések utáni felépülést, megakadályozza a nem használt izmok sorvadását, enyhíti az álmatlanságot, fokozza az éberséget, de mindenek előtt elősegíti a relaxációt és csökkenti a stressz hatását és kedvező hatással bír az anyagcserére. Elősegíti a mozgásfunkciók helyes működését, ellazítja a fájdalmasan feszülő, görcsös izmokat.",
+              "A svédmasszázs olajos masszázs, mely során gyógynövény olajat használok. A kezelés masszàzs àgyon  történik."
+            ],
             "dos": [
               "🟢 akik stresszes életvitelt folytatnak, alig van idejük saját magukra",
               "🟢 akik aktív sportolók és a sportolás következtében testük fáradt, izmaik feszültek és kemények",
               "🟢 akik testmozgás hiányában szeretnék izmaikat átmozogtatni, megdolgoztatni a svédmasszázs által",
               "🟢 akik testében sok a merevség, elég egy mozdulat és görcsbe rándul a test",
-              "🟢 akik nem akarnak mást, csak kikapcsolódni pár órára a mindennapi rohanásból és megpihentetni lelküket."
+              "🟢 akik nem akarnak mást, csak kikapcsolódni pár órára a mindennapi rohanásból és megpihentetni lelküket"
             ],
             "donts": [
               "Curabitur pellentesque facilisis nisl non facilisis",
