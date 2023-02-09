@@ -9,7 +9,7 @@ import servicesJson from '../services/services.json'
   templateUrl: './booking.component.html',
   styleUrls: ['./booking.component.scss']
 })
-export class BookingComponent implements OnInit{
+export class BookingComponent implements OnInit {
 
   bookingForm !: FormGroup
 
@@ -17,7 +17,7 @@ export class BookingComponent implements OnInit{
     private api: ApiService,
     private formBuilder: FormBuilder,
     private emitter: EmitterService
-  ) {}
+  ) { }
 
 
   services = servicesJson.services
@@ -36,23 +36,21 @@ export class BookingComponent implements OnInit{
   //   address: new FormControl('', V.required)
   // })
 
-
-
-  collectPersonalDetails() {
+  collectPersonalDetails(): Client {
 
     const target = this.bookingForm.value
 
-    let fullName:string = target.fullName!
-    let dob:string = target.dob!
-    let email:string = target.email!
-    let phone:string = target.phone!
+    let fullName: string = target.fullName!
+    let dob: string = target.dob!
+    let email: string = target.email!
+    let phone: string = target.phone!
     let zipCode = target.zipCode
     let city = target.city
     let address = target.address
 
     let fullAddress = `${zipCode} ${city}, ${address}`
 
-    this.clientDetails = {
+    let data = {
       fullName,
       dob: dob,
       email,
@@ -60,62 +58,55 @@ export class BookingComponent implements OnInit{
       fullAddress
     }
 
-    console.log(this.clientDetails);
-    
+    return data
   }
 
   optionChanged(event: any) {
     console.log(event.target.value);
-    
+
   }
 
   onSubmit() {
-    // this.collectPersonalDetails()
+    let clientData = this.collectPersonalDetails()
 
-    let data = {
-      name: this.bookingForm.value.fullName,
-      itemNumber: this.bookingForm.value.dob,
-      quantity: this.bookingForm.value.email,
-      price: this.bookingForm.value.phone
-    }
+    console.log("submitted");
 
-    console.log("submit");
-    
-    this.api.addProducts(data).subscribe({
-      next: (data:any) => {
-        console.log(data.data); // sendResponse
+    this.api.sendClientDetails(clientData).subscribe({
+      next: (data: any) => {
+        console.log(data);
       },
-      error: err => {
-        console.log("Hiba, nincs termek!");
+      error: (err: any) => {
+        console.log(err)
       }
     })
   }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
 
+    //TODO: refactor
     this.bookingForm = this.formBuilder.group({
-      fullName: (''),
-      dob: (''),
+      fullName: ['', V.required],
+      dob: ['', V.required],
       email: (''),
-      phone: ('')
+      phone: (''),
+      zipCode: (''),
+      city: (''),
+      address: ('')
     })
 
 
-    // oninit fill dropdown with options
-    for (let i=0; i<this.services.length; i++) {
-      let serviceName:string = this.services[i].name
+    //FIXME: oninit fill dropdown with options
+    for (let i = 0; i < this.services.length; i++) {
+      let serviceName: string = this.services[i].name
       this.serviceNames.push(serviceName)
-      
-      for (let j=0; j<this.services[i].variants.length; j++) {
 
-        let option:string = this.services[i].variants[j].name
+      for (let j = 0; j < this.services[i].variants.length; j++) {
+
+        let option: string = this.services[i].variants[j].name
         this.options.push(option)
 
       }
     }
-
-    // console.log(this.serviceNames);
-    // console.log(this.options);
 
   }
 }

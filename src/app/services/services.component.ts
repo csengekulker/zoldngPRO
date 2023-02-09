@@ -35,7 +35,8 @@ export class ServicesComponent implements OnInit {
     })
   }
 
-  collectServiceDetails(event: any) {
+  //TODO: use eventEmitter from booking
+  collectServiceDetails(event: any):Object {
     let name = event.path[7].childNodes[1].childNodes[0].innerHTML
     let type = event.path[3].childNodes[0].childNodes[0].nodeValue
     let duration = event.path[3].childNodes[1].childNodes[0].nodeValue
@@ -48,7 +49,15 @@ export class ServicesComponent implements OnInit {
       price: price
     }
 
+    return details
   
+  }
+
+  onSubmit(event: any) {
+    let details = this.collectServiceDetails(event)
+
+    console.log(details);
+    
   }
 
   addProducts() {
