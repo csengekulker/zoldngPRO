@@ -9,6 +9,41 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
+  sendMessageDetails(data: any) {
+    //TODO: include id
+    let endpoint = 'messages'
+    let url = environment.apihost + endpoint
+
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    let httpOption = {
+      headers: headers
+    };
+
+    console.log(data);
+    
+    return this.http.post<any>(url, data, httpOption)
+  }
+
+  sendReservation(data: any) {
+    let endpoint = 'bookings'
+    let url = environment.apihost + endpoint
+
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    let httpOption = {
+      headers: headers
+    };
+
+    console.log(data);
+    
+    return this.http.post<any>(url, data, httpOption)
+  }
+
   sendClientDetails(data: any) {
     let endpoint = 'clients'
     let url = environment.apihost + endpoint
@@ -21,7 +56,8 @@ export class ApiService {
       headers: headers
     };
 
-    console.log(data);
+    //TODO: verify if client exists on api side
+    // where all clients is loaded in index
     
     return this.http.post<any>(url, data, httpOption)
   }

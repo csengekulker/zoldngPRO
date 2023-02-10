@@ -3,21 +3,18 @@
   <p class=" w-responsive mx-auto">Do you have any questions? Please do not hesitate to contact us
     directly. Our team will come back to you within
     a matter of hours to help you.</p>
-    <p class=" w-responsive mx-auto mb-5">Do you have any questions? Please do not hesitate to contact us
-      directly. Our team will come back to you within
-      a matter of hours to help you.</p>
   <div class="row">
     <div class=" mb-md-0 mb-5">
-      <form>
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
         <div class="row ">
 
           <div class=" col-md-6 mb-4 form-floating">
-            <input type="text" id="name" class="form-control" placeholder="Your name">
+            <input formControlName="name" type="text" id="name" class="form-control" placeholder="Your name">
             <label for="name">Your name</label>
           </div>
 
           <div class=" col-md-6 mb-4 form-floating">
-            <input type="text" id="email" class="form-control" placeholder="Your email">
+            <input formControlName="email" type="text" id="email" class="form-control" placeholder="Your email">
             <label for="email" class="">Your email</label>
           </div>
 
@@ -26,7 +23,7 @@
         <div class="row mb-4">
           <div class="col-md-12">
             <div class="md-form mb-0  form-floating">
-              <input type="text" id="subject" class="form-control" placeholder="Subject">
+              <input formControlName="subject"type="text" id="subject" class="form-control" placeholder="Subject">
               <label for="subject" class="">Subject</label>
             </div>
           </div>
@@ -35,16 +32,17 @@
           <div class="col-md-12 mb-4">
             <div class="md-form w-5">
               <h4>Your message</h4>
-              <textarea id="message" class="form-control" cols="30" rows="10"></textarea>
+              <textarea formControlName="message" id="message" class="form-control" cols="30" rows="10"></textarea>
             </div>
           </div>
         </div>
 
-      </form>
       <div class="text-center text-md-left">
-        <a class="btn btn-primary ">Send</a>
+        <button type="submit" class="btn btn-primary ">Send</button>
       </div>
-      <div class="status"></div>
+    </form>
+
+      <!-- <div class="status"></div> -->
     </div>
   </div>
 </div>
