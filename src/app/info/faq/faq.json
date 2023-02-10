@@ -1,16 +1,16 @@
 {
     "faqs": [
         {
-            "q": "lorem",
-            "a": "ipsum"
+            "q": "mi van ha kesek?",
+            "a": "erkezz idoben"
         },
         {
-            "q": "dolr",
-            "a": "sit"
+            "q": "mi van ha lemondom?",
+            "a": "ehh"
         },
         {
-            "q": "est",
-            "a": "amet"
+            "q": "mi van ha nem jelenek meg?",
+            "a": "gratulalok"
         }
     ]
 }

@@ -22,23 +22,23 @@
             ],
             "variants": [
               {
-                "name": "teljes test",
+                "name": "SVED1",
                 "duration": 90,
                 "cost": 2345
               },
               {
-                "name": "hát és derék + láb hátsó felszíne + talp",
+                "name": "SVED2",
                 "duration": 60,
                 "cost": 2345
               },
               {
-                "name": "teljes hát | láb | talp",
-                "duration": 45,
+                "name": "SVED3",
+                "duration": "30, 45",
                 "cost": 1234
               },
               {
-                "name": "teljes hát | láb | talp",
-                "duration": 30,
+                "name": "SVED4",
+                "duration": "30, 45",
                 "cost": 1234
               }
             ],
@@ -46,33 +46,60 @@
         },
         {
           "name": "Sportmasszazs",
-          "description": "mashogy lesz",
-          "dos": [
-            "🟢 akik stresszes életvitelt folytatnak, alig van idejük saját magukra",
-            "🟢 akik aktív sportolók és a sportolás következtében testük fáradt, izmaik feszültek és kemények",
-            "🟢 akik testmozgás hiányában szeretnék izmaikat átmozogtatni, megdolgoztatni a svédmasszázs által",
-            "🟢 akik testében sok a merevség, elég egy mozdulat és görcsbe rándul a test",
-            "🟢 akik nem akarnak mást, csak kikapcsolódni pár órára a mindennapi rohanásból és megpihentetni lelküket."
+          "description": [
+            "A sportmasszázs a svédmasszázs bizonyos fogásainak valamilyen fizikai megterhelésre történő felkészítése, teljesítmény-növelés, vagy terhelés utáni regeneráció céljából való alkalmazása. Minden masszázs eredendően relaxál és energetizál is. Amennyiben a masszőr az előbbit szeretné jobban támogatni, akkor lassabb, lágyabb technikákat alkalmaz hosszabb ideig; ha pedig az utóbbit, akkor intenzívebb fogásokat végez rövidebb ideig.",
+            ". Valójában a legtöbb modernkori, nyugati, olajos masszázs, amivel ma találkozhatsz (ilyen-olyan wellness masszázsok, „stresszoldó” masszázsok, stb.), az mind svédmasszázs, a különböző megnevezések csupán a kivitelezés módját, célját, környezetét jelölik",
+            "Sportmasszázs alkalmával a sok intenzív gyúró, ütögető és rezegtető technika bevetése miatt a masszázs alap hatásai (vérkeringés és anyagcsere serkenése) sokkal nagyobb mértékben jelentkeznek, mint egy sima svédmasszázsnál. Továbbá, mivel a gyúrással szó szerint a normál helyükről kiemelve dolgozzuk át az izmokat, így az izomgörcsöket, izomfeszüléseket is hatékonyabban tudjuk kezelni, aminek köszönhetően a sportmasszázs az egyik legjobb stresszoldó masszázs.",
+            "Egyik legnagyobb előnye, hogy intenzitása és mélyre ható, erőteljes fogásai miatt sokkal gyorsabban és tartósabban hat, mint a legtöbb egyéb masszázsfajta. A másik előnye, ami miatt sok szempontból verhetetlen, hogy mivel a gyúrás, ütögetés és rezegtetés pont az a három fogása a svédmasszázsnak, amelyek nem igényelnek feltétlenül vivőanyagot (olaj, krém) – sőt, anélkül sokszor könnyebben kivitelezhetőek –, adott esetben sokkal kevesebb előkészülettel, mondhatni szükség esetén bárhol, bármikor alkalmazhatóak egy jó kis frissítő gyúrás apropóján."
           ],
-          "donts": [
-            "Curabitur pellentesque facilisis nisl non facilisis",
-            "Pellentesque habitant morbi tristique senectus et netus",
-            "Curabitur pellentesque facilisis nisl non facilisis"
-          ],
+          "dos": "TBD",
+          "donts": "TBD",
           "variants": [
             {
-              "name": "teljes test",
-              "duration": 90,
+              "name": "SPORT1",
+              "duration": 30,
               "cost": 2345
             },
             {
-              "name": "láb | talp",
-              "duration": 30,
+              "name": "SPORT2",
+              "duration": 45,
+              "cost": 1234
+            },
+            {
+              "name": "SPORT3",
+              "duration": 60,
               "cost": 1234
             }
           ],
           "imagePath": "../assets/images/vert.png"
-      }
+      },
+      {
+        "name": "Talpmasszazs",
+        "description": [
+         "Talpunk az egyik legjobban igénybevett mozgásszervünk, amely szoros kapcsolatban áll a közérzetünkkel, a szellemi teljesítőképességünkkel, illetve szerveink megfelelő működésével.",
+         "Biztos Te is észrevetted már, hogy egy hosszú, fárasztó nap után jól esik lerúgni a cipőket, és néhány ropogtató bokakörzéssel fényévekkel jobban érzed magad, vagy ha egy kicsit megnyomkodod a talpad, máris derűsebb hangulatba kerülsz.. Nem véletlen, hiszen minden szervünk idegvégződése a talpunkban összpontosul. Úgyis tekinthetünk rá, mint egy térképére, mivel a jobb és a bal lábunk együttesen igazodik a testünk felépítéséhez,."
+        ],
+        "process": [
+          "🟢A talpmasszázs során először gyengéden átnyomkodom a területet, majd a talpon lévő csomókból és göcsökből érzékelve kezdem a problémásabb területek alapos átdolgozását.",
+          "🟢 akik aktív sportolók és a sportolás következtében testük fáradt, izmaik feszültek és kemények",
+          "🟢 akik testmozgás hiányában szeretnék izmaikat átmozogtatni, megdolgoztatni a svédmasszázs által",
+          "🟢 akik testében sok a merevség, elég egy mozdulat és görcsbe rándul a test",
+          "🟢 akik nem akarnak mást, csak kikapcsolódni pár órára a mindennapi rohanásból és megpihentetni lelküket"
+        ],
+        "dos": [
+          "👉Akik elsősorban a természetes gyógymódokat választanák,",
+          "👉Akik egész nap ÁLLÓ illetve fizikai munkát végeznek.",
+          "Curabitur pellentesque facilisis nisl non facilisis"
+        ],
+        "variants": [
+          {
+            "name": "TALP1",
+            "duration": "30, 45",
+            "cost": 2345
+          }
+        ],
+        "imagePath": "../assets/images/vert.png"
+    }
     ]
     
   }

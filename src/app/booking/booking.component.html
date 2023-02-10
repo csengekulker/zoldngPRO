@@ -31,9 +31,10 @@
 
         <div class="col-md-6">
           <select class="form-select" (click)="optionChanged($event)" >
-            <option value="Choose..">Valasszon..</option>
+            <option selected value="Choose..">Valasszon..</option>
+
             <optgroup label="{{serviceName}}" *ngFor="let serviceName of serviceNames">
-              <option *ngFor="let option of options" value="{{option}}">{{option}}</option>
+              <option *ngFor="let option of serviceOptions" value="{{option}}">{{option}}</option>
             </optgroup>
 
 

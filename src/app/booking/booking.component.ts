@@ -22,7 +22,9 @@ export class BookingComponent implements OnInit {
 
   services = servicesJson.services
   serviceNames: string[] = []
-  options: string[] = []
+  serviceOptions: string[] = []
+
+  name !: string
 
   clientDetails!: Client
 
@@ -48,6 +50,15 @@ export class BookingComponent implements OnInit {
     let city = target.city
     let address = target.address
 
+    if (
+      zipCode == '' ||
+      city == '' ||
+      address == ''
+    ) {
+      alert("Ki nem toltott mezo!!");
+      
+    }
+
     let fullAddress = `${zipCode} ${city}, ${address}`
 
     let data = {
@@ -62,14 +73,17 @@ export class BookingComponent implements OnInit {
   }
 
   optionChanged(event: any) {
-    console.log(event.target.value);
+    this.name = "Sved"
+    console.log(event.path[0].childNodes[1].label);
+    
+
+    console.log(this.name + event.target.value);
+    
 
   }
 
   onSubmit() {
     let clientData = this.collectPersonalDetails()
-
-    console.log("submitted");
 
     this.api.sendClientDetails(clientData).subscribe({
       next: (data: any) => {
@@ -94,19 +108,22 @@ export class BookingComponent implements OnInit {
       address: ('')
     })
 
-
-    //FIXME: oninit fill dropdown with options
-    for (let i = 0; i < this.services.length; i++) {
-      let serviceName: string = this.services[i].name
+    this.services.forEach(service => {
+      let serviceName: string = service.name
       this.serviceNames.push(serviceName)
 
-      for (let j = 0; j < this.services[i].variants.length; j++) {
 
-        let option: string = this.services[i].variants[j].name
-        this.options.push(option)
-
+      for(let variant of service.variants) {
+        let option = variant.name
+        this.serviceOptions.push(option)
       }
-    }
+
+      console.log(this.serviceOptions);
+
+    });
+
+    console.log(this.serviceNames);
+
 
   }
 }

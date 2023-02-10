@@ -101,13 +101,13 @@ export interface Variant {
   duration: number,
 }
 
-// export interface Service {
-//   name: string,
-//   description: string,
-//   dos: string[],
-//   donts: string[]
-//   variants: Variant[],
-//   imagePath: string
-// }
+export interface Service {
+  name: string,
+  description: string,
+  dos: string[],
+  donts: string[]
+  variants: Variant[],
+  imagePath: string
+}
 
 
