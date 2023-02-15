@@ -23,17 +23,17 @@ export class ServicesComponent implements OnInit {
   path: string = '../assets/images/vert.png';
   alttext: string = 'A kép leírása';
 
-  getProducts() {
-    this.api.getProducts().subscribe({
-      next: data => {
-        this.products = data.data
-        console.log(data.data)
-      },
-      error: err => {
-        console.log("Hiba, nincs termek!");
-      }
-    })
-  }
+  // getProducts() {
+  //   this.api.getProducts().subscribe({
+  //     next: data => {
+  //       this.products = data.data
+  //       console.log(data.data)
+  //     },
+  //     error: err => {
+  //       console.log("Hiba, nincs termek!");
+  //     }
+  //   })
+  // }
 
   //TODO: use eventEmitter from booking
   collectServiceDetails(event: any):Object {
@@ -53,10 +53,12 @@ export class ServicesComponent implements OnInit {
   
   }
 
-  onSubmit(event: any) {
+  onClick(event: any) {
     let details = this.collectServiceDetails(event)
 
     console.log(details);
+
+    // this.api.provideServiceDetails(details)
     
   }
 
@@ -69,26 +71,20 @@ export class ServicesComponent implements OnInit {
       price: 8
     };
 
-    this.api.addProducts(data).subscribe({
-      next: (data:any) => {
-        this.products = data.data
-        console.log(data.data); 
-      },
-      error: err => {
-        console.log("Hiba, nincs termek!");
-      }
-    })
+    // this.api.addProducts(data).subscribe({
+    //   next: (data:any) => {
+    //     this.products = data.data
+    //     console.log(data.data); 
+    //   },
+    //   error: (err:any) => {
+    //     console.log("Hiba, nincs termek!");
+    //   }
+    // })
 
   
   }
 
   ngOnInit(): void {
-
-    // this.emitter.event.subscribe( (e)=> {
-    //   this.collectServiceDetails(e)
-    // })
-
-    this.getProducts()
 
     this.services = servicesJson.services
   }

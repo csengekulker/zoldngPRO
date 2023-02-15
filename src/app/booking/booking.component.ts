@@ -11,7 +11,6 @@ import servicesJson from '../services/services.json'
 })
 export class BookingComponent implements OnInit {
 
-
   constructor(
     private api: ApiService,
     private formBuilder: FormBuilder,
@@ -19,12 +18,10 @@ export class BookingComponent implements OnInit {
   ) { }
 
   bookingForm !: FormGroup
-
+  appointments !: any
   services = servicesJson.services
   serviceNames: string[] = []
-  serviceOptions : Option[] = []
-
-  name !: string
+  serviceOptions !: [][]
 
   clientDetails!: Client
 
@@ -46,12 +43,12 @@ export class BookingComponent implements OnInit {
       address == ''
     ) {
       alert("Ki nem toltott mezo!!");
-      
+
     }
 
     let fullAddress = `${zipCode} ${city}, ${address}`
 
-    let data:Client = {
+    let data: Client = {
       fullName,
       dob: dob,
       email,
@@ -65,42 +62,41 @@ export class BookingComponent implements OnInit {
   collectServiceDetails(): Option {
 
     // mocking!
-    let data:Option = {
+    let data: Option = {
       name: 'Svedmasszazs',
-      type: 'teljes test',
-      duration: 90,
-      price: 2000
+      details: {
+        type: 'teljes test',
+        duration: 90,
+        price: 2000
+      }
+
     }
 
     return data
   }
 
-  optionChanged(event: any) {
-    this.name = event.path[0].childNodes[1].label
+  optionSelected(event: any) {
 
-    let path = event.target.parentElement
-    
-    let exp = `${this.name} - ${event.target.value
-    }`
-
-    console.log(path);
-    
+    // collect duration
+    // filter all apts through it for fit
+    // create list of availables
+    // in template: for each available, make button
   }
 
   onSubmit() {
     let clientData = this.collectPersonalDetails()
     let serviceData = this.collectServiceDetails()
 
-    let bookingData:Booking = {
+    let bookingData: Booking = {
       service: serviceData,
       client: clientData
     }
 
     this.api.sendReservation(bookingData).subscribe({
-      next: (data:any) => {
+      next: (data: any) => {
         console.log(data);
       },
-      error: (err:any) => {
+      error: (err: any) => {
         console.log(err);
       }
     })
@@ -117,6 +113,18 @@ export class BookingComponent implements OnInit {
 
   ngOnInit(): void {
 
+    //fetch all isOpen-true apts
+    this.api.fetchApts().subscribe({
+      next: (data: any) => {
+        this.appointments = data.data
+        console.log(this.appointments);
+        
+      },
+      error: (err: any) => {
+        console.log(err);
+      }
+    })
+
     //TODO: refactor
     this.bookingForm = this.formBuilder.group({
       fullName: ['', V.required],
@@ -130,30 +138,40 @@ export class BookingComponent implements OnInit {
 
     this.services.forEach(service => {
 
-      for(let variant of service.variants) {
+      this.serviceNames.push(service.name)
 
-        let option:Option = {
+      let options = []
+
+
+      for (let variant of service.variants) {
+
+        let option:Option =  {
           name: service.name,
-          type: variant.name,
-          duration: 0,
-          price: 0
+          details: {
+            type: variant.name,
+            duration: Number(variant.duration),
+            price: Number(variant.cost)
+          }
+
         }
-        this.serviceOptions.push(option)
+
+        options.push(option) 
+        // this.serviceOptions.push(options)
 
       }
-
-      console.log(this.serviceOptions);
-      
+      console.log(options);
     });
-
   }
 }
 
 interface Option {
   name: string,
-  type: string, 
-  duration: number,
-  price: number
+  details: {
+    type: string,
+    duration: number,
+    price: number
+  }
+
 }
 
 interface Client {
@@ -167,4 +185,11 @@ interface Client {
 interface Booking {
   service: Option,
   client: Client
+}
+
+interface Appointment {
+  date: string,
+  hour: number,
+  min: number,
+  isOpen: boolean
 }

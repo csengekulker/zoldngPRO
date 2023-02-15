@@ -9,8 +9,16 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
+  fetchApts() {
+    let endpoint = 'appointments'
+    let url = environment.apihost + endpoint
+
+    return this.http.get<any>(url)
+  }
+
   sendMessageDetails(data: any) {
     //TODO: include id
+    //TODO: messageController - email client?
     let endpoint = 'messages'
     let url = environment.apihost + endpoint
 
@@ -55,37 +63,8 @@ export class ApiService {
     let httpOption = {
       headers: headers
     };
-
-    //TODO: verify if client exists on api side
-    // where all clients is loaded in index
     
     return this.http.post<any>(url, data, httpOption)
   }
 
-  getProducts() {
-    let endpoint = 'products'
-    let url = environment.apihost + endpoint
-
-    console.log('GET:' + url);
-  
-    return this.http.get<any>(url)
-  }
-
-  addProducts(data: any) {
-    let endpoint = 'products';
-    let url = environment.apihost + endpoint;
-
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json'
-    });
-
-    let httpOption = {
-      headers: headers
-    };
-
-    console.log('POST:' + url);
-    console.log(data);
-
-    return this.http.post<any>(url, data, httpOption);
-  }
 }

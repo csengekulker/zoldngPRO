@@ -33,12 +33,12 @@
               },
               {
                 "name": "SVED3",
-                "duration": "30, 45",
+                "duration": "30",
                 "cost": 1234
               },
               {
                 "name": "SVED4",
-                "duration": "30, 45",
+                "duration": "45",
                 "cost": 1234
               }
             ],
@@ -94,7 +94,7 @@
         "variants": [
           {
             "name": "TALP1",
-            "duration": "30, 45",
+            "duration": "30",
             "cost": 2345
           }
         ],
