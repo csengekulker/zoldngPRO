@@ -9,41 +9,62 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  getProducts() {
-    let endpoint = 'products'
+  fetchApts() {
+    let endpoint = 'appointments'
     let url = environment.apihost + endpoint
-
-    console.log('GET:' + url);
-  
 
     return this.http.get<any>(url)
   }
 
-  addProducts(data: any) {
-    let endpoint = 'products';
-    let url = environment.apihost + endpoint;
-
-    let token = localStorage.getItem('token');
-
-    // console.log(data);
-    
-    
-    // same as my object arrays 
-    let data2 = {
-      name: "eger",
-      itemNumber: "cab34",
-      count: 25,
-      price: 80
-    };
+  sendMessageDetails(data: any) {
+    //TODO: include id
+    //TODO: messageController - email client?
+    let endpoint = 'messages'
+    let url = environment.apihost + endpoint
 
     let headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': 'none'
+      'Content-Type': 'application/json'
     });
 
     let httpOption = {
       headers: headers
     };
-    return this.http.post<any>(url, data, httpOption);
+
+    console.log(data);
+    
+    return this.http.post<any>(url, data, httpOption)
   }
+
+  sendReservation(data: any) {
+    let endpoint = 'bookings'
+    let url = environment.apihost + endpoint
+
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    let httpOption = {
+      headers: headers
+    };
+
+    console.log(data);
+    
+    return this.http.post<any>(url, data, httpOption)
+  }
+
+  sendClientDetails(data: any) {
+    let endpoint = 'clients'
+    let url = environment.apihost + endpoint
+
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    let httpOption = {
+      headers: headers
+    };
+    
+    return this.http.post<any>(url, data, httpOption)
+  }
+
 }

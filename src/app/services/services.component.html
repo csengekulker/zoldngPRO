@@ -26,13 +26,12 @@
       <h2>{{service.name}}</h2>
       <div>
         <h4>Description and process</h4>
-        <p>A svédmasszázs egy a nyugati hagyományokon alapuló masszázsfajták közül. Ez a kezelés a legismertebb masszázsterápiák közé tartozik, mert az egész testre kiterjed, az izmok, inak, és ízületek átmasszírozására irányul. Célja a  helyi keringés fokozása. A vérellátás javulása a bőr rugalmasságát is javítja, az izmok vérellátása is fokozódik, ezeken kívül kedvezően hat a légzőközpontra és a vegetatív idegrendszerre is.</p>
-        <p><strong>A Svédmasszázs egy kifejezetten testet átgyúró, izmokat jól megmozgató, erőteljesebben végzett masszázs.</strong> Legelterjedtebb fogásai a gyúró, dörzsölő, simító és rezegtető mozdulatok.
-        </p>
-        <p>Csökkenti a fájdalmat, felgyorsítja a sérülések utáni felépülést, megakadályozza a nem használt izmok sorvadását, enyhíti az álmatlanságot, fokozza az éberséget, de mindenek előtt elősegíti a relaxációt és csökkenti a stressz hatását és kedvező hatással bír az anyagcserére.
-          Elősegíti a mozgásfunkciók helyes működését, ellazítja a fájdalmasan feszülő, görcsös izmokat.</p>
-          <p><i>A svédmasszázs olajos masszázs, mely során gyógynövény olajat használok. A kezelés masszàzs àgyon  történik.
-          </i></p>
+        <!-- <p *ngFor="let desc of service.description">{{desc}}</p> -->
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure placeat ad illo optio beatae magni, omnis rem laudantium. Reprehenderit ipsam labore nostrum eius, vel illo velit quam? Est inventore quaerat, omnis cupiditate soluta sapiente, aspernatur officiis optio nihil atque totam ut aut excepturi, expedita sequi nisi debitis eos fugiat! Doloribus aliquam, qui atque veniam quaerat nam similique est. Molestias temporibus mollitia eos, omnis magni delectus pariatur facilis dolore cum commodi exercitationem iusto maiores totam corrupti debitis in atque odit possimus suscipit modi. Ipsum ipsa maiores voluptatibus, ratione asperiores voluptatum error voluptas aperiam, culpa sit excepturi possimus nam in. Quasi, cumque!</p>
+
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let step of service.process">{{step}}</li>
+        </ul>
       </div>
 
         <div class="row my-3">
@@ -69,7 +68,9 @@
             <td>{{variant.cost}}</td>
             <td>
               <a routerLink="/services">
-                <button class="btn btn-outline-success" (click)="collectServiceDetails($event)" >Reserve</button>
+                <button class="btn btn-outline-success" (click)="onClick($event)" >Reserve</button>
+                <!-- <button class="btn btn-outline-success" (click)="addProducts()" >Reserve</button> -->
+
               </a>
             </td>
             
