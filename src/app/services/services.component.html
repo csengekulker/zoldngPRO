@@ -4,9 +4,9 @@
   </path>
 </svg>
 
-<div class="container">
+<div class="container col">
 
-  <h1>{{ title }}</h1>
+  <h1>Massage Terapies</h1>
 
   <table>
     <tr *ngFor="let product of products">
@@ -17,7 +17,7 @@
     </tr>
 </table>
 
-  <div class="row my-5" id="service" *ngFor="let service of services">
+  <div class="row-md-6 my-5" id="service" *ngFor="let service of services">
     <div class="mb-3">
       <img class="massageimg" src="{{path}}" alt="">
     </div>
@@ -26,7 +26,6 @@
       <h2>{{service.name}}</h2>
       <div>
         <h4>Description and process</h4>
-        <!-- <p *ngFor="let desc of service.description">{{desc}}</p> -->
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure placeat ad illo optio beatae magni, omnis rem laudantium. Reprehenderit ipsam labore nostrum eius, vel illo velit quam? Est inventore quaerat, omnis cupiditate soluta sapiente, aspernatur officiis optio nihil atque totam ut aut excepturi, expedita sequi nisi debitis eos fugiat! Doloribus aliquam, qui atque veniam quaerat nam similique est. Molestias temporibus mollitia eos, omnis magni delectus pariatur facilis dolore cum commodi exercitationem iusto maiores totam corrupti debitis in atque odit possimus suscipit modi. Ipsum ipsa maiores voluptatibus, ratione asperiores voluptatum error voluptas aperiam, culpa sit excepturi possimus nam in. Quasi, cumque!</p>
 
         <ul class="list-group">
@@ -67,19 +66,16 @@
             <td>{{variant.duration}}</td>
             <td>{{variant.cost}}</td>
             <td>
-              <a routerLink="/services">
+              <a href="/booking">
                 <button class="btn btn-outline-success" (click)="onClick($event)" >Reserve</button>
-                <!-- <button class="btn btn-outline-success" (click)="addProducts()" >Reserve</button> -->
-
               </a>
             </td>
-            
           </tr>
         </tbody>
       </table>
-
-     
     </div>
+
+
   </div>
 
 </div>

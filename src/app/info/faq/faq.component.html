@@ -1,34 +1,32 @@
 <div class="container my-4">
-    <button class="btn btn-outline-primary">
-        <a class="text-decoration-none" routerLink="/info">Back to info</a>
-    </button>
+  <button class="btn btn-outline-primary">
+    <a class="text-decoration-none" routerLink="/info">Back to info</a>
+  </button>
 
-    <div class="text-center">
-        <h2>FAQ</h2>
+  <div class="text-center">
+    <h2>FAQ</h2>
 
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores, obcaecati?</p>    
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores, obcaecati?</p>
+  </div>
+
+
+  <!-- TODO:  dynamically add id to data-bs-target-->
+  <div class="accordion w-100" id="basicAccordion">
+    <div class="accordion-item" *ngFor="let faq of faqs">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#id" aria-expanded="false"
+          aria-controls="collapseOne">
+          {{faq.q}}
+        </button>
+      </h2>
+      <div id="id" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#basicAccordion">
+        <div class="accordion-body">
+          {{faq.a}}
+        </div>
+      </div>
     </div>
 
-    <!-- TODO: faq list groups  -->
 
-    <!-- <div class="row">
-        <div class="col-4">
-          <div class="list-group list-group-flush" id="list-tab" role="tablist">
-            <a class="list-group-item list-group-item-action active" (click)="onClick($event)" id="list-home-list" data-toggle="list"  role="tab" aria-controls="home">Home</a>
-            <a class="list-group-item list-group-item-action" (click)="onClick($event)" id="list-profile-list" data-toggle="list"role="tab" aria-controls="profile">Profile</a>
-            <a class="list-group-item list-group-item-action" (click)="onClick($event)" id="list-messages-list" data-toggle="list" role="tab" aria-controls="messages">Messages</a>
-            <a class="list-group-item list-group-item-action" (click)="onClick($event)" id="list-settings-list" data-toggle="list"  role="tab" aria-controls="settings">Settings</a>
-          </div>
-        </div>
-        <div class="col-8">
-          <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade" id="list-home" role="tabpanel" aria-labelledby="list-home-list">1</div>
-            <div class="tab-pane fade show active" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">2</div>
-            <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">3</div>
-            <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">4</div>
-          </div>
-        </div>
-      </div> -->
-
+  </div>
 
 </div>

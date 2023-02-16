@@ -16,8 +16,6 @@ export class ServicesComponent implements OnInit {
     private emitter: EmitterService
   ) { }
 
-  title = 'Massage Terapies'
-
   services!:any // JSON
 
   path: string = '../assets/images/vert.png';

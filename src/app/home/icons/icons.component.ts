@@ -17,19 +17,19 @@ export class IconsComponent implements OnInit{
     this.icons = [
       {
         path: '../assets/images/vert.png',
-        text: 'REASONS'
+        text: 'Reduces stress and increases relaxation.'
       },
       {
         path: '../assets/images/vert.png',
-        text: 'TO'
+        text: 'Reduces pain, muscle soreness and tension.'
       },
       {
         path: '../assets/images/vert.png',
-        text: 'TAKE'
+        text: 'Improves circulation, energy and alertness.'
       },
       {
         path: '../assets/images/vert.png',
-        text: 'MASSAGE'
+        text: 'Lowers heart rate and blood pressure.'
       }
     ]
   }
