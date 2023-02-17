@@ -26,3 +26,15 @@ a.btn-primary:focus {
 input, label {
     color: #273036;
 }
+
+#msg {
+    color: #273036;
+    background-color: #fff;
+    border-color: #fff;
+}
+
+#msg:hover {
+    background-color: #2b9777;
+    color: #fff;
+    border-color: #273036;
+}

@@ -20,7 +20,7 @@ const routes: Routes = [
   {path: 'info/docs', component: DocsComponent}
 
 ];
-
+// , {scrollPositionRestoration: 'enabled'}
 @NgModule({
   imports: [RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'})],
   exports: [RouterModule]
