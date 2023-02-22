@@ -8,6 +8,8 @@ import { Service } from 'src/app/services/services.component';
   styleUrls: ['./pricelist.component.scss']
 })
 export class PricelistComponent implements OnInit {
+  buttonText :string = "< Information"
+
   services !: Service[]
 
   ngOnInit(): void { 

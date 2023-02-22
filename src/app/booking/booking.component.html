@@ -8,54 +8,80 @@
   <div class="container text-center">
 
     <h1>Appointment setup</h1>
+    <h3>Tudnivalok</h3>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus esse provident iste sint quibusdam natus
       tempora nulla voluptatum atque repellat ullam omnis consequatur ab, sunt hic assumenda eos quasi nesciunt!
       Recusandae quam ducimus repellendus ut quos quia natus dignissimos error, asperiores, quaerat quas sapiente?
     </p>
     <p>
-      Architecto corrupti harum ad illo veritatis est, sed aperiam, deleniti omnis id, provident labore inventore amet
-      cumque corporis quis incidunt et? Tempore officia voluptatibus reiciendis ratione dolore cupiditate in pariatur
-      iure? In sit, veritatis neque cum ab placeat accusantium aut, excepturi obcaecati libero cumque atque esse magnam
-      quod assumenda doloribus laudantium sapiente doloremque molestiae corporis vero.
+      Időpontfoglalásodat követően e-mailben visszaigazolást küldünk a foglalas jovahagyasa utan, amiben minden fontos, a kezelés megkezdéséhez szükséges információt megtalálsz.
     </p>
   </div>
 
 </section>
 
 <div class="container">
-  <section class="form bg-dark p-4 rounded">
+  <section class="form p-4 rounded">
 
     <div class="col">
 
       <div class="row">
 
+        <h5>Szolgáltatás valasztasa</h5>
+
         <div class="col-md-6">
-          <select class="form-select">
+          <select class="form-select" (change)="optionSelected($event)">
             <option selected id="selected" value="Choose..">Valasszon..</option>
-
-            <optgroup *ngFor="let name of serviceNames" label="{{name}}">
-              <option></option>
-            </optgroup>
-
-
+            <option  *ngFor="let service of services" value="{{service.id}}">{{service.name}}, {{service.type.type}}, {{service.type.duration_id}}</option>
 
           </select>
         </div>
 
-        <div class="col-md-4">
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-            <label class="form-check-label" for="inlineRadio1">1</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-            <label class="form-check-label" for="inlineRadio2">2</label>
-          </div>
+      </div>
+
+      <hr class="border border-danger border-2 opacity-50">
+
+      <h5>Idopont kivalasztasa</h5>
+
+
+      <p>Alább láthatod a foglalható időpontokat a valasztott szolgáltatásra.
+        Kattints egy időpontra a foglalás folytatásához.</p>
+
+        <!-- TODO: buttons toggle, deactivate others (buttongroup) -->
+      
+
+      <div class="btn-group" role="group">
+        <button
+          (click)="aptSelected($event)"
+          value="{{apt.hour}}"
+          *ngFor="let apt of appointments"
+          class="apt btn m-2"
+          data-bs-toggle="button"
+          autocomplete="off"
+          id="{{apt.id}}">{{apt.hour}}:{{apt.min}}
+        </button>
+
+        <div  *ngFor="let apt of appointments">
+          <input type="radio" name="options" class="btn-check" autocomplete="off" >
+          <label data-bs-toggle="button"
+          class="btn btn-primary"  for="btn-check">{{apt.hour}}:{{apt.min}}</label>
         </div>
+      </div>
+
+      <div class="col bg-success">
 
       </div>
 
+      <hr class="border border-danger border-2 opacity-50">
+
+
+      
+
+
       <!-- id="personal" -->
+
+      <h5>Szemelyes adatok megadasa</h5>
+
 
       <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
 
@@ -92,9 +118,14 @@
           </div>
         </div>
 
+        <div class="form-check form-switch">
+          <input type="checkbox" class="form-check-input form-control" id="accept" formControlName="accept" >
+          <label for="accept">I accept the Terms and Conditions & Privacy Policy.</label>
+        </div>
+
 
         <div class="row mt-4">
-          <button class="btn btn-primary col-md-6" type="submit">
+          <button class="btn" type="submit" id="submitBtn">
             Idopont lefoglalasa
           </button>
         </div>

@@ -12,11 +12,13 @@ export class ServicesComponent implements OnInit {
   products!: any
 
   constructor(
-    private api: ApiService, 
+    private api: ApiService,
     private emitter: EmitterService
   ) { }
 
-  services!:any // JSON
+  services!: any // JSON
+
+  fetchedServices !: any
 
   path: string = '../assets/images/vert.png';
   alttext: string = 'A kép leírása';
@@ -34,11 +36,11 @@ export class ServicesComponent implements OnInit {
   // }
 
   //TODO: use eventEmitter from booking
-  collectServiceDetails(event: any):Object {
+  collectServiceDetails(event: any): Object {
     let name = event.path[7].childNodes[1].childNodes[0].innerHTML
     let type = event.path[3].childNodes[0].childNodes[0].nodeValue
     let duration = event.path[3].childNodes[1].childNodes[0].nodeValue
-    let price = event.path[3].childNodes[2].childNodes[0].nodeValue    
+    let price = event.path[3].childNodes[2].childNodes[0].nodeValue
 
     let details = {
       name: name,
@@ -48,7 +50,7 @@ export class ServicesComponent implements OnInit {
     }
 
     return details
-  
+
   }
 
   onClick(event: any) {
@@ -57,7 +59,7 @@ export class ServicesComponent implements OnInit {
     console.log(details);
 
     // this.api.provideServiceDetails(details)
-    
+
   }
 
   addProducts() {
@@ -79,12 +81,22 @@ export class ServicesComponent implements OnInit {
     //   }
     // })
 
-  
+
   }
 
   ngOnInit(): void {
 
     this.services = servicesJson.services
+
+    this.api.fetchServices().subscribe({
+        next: (data:any) => {
+          this.fetchedServices = data.data
+          console.log(data.data); 
+        },
+        error: (err:any) => {
+          console.log("Hiba, nincs adat!");
+        }
+    })
   }
 
 }

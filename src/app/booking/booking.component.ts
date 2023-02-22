@@ -19,9 +19,9 @@ export class BookingComponent implements OnInit {
 
   bookingForm !: FormGroup
   appointments !: any
-  services = servicesJson.services
+  services !: any
   serviceNames: string[] = []
-  serviceOptions !: [][]
+  serviceOptions !: Option[]
 
   clientDetails!: Client
 
@@ -77,10 +77,18 @@ export class BookingComponent implements OnInit {
 
   optionSelected(event: any) {
 
+  console.log('Service id: ' + event.target.value);
+      
+
     // collect duration
     // filter all apts through it for fit
     // create list of availables
     // in template: for each available, make button
+  }
+
+  aptSelected(event: any) {
+    console.log(event.target.value);
+    
   }
 
   onSubmit() {
@@ -113,8 +121,7 @@ export class BookingComponent implements OnInit {
 
   ngOnInit(): void {
 
-    //fetch all isOpen-true apts
-    this.api.fetchApts().subscribe({
+    this.api.fetchOpenApts().subscribe({
       next: (data: any) => {
         this.appointments = data.data
         console.log(this.appointments);
@@ -125,6 +132,19 @@ export class BookingComponent implements OnInit {
       }
     })
 
+    this.api.fetchServices().subscribe({
+      next: (data:any) => {
+        this.services = data
+        console.log(this.services)
+      },
+      error: (err:any) => {
+        console.log(err);
+        
+      }
+    })
+
+
+
     //TODO: refactor
     this.bookingForm = this.formBuilder.group({
       fullName: ['', V.required],
@@ -133,34 +153,10 @@ export class BookingComponent implements OnInit {
       phone: ['', V.required],
       zipCode: ['', V.required],
       city: ['', V.required],
-      address: ['', V.required]
+      address: ['', V.required],
+      accept: [V.requiredTrue]
     })
 
-    this.services.forEach(service => {
-
-      this.serviceNames.push(service.name)
-
-      let options = []
-
-
-      for (let variant of service.variants) {
-
-        let option:Option =  {
-          name: service.name,
-          details: {
-            type: variant.name,
-            duration: Number(variant.duration),
-            price: Number(variant.cost)
-          }
-
-        }
-
-        options.push(option) 
-        // this.serviceOptions.push(options)
-
-      }
-      console.log(options);
-    });
   }
 }
 

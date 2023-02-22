@@ -8,16 +8,7 @@
 
   <h1>Massage Terapies</h1>
 
-  <table>
-    <tr *ngFor="let product of products">
-        <td>{{ product.id }}</td>
-        <td>{{ product.name }}</td>
-        <td>{{ product.itemNumber }}</td>
-        <td>{{ product.price }}</td>
-    </tr>
-</table>
-
-  <div class="row-md-6 my-5" id="service" *ngFor="let service of services">
+  <div class="col my-5" id="service" *ngFor="let service of services">
     <div class="mb-3">
       <img class="massageimg" src="{{path}}" alt="">
     </div>
@@ -26,27 +17,27 @@
       <h2>{{service.name}}</h2>
       <div>
         <h4>Description and process</h4>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure placeat ad illo optio beatae magni, omnis rem laudantium. Reprehenderit ipsam labore nostrum eius, vel illo velit quam? Est inventore quaerat, omnis cupiditate soluta sapiente, aspernatur officiis optio nihil atque totam ut aut excepturi, expedita sequi nisi debitis eos fugiat! Doloribus aliquam, qui atque veniam quaerat nam similique est. Molestias temporibus mollitia eos, omnis magni delectus pariatur facilis dolore cum commodi exercitationem iusto maiores totam corrupti debitis in atque odit possimus suscipit modi. Ipsum ipsa maiores voluptatibus, ratione asperiores voluptatum error voluptas aperiam, culpa sit excepturi possimus nam in. Quasi, cumque!</p>
+        <p>{{service.description}}</p>
 
         <ul class="list-group">
           <li class="list-group-item" *ngFor="let step of service.process">{{step}}</li>
         </ul>
       </div>
 
-        <div class="row my-3">
-          <div class="col-md-4 my-2">
-            <h4>Recommended</h4>
-            <ul class="list-group">
-              <li class="list-group-item" *ngFor="let reason of service.dos">{{reason}}</li>
-            </ul>
-          </div>
-          <div class="col-md-4 my-2">
-            <h4>Not recommended</h4>
-            <ul class="list-group">
-              <li class="list-group-item" *ngFor="let reason of service.donts">{{reason}}</li>
-            </ul>
-          </div>
+      <div class="row my-3">
+        <div class="col-md-4 my-2">
+          <h4>Recommended</h4>
+          <ul class="list-group">
+            <li class="list-group-item" *ngFor="let reason of service.dos">{{reason}}</li>
+          </ul>
         </div>
+        <div class="col-md-4 my-2">
+          <h4>Not recommended</h4>
+          <ul class="list-group">
+            <li class="list-group-item" *ngFor="let reason of service.donts">{{reason}}</li>
+          </ul>
+        </div>
+      </div>
 
     </div>
 
@@ -67,7 +58,7 @@
             <td>{{variant.cost}}</td>
             <td>
               <a href="/booking">
-                <button class="btn btn-outline-success" (click)="onClick($event)" >Reserve</button>
+                <button class="btn btn-outline-success" (click)="onClick($event)">Reserve</button>
               </a>
             </td>
           </tr>

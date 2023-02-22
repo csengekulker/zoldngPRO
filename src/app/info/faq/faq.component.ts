@@ -7,6 +7,8 @@ import faqJson from './faq.json'
   styleUrls: ['./faq.component.scss']
 })
 export class FaqComponent implements OnInit{
+  buttonText :string = "< Information"
+
 
   faqs = faqJson.faqs
 

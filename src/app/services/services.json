@@ -1,6 +1,7 @@
 {
     "services": [
         {
+            "id": 1,
             "name": "Svédmasszázs",
             "description": [
               "A svédmasszázs egy a nyugati hagyományokon alapuló masszázsfajták közül. Ez a kezelés a legismertebb masszázsterápiák közé tartozik, mert az egész testre kiterjed, az izmok, inak, és ízületek átmasszírozására irányul. Célja a  helyi keringés fokozása. A vérellátás javulása a bőr rugalmasságát is javítja, az izmok vérellátása is fokozódik, ezeken kívül kedvezően hat a légzőközpontra és a vegetatív idegrendszerre is.",
@@ -45,6 +46,7 @@
             "imagePath": "../assets/images/vert.png"
         },
         {
+          "id": 2,
           "name": "Sportmasszazs",
           "description": [
             "A sportmasszázs a svédmasszázs bizonyos fogásainak valamilyen fizikai megterhelésre történő felkészítése, teljesítmény-növelés, vagy terhelés utáni regeneráció céljából való alkalmazása. Minden masszázs eredendően relaxál és energetizál is. Amennyiben a masszőr az előbbit szeretné jobban támogatni, akkor lassabb, lágyabb technikákat alkalmaz hosszabb ideig; ha pedig az utóbbit, akkor intenzívebb fogásokat végez rövidebb ideig.",
@@ -52,8 +54,6 @@
             "Sportmasszázs alkalmával a sok intenzív gyúró, ütögető és rezegtető technika bevetése miatt a masszázs alap hatásai (vérkeringés és anyagcsere serkenése) sokkal nagyobb mértékben jelentkeznek, mint egy sima svédmasszázsnál. Továbbá, mivel a gyúrással szó szerint a normál helyükről kiemelve dolgozzuk át az izmokat, így az izomgörcsöket, izomfeszüléseket is hatékonyabban tudjuk kezelni, aminek köszönhetően a sportmasszázs az egyik legjobb stresszoldó masszázs.",
             "Egyik legnagyobb előnye, hogy intenzitása és mélyre ható, erőteljes fogásai miatt sokkal gyorsabban és tartósabban hat, mint a legtöbb egyéb masszázsfajta. A másik előnye, ami miatt sok szempontból verhetetlen, hogy mivel a gyúrás, ütögetés és rezegtetés pont az a három fogása a svédmasszázsnak, amelyek nem igényelnek feltétlenül vivőanyagot (olaj, krém) – sőt, anélkül sokszor könnyebben kivitelezhetőek –, adott esetben sokkal kevesebb előkészülettel, mondhatni szükség esetén bárhol, bármikor alkalmazhatóak egy jó kis frissítő gyúrás apropóján."
           ],
-          "dos": "TBD",
-          "donts": "TBD",
           "variants": [
             {
               "name": "SPORT1",
@@ -74,6 +74,7 @@
           "imagePath": "../assets/images/vert.png"
       },
       {
+        "id": 3,
         "name": "Talpmasszazs",
         "description": [
          "Talpunk az egyik legjobban igénybevett mozgásszervünk, amely szoros kapcsolatban áll a közérzetünkkel, a szellemi teljesítőképességünkkel, illetve szerveink megfelelő működésével.",
