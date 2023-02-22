@@ -21,6 +21,7 @@ import { InfoComponent } from './info/info.component';
 import { FaqComponent } from './info/faq/faq.component';
 import { PricelistComponent } from './info/pricelist/pricelist.component';
 import { DocsComponent } from './info/docs/docs.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { DocsComponent } from './info/docs/docs.component';
     InfoComponent,
     FaqComponent,
     PricelistComponent,
-    DocsComponent
+    DocsComponent,
+    NotfoundComponent
     ],
   imports: [
     BrowserModule,

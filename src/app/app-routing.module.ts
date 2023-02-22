@@ -7,6 +7,7 @@ import { DocsComponent } from './info/docs/docs.component';
 import { FaqComponent } from './info/faq/faq.component';
 import { InfoComponent } from './info/info.component';
 import { PricelistComponent } from './info/pricelist/pricelist.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 import { ServicesComponent } from './services/services.component';
 
 const routes: Routes = [
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path: 'info', component: InfoComponent},
   {path: 'info/faq', component: FaqComponent},
   {path: 'info/pricing', component: PricelistComponent},
-  {path: 'info/docs', component: DocsComponent}
+  {path: 'info/docs', component: DocsComponent},
+  {path: '**', component: NotfoundComponent}
 
 ];
 // , {scrollPositionRestoration: 'enabled'}
