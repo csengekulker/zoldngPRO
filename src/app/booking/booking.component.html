@@ -14,7 +14,8 @@
       Recusandae quam ducimus repellendus ut quos quia natus dignissimos error, asperiores, quaerat quas sapiente?
     </p>
     <p>
-      Időpontfoglalásodat követően e-mailben visszaigazolást küldünk a foglalas jovahagyasa utan, amiben minden fontos, a kezelés megkezdéséhez szükséges információt megtalálsz.
+      Időpontfoglalásodat követően e-mailben visszaigazolást küldünk a foglalas jovahagyasa utan, amiben minden fontos,
+      a kezelés megkezdéséhez szükséges információt megtalálsz.
     </p>
   </div>
 
@@ -25,65 +26,62 @@
 
     <div class="col">
 
-      <div class="row">
+      <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
 
-        <h5>Szolgáltatás valasztasa</h5>
+        <div class="row">
 
-        <div class="col-md-6">
-          <select class="form-select" (change)="optionSelected($event)">
-            <option selected id="selected" value="Choose..">Valasszon..</option>
-            <option  *ngFor="let service of services" value="{{service.id}}">{{service.name}}, {{service.type.type}}, {{service.type.duration_id}}</option>
+          <div class="col-md-3">
+            <h5>Szolgáltatás valasztasa</h5>
+            <div class="">
+              <select class="form-select" (change)="serviceSelected($event)" formControlName="serviceId" >
+                <option selected id="selected" value="Choose..">Valasszon..</option>
+                <option *ngFor="let service of services" value="{{service.id}}">{{service.name}}</option>
+              </select>
+            </div>
+          </div>
 
-          </select>
+          <div class="col-md-6">
+            <h5>Tipus valasztasa</h5>
+            <div class="">
+              <select class="form-select" (change)="typeSelected($event)" formControlName="typeId" >
+                <option selected id="selected" value="Choose..">Valasszon..</option>
+                <option *ngFor="let type of types" value="{{type.id}}">{{type.name}}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <h6>A kezeles idotartama:</h6>
+          </div>
+
         </div>
 
-      </div>
+        <hr class="border border-danger border-2 opacity-50">
 
-      <hr class="border border-danger border-2 opacity-50">
-
-      <h5>Idopont kivalasztasa</h5>
+        <h5>Idopont kivalasztasa</h5>
 
 
-      <p>Alább láthatod a foglalható időpontokat a valasztott szolgáltatásra.
-        Kattints egy időpontra a foglalás folytatásához.</p>
+        <p>Alább láthatod a foglalható időpontokat a valasztott szolgáltatásra.
+          Kattintassal valaszthatod ki a neked megfelelot.</p>
+
+        <small>amennyiben nem talaltal jot, ??</small>
 
         <!-- TODO: buttons toggle, deactivate others (buttongroup) -->
-      
 
-      <div class="btn-group" role="group">
-        <button
-          (click)="aptSelected($event)"
-          value="{{apt.hour}}"
-          *ngFor="let apt of appointments"
-          class="apt btn m-2"
-          data-bs-toggle="button"
-          autocomplete="off"
-          id="{{apt.id}}">{{apt.hour}}:{{apt.min}}
-        </button>
+        <div class="btn-group col" role="group">
+          <button (click)="aptSelected($event)" value="{{apt.hour}}" *ngFor="let apt of appointments"
+            class="apt btn m-2" data-bs-toggle="button" autocomplete="off" id="{{apt.id}}">{{apt.start}}
+          </button>
 
-        <div  *ngFor="let apt of appointments">
-          <input type="radio" name="options" class="btn-check" autocomplete="off" >
-          <label data-bs-toggle="button"
-          class="btn btn-primary"  for="btn-check">{{apt.hour}}:{{apt.min}}</label>
+          <div *ngFor="let apt of appointments">
+            <input type="radio" name="options" class="btn-check" autocomplete="off">
+            <label data-bs-toggle="button" class="btn btn-primary" for="btn-check">{{apt.start}}</label>
+          </div>
         </div>
-      </div>
 
-      <div class="col bg-success">
+        <hr class="border border-danger border-2 opacity-50">
 
-      </div>
-
-      <hr class="border border-danger border-2 opacity-50">
-
-
-      
-
-
-      <!-- id="personal" -->
-
-      <h5>Szemelyes adatok megadasa</h5>
-
-
-      <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+        <h5>Szemelyes adatok megadasa</h5>
 
         <div class="row my-2">
           <div class=" col-md-6">
@@ -119,7 +117,7 @@
         </div>
 
         <div class="form-check form-switch">
-          <input type="checkbox" class="form-check-input form-control" id="accept" formControlName="accept" >
+          <input type="checkbox" class="form-check-input form-control" id="accept" formControlName="accept">
           <label for="accept">I accept the Terms and Conditions & Privacy Policy.</label>
         </div>
 
@@ -129,8 +127,8 @@
             Idopont lefoglalasa
           </button>
         </div>
+
       </form>
     </div>
-
   </section>
 </div>

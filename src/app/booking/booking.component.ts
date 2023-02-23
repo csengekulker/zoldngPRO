@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators as V } from '@angular/f
 import { ApiService } from '../shared/api.service';
 import { EmitterService } from '../emitter.service';
 import servicesJson from '../services/services.json'
+import { Target } from '@angular/compiler';
 
 @Component({
   selector: 'app-booking',
@@ -20,8 +21,9 @@ export class BookingComponent implements OnInit {
   bookingForm !: FormGroup
   appointments !: any
   services !: any
-  serviceNames: string[] = []
-  serviceOptions !: Option[]
+  types !: any
+  // serviceNames: string[] = []
+  // serviceOptions !: Option[]
 
   clientDetails!: Client
 
@@ -59,45 +61,38 @@ export class BookingComponent implements OnInit {
     return data
   }
 
-  collectServiceDetails(): Option {
-
-    // mocking!
-    let data: Option = {
-      name: 'Svedmasszazs',
-      details: {
-        type: 'teljes test',
-        duration: 90,
-        price: 2000
-      }
-
-    }
-
-    return data
+  serviceSelected(event: any) {
+    console.log('Service id: ' + event.target.value);
   }
 
-  optionSelected(event: any) {
-
-  console.log('Service id: ' + event.target.value);
-      
-
-    // collect duration
-    // filter all apts through it for fit
-    // create list of availables
-    // in template: for each available, make button
+  typeSelected(event:any) {
+    console.log('Type id:' + event.target.value);
   }
 
   aptSelected(event: any) {
-    console.log(event.target.value);
-    
+    console.log('Appointment id: ' + event.target.id);
+
   }
 
   onSubmit() {
+
+    const target = this.bookingForm.value
+
+    let serviceId = target.serviceId
+    let typeId = target.typeId
+
+    console.log(target.serviceId, target.typeId);
+    
+
     let clientData = this.collectPersonalDetails()
-    let serviceData = this.collectServiceDetails()
 
     let bookingData: Booking = {
-      service: serviceData,
-      client: clientData
+      service: {
+        serviceId: 1,
+        typeId: 1
+      },
+      client: clientData,
+      appointmentId: 5
     }
 
     this.api.sendReservation(bookingData).subscribe({
@@ -111,7 +106,7 @@ export class BookingComponent implements OnInit {
 
     this.api.sendClientDetails(clientData).subscribe({
       next: (data: any) => {
-        console.log(data);
+        console.log(data.data);
       },
       error: (err: any) => {
         console.log(err)
@@ -125,7 +120,7 @@ export class BookingComponent implements OnInit {
       next: (data: any) => {
         this.appointments = data.data
         console.log(this.appointments);
-        
+
       },
       error: (err: any) => {
         console.log(err);
@@ -133,13 +128,22 @@ export class BookingComponent implements OnInit {
     })
 
     this.api.fetchServices().subscribe({
-      next: (data:any) => {
-        this.services = data
+      next: (data: any) => {
+        this.services = data.data
         console.log(this.services)
       },
-      error: (err:any) => {
+      error: (err: any) => {
         console.log(err);
-        
+      }
+    })
+
+    this.api.fetchTypes().subscribe({
+      next: (data: any) => {
+        this.types = data.data
+        console.log(this.types)
+      },
+      error: (err: any) => {
+        console.log(err);
       }
     })
 
@@ -160,15 +164,6 @@ export class BookingComponent implements OnInit {
   }
 }
 
-interface Option {
-  name: string,
-  details: {
-    type: string,
-    duration: number,
-    price: number
-  }
-
-}
 
 interface Client {
   fullName: string,
@@ -179,13 +174,10 @@ interface Client {
 }
 
 interface Booking {
-  service: Option,
-  client: Client
-}
-
-interface Appointment {
-  date: string,
-  hour: number,
-  min: number,
-  isOpen: boolean
+  service: {
+    serviceId: number,
+    typeId: number
+  },
+  client: Client,
+  appointmentId: number
 }

@@ -21,28 +21,6 @@
               "Pellentesque habitant morbi tristique senectus et netus",
               "Curabitur pellentesque facilisis nisl non facilisis"
             ],
-            "variants": [
-              {
-                "name": "SVED1",
-                "duration": 90,
-                "cost": 2345
-              },
-              {
-                "name": "SVED2",
-                "duration": 60,
-                "cost": 2345
-              },
-              {
-                "name": "SVED3",
-                "duration": "30",
-                "cost": 1234
-              },
-              {
-                "name": "SVED4",
-                "duration": "45",
-                "cost": 1234
-              }
-            ],
             "imagePath": "../assets/images/vert.png"
         },
         {
@@ -53,23 +31,6 @@
             ". Valójában a legtöbb modernkori, nyugati, olajos masszázs, amivel ma találkozhatsz (ilyen-olyan wellness masszázsok, „stresszoldó” masszázsok, stb.), az mind svédmasszázs, a különböző megnevezések csupán a kivitelezés módját, célját, környezetét jelölik",
             "Sportmasszázs alkalmával a sok intenzív gyúró, ütögető és rezegtető technika bevetése miatt a masszázs alap hatásai (vérkeringés és anyagcsere serkenése) sokkal nagyobb mértékben jelentkeznek, mint egy sima svédmasszázsnál. Továbbá, mivel a gyúrással szó szerint a normál helyükről kiemelve dolgozzuk át az izmokat, így az izomgörcsöket, izomfeszüléseket is hatékonyabban tudjuk kezelni, aminek köszönhetően a sportmasszázs az egyik legjobb stresszoldó masszázs.",
             "Egyik legnagyobb előnye, hogy intenzitása és mélyre ható, erőteljes fogásai miatt sokkal gyorsabban és tartósabban hat, mint a legtöbb egyéb masszázsfajta. A másik előnye, ami miatt sok szempontból verhetetlen, hogy mivel a gyúrás, ütögetés és rezegtetés pont az a három fogása a svédmasszázsnak, amelyek nem igényelnek feltétlenül vivőanyagot (olaj, krém) – sőt, anélkül sokszor könnyebben kivitelezhetőek –, adott esetben sokkal kevesebb előkészülettel, mondhatni szükség esetén bárhol, bármikor alkalmazhatóak egy jó kis frissítő gyúrás apropóján."
-          ],
-          "variants": [
-            {
-              "name": "SPORT1",
-              "duration": 30,
-              "cost": 2345
-            },
-            {
-              "name": "SPORT2",
-              "duration": 45,
-              "cost": 1234
-            },
-            {
-              "name": "SPORT3",
-              "duration": 60,
-              "cost": 1234
-            }
           ],
           "imagePath": "../assets/images/vert.png"
       },
@@ -91,13 +52,6 @@
           "👉Akik elsősorban a természetes gyógymódokat választanák,",
           "👉Akik egész nap ÁLLÓ illetve fizikai munkát végeznek.",
           "👉Curabitur pellentesque facilisis nisl non facilisis"
-        ],
-        "variants": [
-          {
-            "name": "TALP1",
-            "duration": "30",
-            "cost": 2345
-          }
         ],
         "imagePath": "../assets/images/vert.png"
     }

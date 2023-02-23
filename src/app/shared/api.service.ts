@@ -30,6 +30,13 @@ export class ApiService {
     return this.http.get<any>(url)
   }
 
+  fetchTypes() {
+    let endpoint = 'types'
+    let url = environment.apihost + endpoint
+
+    return this.http.get<any>(url)
+  }
+
   sendMessageDetails(data: any) {
     //TODO: include id
     //TODO: messageController - email client?
