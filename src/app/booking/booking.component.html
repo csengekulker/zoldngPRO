@@ -5,17 +5,17 @@
       d="M0,32L60,32C120,32,240,32,360,48C480,64,600,96,720,112C840,128,960,128,1080,122.7C1200,117,1320,107,1380,101.3L1440,96L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z">
     </path>
   </svg>
-  <div class="container text-center">
+  <div class="container text-center ">
 
-    <h1>Appointment setup</h1>
+    <h1>Időpontfoglalás</h1>
     <h3>Tudnivalók</h3>
     <p>Vendéget kizárólag előre egyeztetett időpontban áll módomban fogadni.</p>
     <p>Bejelentkezés előtt kérlek figyelmesen olvasd el az alábbi tájékoztatókat. A foglalás véglegesítésével ezeket
       automatikusan elfogadod és magadra nézve kötelező érvényűnek tekinted.</p>
 
     <p>
-      <a href="/info/docs#terms" class="text-reset">Általános Szerződési Feltételek</a> <br>
-      <a href="/info/docs#terms" class="text-reset">Adatkezelési Tájékoztató</a>
+      <a href="/info/docs#terms" class="text-reset" target="_blank">Általános Szerződési Feltételek</a> <br>
+      <a href="/info/docs#terms" class="text-reset" target="_blank">Adatkezelési Tájékoztató</a>
     </p>
     <p>
       Időpontfoglalásodat követően e-mailben visszaigazolás érkezik majd annak jóváhagyása után, amiben minden fontos,
@@ -33,36 +33,36 @@
 
       <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
 
-        <div class="row bg-dark">
+        <div class="row">
 
-          <div class="col-md-3 bg-warning my-3">
+          <div class="col-md-3  my-3">
             <h5>Szolgáltatások</h5>
             <div class="">
-              <select class="form-select" (change)="serviceSelected($event)" formControlName="serviceId">
+              <select class="form-select" (change)="serviceSelect($event)" formControlName="serviceId">
                 <option selected id="selected" value="Choose..">Valasszon..</option>
                 <option *ngFor="let service of services" value="{{service.id}}">{{service.name}}</option>
               </select>
             </div>
           </div>
 
-          <div class="col-md-5 my-3 bg-success">
+          <div class="col-md-5 my-3">
             <h5>Típusok</h5>
             <div class="">
-              <select class="form-select" (change)="typeSelected($event)" formControlName="typeId">
+              <select class="form-select" (change)="typeSelect($event)" formControlName="typeId">
                 <option selected id="selected" value="Choose..">Valasszon..</option>
                 <option *ngFor="let type of types" value="{{type.id}}">{{type.name}}</option>
               </select>
             </div>
           </div>
 
-          <div class="col-md-2 my-3 bg-primary col">
+          <div class="col-md-2 my-3  col">
             <h5>Időtartam</h5>
-            <input type="text" readonly class=" form-control" value="{{pickedType.duration}}">
+            <input type="text" readonly disabled class=" form-control" value="{{pickedType.duration}}">
           </div>
 
-          <div class="col-md-2 my-3 bg-secondary col">
-            <h5>Ár</h5>
-            <input type="text" readonly class=" form-control" value="{{pickedType.price}}">
+          <div class="col-md-2 my-3 col">
+            <h5>Ár (Ft)</h5>
+            <input type="text" readonly disabled class=" form-control" value="{{pickedType.price}}">
           </div>
 
         </div>
@@ -77,14 +77,11 @@
         <!-- TODO: buttons toggle, deactivate others (buttongroup) -->
 
         <div class="btn-group col" role="group">
-          <button (click)="aptSelected($event)" value="{{apt.hour}}" *ngFor="let apt of appointments"
-            class="apt btn m-2" data-bs-toggle="button" autocomplete="off" id="{{apt.id}}">{{apt.start}}
+          <button (click)="aptSelect($event)" value="{{apt.id}}" *ngFor="let apt of fitAppointments"
+            class="apt btn m-2" data-bs-toggle="button" autocomplete="off" id="{{apt.id}}">{{apt.date}} | {{apt.start}} - {{apt.end}}
           </button>
+          <br>
 
-          <!-- <div *ngFor="let apt of appointments">
-            <input type="radio" name="options" class="btn-check" autocomplete="off">
-            <label data-bs-toggle="button" class="btn btn-primary" for="btn-check">{{apt.start}}</label>
-          </div> -->
         </div>
 
         <hr class="border border-danger border-2 opacity-50">
@@ -93,10 +90,10 @@
 
         <div class="row">
           <div class=" col-md-6 mb-2">
-            <input id="fullName" type="text" placeholder="Teljes név" formControlName="fullName" class="form-control">
+            <input id="fullName" type="text" placeholder="Full name" formControlName="fullName" class="form-control">
           </div>
           <div class="col-md-6 mb-2">
-            <input id="dob" type="text" placeholder="DOB" formControlName="dob" class="form-control">
+            <input id="dob" type="text" placeholder="Date of birth (yyyy-mm-dd)" formControlName="dob" class="form-control">
           </div>
         </div>
 
@@ -111,7 +108,7 @@
 
         <div class="row">
           <div class="col-md-2 mb-2">
-            <input id="zipcode" type="number" placeholder="Zipcode/postal code" formControlName="zipCode"
+            <input id="zipcode" type="text" placeholder="Zipcode" formControlName="zipCode"
               class="form-control">
           </div>
 
@@ -134,9 +131,26 @@
         <!-- TODO: pop up modal for feedback -->
 
         <div class="row my-4">
-          <button class="btn" type="submit" id="submitBtn">
+          <button class="btn" type="submit" id="submitBtn" data-bs-toggle="modal" data-bs-target="#confirmModal" >
             Időpont lefoglalása
           </button>
+        </div>
+
+        <div class="modal fade" id="" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Summary</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                ...
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
         </div>
 
       </form>

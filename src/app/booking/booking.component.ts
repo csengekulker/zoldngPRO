@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators as V } from '@angular/forms';
 import { ApiService } from '../shared/api.service';
 import { EmitterService } from '../emitter.service';
-import servicesJson from '../services/services.json'
-import { Target } from '@angular/compiler';
 
 @Component({
   selector: 'app-booking',
@@ -20,6 +18,7 @@ export class BookingComponent implements OnInit {
 
   bookingForm !: FormGroup
   appointments !: any
+  fitAppointments: any[] = []
   services !: any
   types !: any
   aptId!:number
@@ -27,7 +26,7 @@ export class BookingComponent implements OnInit {
 
   clientDetails!: Client
 
-  collectPersonalDetails(): Client {
+  collectPersonalDetails(): any {
 
     const target = this.bookingForm.value
 
@@ -35,22 +34,13 @@ export class BookingComponent implements OnInit {
     let dob: string = target.dob!
     let email: string = target.email!
     let phone: string = target.phone!
-    let zipCode = target.zipCode
-    let city = target.city
-    let address = target.address
-
-    if (
-      zipCode == '' ||
-      city == '' ||
-      address == ''
-    ) {
-      alert("Ki nem toltott mezo!!");
-
-    }
+    let zipCode: number = target.zipCode!
+    let city: string = target.city!
+    let address:string = target.address!
 
     let fullAddress = `${zipCode} ${city}, ${address}`
 
-    let data: Client = {
+    let data = {
       fullName,
       dob: dob,
       email,
@@ -61,23 +51,50 @@ export class BookingComponent implements OnInit {
     return data
   }
 
-  serviceSelected(event: any) {
+  serviceSelect(event: any) {
     console.log('Service id: ' + event.target.value);
   }
 
-  typeSelected(event:any) {
+  // TODO: on typeselect, filter out fitting apt durations
+
+  typeSelect(event:any) {
+
+    this.fitAppointments = []
+
     console.log('Type id:' + event.target.value);
     let typeId = event.target.value - 1
-    this.pickedType = this.types[typeId]
+    this.pickedType = this.types[typeId] 
 
-    console.log(this.pickedType);
+    this.appointments.forEach((apt:any) => {
+
+      let start = apt.start.split(':')
+      let startHour = Number(start[0])
+
+      let end = apt.end.split(':')
+      let endHour = Number(end[0])
+
+      let startMin = Number(start[1])
+      let endMin = Number(end[1])
+
+      let minDiff = endMin - startMin
+
+      let aptDuration = ((endHour - startHour)*60) + minDiff
+
+      console.log(aptDuration, 'VS', this.pickedType.duration)
+
+      if (aptDuration >= this.pickedType.duration) {
+        this.fitAppointments.push(apt)
+      }
+
+    });
+
+    console.log("FIt", this.fitAppointments);
     
   }
 
-  aptSelected(event: any) {
-    console.log('Appointment id: ' + event.target.id);
-    this.aptId = event.target.id
-
+  aptSelect(event: any) {
+    console.log('Appointment id: ' + event.target.value);
+    this.aptId = event.target.value
   }
 
   onSubmit() {
@@ -151,6 +168,8 @@ export class BookingComponent implements OnInit {
       }
     })
 
+    let dateRegEx = new RegExp(/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/)
+
     this.bookingForm = this.formBuilder.group({
       serviceId: [V.required],
       typeId: [V.required],
@@ -182,6 +201,12 @@ interface Booking {
     serviceId: number,
     typeId: number
   },
-  client: Client,
+  client: {
+    fullName: string,
+    dob: string,
+    email: string,
+    phone: string,
+    fullAddress: string
+  },
   appointmentId: number
 }
