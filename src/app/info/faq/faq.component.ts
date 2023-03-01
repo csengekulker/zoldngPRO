@@ -9,18 +9,8 @@ import faqJson from './faq.json'
 export class FaqComponent implements OnInit{
   buttonText :string = "< Information"
 
-  onClick(event: any) {
-    console.log(event.target.value);
-    
-  }
-
   faqs = faqJson.faqs
 
-  ngOnInit(): void {
-
-
-    
-
-  }
+  ngOnInit(): void { }
 
 }

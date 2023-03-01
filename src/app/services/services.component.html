@@ -2,7 +2,7 @@
 
 <div class="container col">
 
-  <h1>Massage Terapies</h1>
+  <h1>Masszázsterápiák</h1>
 
   <div class="col my-5" id="service" *ngFor="let service of services">
     <div class="mb-3">
@@ -12,7 +12,7 @@
     <div>
       <h2>{{service.name}}</h2>
       <div>
-        <h4>Description and process</h4>
+        <h4>Leírás</h4>
         <p>{{service.description}}</p>
 
         <ul class="list-group">
@@ -22,13 +22,13 @@
 
       <div class="row my-3">
         <div class="col-md-4 my-2">
-          <h4>Recommended</h4>
+          <h4>Ajánlott:</h4>
           <ul class="list-group">
             <li class="list-group-item" *ngFor="let reason of service.dos">{{reason}}</li>
           </ul>
         </div>
         <div class="col-md-4 my-2">
-          <h4>Not recommended</h4>
+          <h4>Nem ajánjuk:</h4>
           <ul class="list-group">
             <li class="list-group-item" *ngFor="let reason of service.donts">{{reason}}</li>
           </ul>
@@ -41,9 +41,9 @@
       <table class="col table table-hover">
         <thead>
           <tr class="">
-            <th>Affected body parts</th>
-            <th>Duration (min)</th>
-            <th>Cost (HUF)</th>
+            <th>Érintett testrészek</th>
+            <th>Időtartam (perc)</th>
+            <th>Ár (Ft)</th>
             <th></th>
           </tr>
         </thead>
@@ -54,7 +54,7 @@
             <td>{{type.price}}</td>
             <td>
               <a href="/booking">
-                <button class="btn btn-outline-success" (click)="onClick($event)">Reserve</button>
+                <button class="btn btn-outline-success" (click)="onClick($event)">Foglalás</button>
               </a>
             </td>
           </tr>

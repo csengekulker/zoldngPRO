@@ -57,7 +57,6 @@ export class ContactComponent implements OnInit {
       name: ['', V.required],
       email: ['', [V.required, V.email]],
       subject: ['', V.required],
-
       message: ['', V.required]
     })
   }

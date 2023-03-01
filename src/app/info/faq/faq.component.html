@@ -4,7 +4,7 @@
 </a>
 
   <div class="text-center">
-    <h2>FAQ</h2>
+    <h2>GYIK</h2>
 
     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores, obcaecati?</p>
   </div>
@@ -12,7 +12,7 @@
   <div class="accordion w-100" id="basicAccordion">
     <div class="accordion-item" *ngFor="let faq of faqs">
       <h2 class="accordion-header" id="headingOne">
-        <button class="accordion-button collapsed" (click)="onClick($event)" data-bs-toggle="collapse" [attr.data-bs-target]="'#' + faq.id" aria-expanded="false"
+        <button class="accordion-button collapsed" data-bs-toggle="collapse" [attr.data-bs-target]="'#' + faq.id" aria-expanded="false"
           aria-controls="collapseOne">
           {{faq.q}}
         </button>

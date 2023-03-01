@@ -24,7 +24,7 @@ export class ServicesComponent implements OnInit {
   path: string = '../assets/images/vert.png';
   alttext: string = 'A kép leírása';
 
-  //TODO: use eventEmitter from booking
+  //TODO: pass desired service details to booking
   collectServiceDetails(event: any): Object {
     let name = event.path[7].childNodes[1].childNodes[0].innerHTML
     let type = event.path[3].childNodes[0].childNodes[0].nodeValue

@@ -9,9 +9,7 @@ export class HeaderComponent implements OnInit {
 
   path: string = '../assets/images/vert.png';
   alttext: string = 'A kép leírása';
-
   
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
 }

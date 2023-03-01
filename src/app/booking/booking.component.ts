@@ -55,8 +55,6 @@ export class BookingComponent implements OnInit {
     console.log('Service id: ' + event.target.value);
   }
 
-  // TODO: on typeselect, filter out fitting apt durations
-
   typeSelect(event:any) {
 
     this.fitAppointments = []

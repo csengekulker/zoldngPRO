@@ -16,24 +16,5 @@ export class DocsComponent implements OnInit {
   ngOnInit(): void {
 
 
-    //   toTop.addEventListener("click", this.backToTop)
-
-    //   window.onscroll = () => {
-    //     if (
-    //       document.body.scrollTop > 20 ||
-    //       document.documentElement.scrollTop > 20
-    //       ) {
-    //       toTop.style.display = "block";
-    //       } else {
-    //       toTop.style.display = "none";
-    //       }
-    //     };
-    // 
-
-    //   backToTop() {
-    //     document.body.scrollTop = 0;
-    //     document.documentElement.scrollTop = 0;
-    //   }
-
   }
 }
