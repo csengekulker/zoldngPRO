@@ -54,7 +54,28 @@
           "👉Curabitur pellentesque facilisis nisl non facilisis"
         ],
         "imagePath": "../assets/images/vert.png"
-    }
+    },
+    {
+      "id": 4,
+      "name": "Magnesterapia",
+      "description": [
+       "Talpunk az egyik legjobban igénybevett mozgásszervünk, amely szoros kapcsolatban áll a közérzetünkkel, a szellemi teljesítőképességünkkel, illetve szerveink megfelelő működésével.",
+       "Biztos Te is észrevetted már, hogy egy hosszú, fárasztó nap után jól esik lerúgni a cipőket, és néhány ropogtató bokakörzéssel fényévekkel jobban érzed magad, vagy ha egy kicsit megnyomkodod a talpad, máris derűsebb hangulatba kerülsz.. Nem véletlen, hiszen minden szervünk idegvégződése a talpunkban összpontosul. Úgyis tekinthetünk rá, mint egy térképére, mivel a jobb és a bal lábunk együttesen igazodik a testünk felépítéséhez,."
+      ],
+      "process": [
+        "🟢A talpmasszázs során először gyengéden átnyomkodom a területet, majd a talpon lévő csomókból és göcsökből érzékelve kezdem a problémásabb területek alapos átdolgozását.",
+        "🟢 akik aktív sportolók és a sportolás következtében testük fáradt, izmaik feszültek és kemények",
+        "🟢 akik testmozgás hiányában szeretnék izmaikat átmozogtatni, megdolgoztatni a svédmasszázs által",
+        "🟢 akik testében sok a merevség, elég egy mozdulat és görcsbe rándul a test",
+        "🟢 akik nem akarnak mást, csak kikapcsolódni pár órára a mindennapi rohanásból és megpihentetni lelküket"
+      ],
+      "dos": [
+        "👉Akik elsősorban a természetes gyógymódokat választanák,",
+        "👉Akik egész nap ÁLLÓ illetve fizikai munkát végeznek.",
+        "👉Curabitur pellentesque facilisis nisl non facilisis"
+      ],
+      "imagePath": "../assets/images/vert.png"
+  }
     ]
     
   }

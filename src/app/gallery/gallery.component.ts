@@ -9,5 +9,4 @@ export class GalleryComponent {
 
   path: string = '../assets/images/zold1.jpg';
 
-
 }

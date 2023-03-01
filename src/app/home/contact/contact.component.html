@@ -1,31 +1,31 @@
 <div class="container text-light text-center justify-content-center">
-  <h2 class="h1-responsive font-weight-bold mb-5">Contact us</h2>
+  <h1 class="h1-responsive font-weight-bold mb-5">Contact us</h1>
   <p class=" w-responsive mx-auto">Do you have any questions? Please do not hesitate to contact us
     directly. Our team will come back to you within
     a matter of hours to help you.</p>
-  <div class="row align-items-center m-5 ">
+  <div class="row m-5 ">
 
     <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
 
       <!-- TODO: form responsive layout -->
 
-      <div class=" col-md-12 mb-4 form-floating ">
+      <div class=" mb-4 form-floating ">
         <input formControlName="name" type="text" id="name" class="form-control" placeholder="Your name">
         <label for="name">Name</label>
       </div>
 
-      <div class=" col-md-6 mb-4 form-floating">
+      <div class="  mb-4 form-floating">
         <input formControlName="email" type="text" id="email" class="form-control" placeholder="Your email">
         <label for="email" class="">Email</label>
       </div>
 
-      <div class="col-md-6 mb-4 form-floating">
+      <div class=" mb-4 form-floating">
         <input formControlName="subject" type="text" id="subject" class="form-control" placeholder="Subject">
         <label for="subject" class="">Subject</label>
       </div>
 
       <div class="row mb-2">
-        <div class="col-md-6 mb-4">
+        <div class="mb-4">
           <div class="md-form w-5">
             <h4>Your message</h4>
             <textarea formControlName="message" id="message" class="form-control" cols="20" rows="10"></textarea>
@@ -34,7 +34,7 @@
       </div>
 
       <div class="text-center text-md-left">
-        <button id="msg" type="submit" class="btn btn-primary w-100 ">Send message</button>
+        <button id="msg" type="submit" class="btn btn-primary w-100 btn-lg ">Send message</button>
       </div>
     </form>
 

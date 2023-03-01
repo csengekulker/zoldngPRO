@@ -3,6 +3,10 @@
     width: 400px;
     height: 400px;
 }
+#landingSm {
+    width: 16rem;
+    height: 16rem;
+}
 
 .page-header {
     font-size: 1.25rem;
@@ -11,4 +15,14 @@
 h1 {
     font-family: 'Caveat', cursive;
     font-size: 3.75rem;
+}
+
+.action {
+    color: #273036;
+}
+
+.action:hover {
+    background-color: #2b9777;
+    color: #fff;
+    border-color: #2b9777;
 }
