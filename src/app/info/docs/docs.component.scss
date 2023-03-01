@@ -3,8 +3,9 @@ a {
     border-color: #2b9777;
 }
 
-a:hover {
+.list-group-item:hover, a:hover {
     background-color: #2b9777;
     color: white;
     border-color: #2b9777;
 }
+

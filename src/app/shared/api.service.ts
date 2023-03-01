@@ -37,7 +37,7 @@ export class ApiService {
     return this.http.get<any>(url)
   }
 
-  sendMessageDetails(data: any) {
+  sendMessageDetails(message: any) {
     //TODO: include id
     //TODO: messageController - email client?
     let endpoint = 'messages'
@@ -51,12 +51,10 @@ export class ApiService {
       headers: headers
     };
 
-    console.log(data);
-    
-    return this.http.post<any>(url, data, httpOption)
+    return this.http.post<any>(url, message, httpOption)
   }
 
-  sendReservation(data: any) {
+  sendReservation(booking: Booking) {
     let endpoint = 'bookings'
     let url = environment.apihost + endpoint
 
@@ -67,13 +65,11 @@ export class ApiService {
     let httpOption = {
       headers: headers
     };
-
-    console.log(data);
     
-    return this.http.post<any>(url, data, httpOption)
+    return this.http.post<any>(url, booking, httpOption)
   }
 
-  sendClientDetails(data: any) {
+  sendClientDetails(client: Client) {
     let endpoint = 'clients'
     let url = environment.apihost + endpoint
 
@@ -85,7 +81,24 @@ export class ApiService {
       headers: headers
     };
     
-    return this.http.post<any>(url, data, httpOption)
+    return this.http.post<any>(url, client, httpOption)
   }
 
+}
+
+interface Client {
+  fullName: string,
+  dob: string,
+  email: string,
+  phone: string,
+  fullAddress: string
+}
+
+interface Booking {
+  service: {
+    serviceId: number,
+    typeId: number
+  },
+  client: Client,
+  appointmentId: number
 }

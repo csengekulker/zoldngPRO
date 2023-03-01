@@ -19,21 +19,10 @@ export class ServicesComponent implements OnInit {
   services!: any // JSON
 
   fetchedServices !: any
+  fetchedTypes!:any
 
   path: string = '../assets/images/vert.png';
   alttext: string = 'A kép leírása';
-
-  // getProducts() {
-  //   this.api.getProducts().subscribe({
-  //     next: data => {
-  //       this.products = data.data
-  //       console.log(data.data)
-  //     },
-  //     error: err => {
-  //       console.log("Hiba, nincs termek!");
-  //     }
-  //   })
-  // }
 
   //TODO: use eventEmitter from booking
   collectServiceDetails(event: any): Object {
@@ -62,28 +51,6 @@ export class ServicesComponent implements OnInit {
 
   }
 
-  addProducts() {
-
-    let data = {
-      name: "billentyűzet",
-      itemNumber: "cab34",
-      quantity: 25,
-      price: 8
-    };
-
-    // this.api.addProducts(data).subscribe({
-    //   next: (data:any) => {
-    //     this.products = data.data
-    //     console.log(data.data); 
-    //   },
-    //   error: (err:any) => {
-    //     console.log("Hiba, nincs termek!");
-    //   }
-    // })
-
-
-  }
-
   ngOnInit(): void {
 
     this.services = servicesJson.services
@@ -97,6 +64,17 @@ export class ServicesComponent implements OnInit {
           console.log("Hiba, nincs adat!");
         }
     })
+
+    this.api.fetchTypes().subscribe({
+      next: (data:any) => {
+        this.fetchedTypes = data.data
+        console.log(data.data); 
+      },
+      error: (err:any) => {
+        console.log("Hiba, nincs adat!");
+      }
+  })
+
   }
 
 }
@@ -111,7 +89,8 @@ export interface Service {
   name: string,
   description: string,
   dos: string[],
-  donts: string[]
+  donts: string[],
+  process: string[],
   variants: Variant[],
   imagePath: string
 }

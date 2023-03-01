@@ -9,10 +9,12 @@
 
     <h1>Appointment setup</h1>
     <h3>Tudnivalok</h3>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus esse provident iste sint quibusdam natus
-      tempora nulla voluptatum atque repellat ullam omnis consequatur ab, sunt hic assumenda eos quasi nesciunt!
-      Recusandae quam ducimus repellendus ut quos quia natus dignissimos error, asperiores, quaerat quas sapiente?
-    </p>
+    <p>Vendeget fogadni kizarolag elore egyeztetett idopontban tudok.</p>
+    <p>Bejelentkezes elott kerlek figyelmesen olvasd el az alabbi tajekoztatokat</p>
+    <ul>
+      <li>altalanos feltetelek</li>
+      <li>adatkezelesi tajeloztato</li>
+    </ul>
     <p>
       Időpontfoglalásodat követően e-mailben visszaigazolást küldünk a foglalas jovahagyasa utan, amiben minden fontos,
       a kezelés megkezdéséhez szükséges információt megtalálsz.
@@ -28,9 +30,9 @@
 
       <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
 
-        <div class="row">
+        <div class="row bg-dark">
 
-          <div class="col-md-3">
+          <div class="col-md-3 bg-warning my-3">
             <h5>Szolgáltatás valasztasa</h5>
             <div class="">
               <select class="form-select" (change)="serviceSelected($event)" formControlName="serviceId" >
@@ -40,7 +42,7 @@
             </div>
           </div>
 
-          <div class="col-md-6">
+          <div class="col-md-5 my-3 bg-success">
             <h5>Tipus valasztasa</h5>
             <div class="">
               <select class="form-select" (change)="typeSelected($event)" formControlName="typeId" >
@@ -50,8 +52,17 @@
             </div>
           </div>
 
-          <div class="col-md-3">
-            <h6>A kezeles idotartama:</h6>
+          <!-- TODO: on typeselected change, load 
+          according duration, price below -->
+
+          <div class="col-md-2 my-3 bg-primary col">
+            <h5>Idotartam</h5>
+            <input type="text" readonly class=" form-control">
+          </div>
+
+          <div class="col-md-2 my-3 bg-secondary col">
+            <h5>Ar</h5>
+            <input type="text" readonly class=" form-control">
           </div>
 
         </div>
@@ -60,16 +71,14 @@
 
         <h5>Idopont kivalasztasa</h5>
 
-
         <p>Alább láthatod a foglalható időpontokat a valasztott szolgáltatásra.
           Kattintassal valaszthatod ki a neked megfelelot.</p>
 
-        <small>amennyiben nem talaltal jot, ??</small>
-
         <!-- TODO: buttons toggle, deactivate others (buttongroup) -->
+        <!-- TODO: formcontrol button -->
 
         <div class="btn-group col" role="group">
-          <button (click)="aptSelected($event)" value="{{apt.hour}}" *ngFor="let apt of appointments"
+          <button (click)="aptSelected($event)"  value="{{apt.hour}}" *ngFor="let apt of appointments"
             class="apt btn m-2" data-bs-toggle="button" autocomplete="off" id="{{apt.id}}">{{apt.start}}
           </button>
 
@@ -83,35 +92,35 @@
 
         <h5>Szemelyes adatok megadasa</h5>
 
-        <div class="row my-2">
-          <div class=" col-md-6">
+        <div class="row">
+          <div class=" col-md-6 mb-2">
             <input id="fullName" type="text" placeholder="Teljes név" formControlName="fullName" class="form-control">
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6 mb-2">
             <input id="dob" type="text" placeholder="DOB" formControlName="dob" class="form-control">
           </div>
         </div>
 
-        <div class="row my-2">
-          <div class=" col-md-6">
+        <div class="row">
+          <div class=" col-md-6 mb-2">
             <input id="email" type="text" placeholder="E-mail address" formControlName="email" class="form-control">
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6 mb-2">
             <input id="phone" type="text" placeholder="Phone number" formControlName="phone" class="form-control">
           </div>
         </div>
 
-        <div class="row my-2">
-          <div class="col-md-2">
+        <div class="row">
+          <div class="col-md-2 mb-2">
             <input id="zipcode" type="number" placeholder="Zipcode/postal code" formControlName="zipCode"
               class="form-control">
           </div>
 
-          <div class="col-md-4">
+          <div class="col-md-4 mb-2">
             <input id="city" type="text" placeholder="City" formControlName="city" class="form-control">
           </div>
 
-          <div class="col-md-6">
+          <div class="col-md-6 mb-2">
             <input id="address" type="text" placeholder="Address" formControlName="address" class="form-control">
           </div>
         </div>
@@ -122,7 +131,7 @@
         </div>
 
 
-        <div class="row mt-4">
+        <div class="row my-4">
           <button class="btn" type="submit" id="submitBtn">
             Idopont lefoglalasa
           </button>

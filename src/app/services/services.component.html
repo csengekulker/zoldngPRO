@@ -8,7 +8,7 @@
 
   <h1>Massage Terapies</h1>
 
-  <div class="col my-5" id="service" *ngFor="let service of services">
+  <div class="col my-5" id="service" *ngFor="let service of fetchedServices">
     <div class="mb-3">
       <img class="massageimg" src="{{path}}" alt="">
     </div>
@@ -20,7 +20,7 @@
         <p>{{service.description}}</p>
 
         <ul class="list-group">
-          <li class="list-group-item" *ngFor="let step of service.process">{{step}}</li>
+          <li class="list-group-item" *ngFor="let step of services.process">{{step}}</li>
         </ul>
       </div>
 
@@ -52,10 +52,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let variant of service.variants">
-            <td>{{variant.name}}</td>
-            <td>{{variant.duration}}</td>
-            <td>{{variant.cost}}</td>
+          <tr *ngFor="let type of fetchedTypes">
+            <td>{{type.name}}</td>
+            <td>{{type.duration}}</td>
+            <td>{{type.price}}</td>
             <td>
               <a href="/booking">
                 <button class="btn btn-outline-success" (click)="onClick($event)">Reserve</button>

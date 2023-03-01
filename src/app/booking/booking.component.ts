@@ -22,6 +22,7 @@ export class BookingComponent implements OnInit {
   appointments !: any
   services !: any
   types !: any
+  aptId!:number
   // serviceNames: string[] = []
   // serviceOptions !: Option[]
 
@@ -71,6 +72,7 @@ export class BookingComponent implements OnInit {
 
   aptSelected(event: any) {
     console.log('Appointment id: ' + event.target.id);
+    this.aptId = event.target.id
 
   }
 
@@ -80,19 +82,17 @@ export class BookingComponent implements OnInit {
 
     let serviceId = target.serviceId
     let typeId = target.typeId
-
-    console.log(target.serviceId, target.typeId);
-    
+    let aptId = this.aptId    
 
     let clientData = this.collectPersonalDetails()
 
     let bookingData: Booking = {
       service: {
-        serviceId: 1,
-        typeId: 1
+        serviceId: serviceId,
+        typeId: typeId
       },
       client: clientData,
-      appointmentId: 5
+      appointmentId: aptId
     }
 
     this.api.sendReservation(bookingData).subscribe({
@@ -151,6 +151,9 @@ export class BookingComponent implements OnInit {
 
     //TODO: refactor
     this.bookingForm = this.formBuilder.group({
+      serviceId: [V.required],
+      typeId: [V.required],
+      aptId: [V.required],
       fullName: ['', V.required],
       dob: ['', V.required],
       email: ['', [V.required, V.email]],
