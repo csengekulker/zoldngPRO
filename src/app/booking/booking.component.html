@@ -36,7 +36,7 @@
         <div class="row bg-dark">
 
           <div class="col-md-3 bg-warning my-3">
-            <h5>Szolgáltatás választása</h5>
+            <h5>Szolgáltatások</h5>
             <div class="">
               <select class="form-select" (change)="serviceSelected($event)" formControlName="serviceId">
                 <option selected id="selected" value="Choose..">Valasszon..</option>
@@ -46,7 +46,7 @@
           </div>
 
           <div class="col-md-5 my-3 bg-success">
-            <h5>Típus választása</h5>
+            <h5>Típusok</h5>
             <div class="">
               <select class="form-select" (change)="typeSelected($event)" formControlName="typeId">
                 <option selected id="selected" value="Choose..">Valasszon..</option>
@@ -55,17 +55,14 @@
             </div>
           </div>
 
-          <!-- TODO: on typeselected change, load 
-          according duration, price below -->
-
           <div class="col-md-2 my-3 bg-primary col">
             <h5>Időtartam</h5>
-            <input type="text" readonly class=" form-control">
+            <input type="text" readonly class=" form-control" value="{{pickedType.duration}}">
           </div>
 
           <div class="col-md-2 my-3 bg-secondary col">
             <h5>Ár</h5>
-            <input type="text" readonly class=" form-control">
+            <input type="text" readonly class=" form-control" value="{{pickedType.price}}">
           </div>
 
         </div>
@@ -78,17 +75,16 @@
           Kattintással választhatod ki a neked megfelelőt.</p>
 
         <!-- TODO: buttons toggle, deactivate others (buttongroup) -->
-        <!-- TODO: formcontrol button -->
 
         <div class="btn-group col" role="group">
           <button (click)="aptSelected($event)" value="{{apt.hour}}" *ngFor="let apt of appointments"
             class="apt btn m-2" data-bs-toggle="button" autocomplete="off" id="{{apt.id}}">{{apt.start}}
           </button>
 
-          <div *ngFor="let apt of appointments">
+          <!-- <div *ngFor="let apt of appointments">
             <input type="radio" name="options" class="btn-check" autocomplete="off">
             <label data-bs-toggle="button" class="btn btn-primary" for="btn-check">{{apt.start}}</label>
-          </div>
+          </div> -->
         </div>
 
         <hr class="border border-danger border-2 opacity-50">

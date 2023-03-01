@@ -23,8 +23,7 @@ export class BookingComponent implements OnInit {
   services !: any
   types !: any
   aptId!:number
-  // serviceNames: string[] = []
-  // serviceOptions !: Option[]
+  pickedType:any = ''
 
   clientDetails!: Client
 
@@ -68,6 +67,11 @@ export class BookingComponent implements OnInit {
 
   typeSelected(event:any) {
     console.log('Type id:' + event.target.value);
+    let typeId = event.target.value - 1
+    this.pickedType = this.types[typeId]
+
+    console.log(this.pickedType);
+    
   }
 
   aptSelected(event: any) {
@@ -147,9 +151,6 @@ export class BookingComponent implements OnInit {
       }
     })
 
-
-
-    //TODO: refactor
     this.bookingForm = this.formBuilder.group({
       serviceId: [V.required],
       typeId: [V.required],

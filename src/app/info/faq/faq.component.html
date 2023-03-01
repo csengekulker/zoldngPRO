@@ -9,17 +9,15 @@
     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores, obcaecati?</p>
   </div>
 
-
-  <!-- TODO:  dynamically add id to data-bs-target-->
   <div class="accordion w-100" id="basicAccordion">
     <div class="accordion-item" *ngFor="let faq of faqs">
       <h2 class="accordion-header" id="headingOne">
-        <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#id" aria-expanded="false"
+        <button class="accordion-button collapsed" (click)="onClick($event)" data-bs-toggle="collapse" [attr.data-bs-target]="'#' + faq.id" aria-expanded="false"
           aria-controls="collapseOne">
           {{faq.q}}
         </button>
       </h2>
-      <div id="id" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#basicAccordion">
+      <div id="{{faq.id}}" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#basicAccordion">
         <div class="accordion-body">
           {{faq.a}}
         </div>

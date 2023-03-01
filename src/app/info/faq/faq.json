@@ -1,17 +1,17 @@
 {
     "faqs": [
         {
-            "id": 1,
+            "id": "one",
             "q": "Mi történik, ha kések az időpontomról?",
             "a": "Késés esetén kérlek időben szólj. Minden vendégem időpontra érkezik, <gy nem tudok minden alkalommal rugalmas lenni. Ha késel, a masszázsod időtartamából vonódik le, ezért kérlek, érkezz időben."
         },
         {
-            "id": 2,
+            "id": "two",
             "q": "Meddig tudom lemondani az időpontom?",
             "a": "Abban az esetben, ha az időpontod előtt legalább 24 órával jelzed nekem, hogy ne fogsz tudni jönni, elfogadom a lemondást, ha szeretnéd, egyeztethetünk új időpontot is."
         },
         {
-            "id": 3,
+            "id": "three",
             "q": "Mi történik, ha nem jelenek meg a megbeszélt időpontban?",
             "a": "Hogyha nem áll módodban megjelenni és ezt semmilyen formában nem is jelzed, akkor __"
         }
