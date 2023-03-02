@@ -10,7 +10,8 @@ import { ApiService } from '../../shared/api.service';
 export class ContactComponent implements OnInit {
 
   contactForm !: FormGroup
-  collectMessageDetails():Message {
+
+  collectMessageDetails():any {
     const target = this.contactForm.value
 
     let name:string = target.name!
@@ -19,10 +20,10 @@ export class ContactComponent implements OnInit {
     let message:string = target.message
 
     let data = {
-      name: name, 
       email: email,
+      name: name,
       subject: subject,
-      message: message
+      body: message
     }    
 
     return data
@@ -30,14 +31,17 @@ export class ContactComponent implements OnInit {
    }
 
   onSubmit() {
-    let messageData = this.collectMessageDetails()
-
-    console.log(messageData);
-    
+    let messageData = this.collectMessageDetails()    
 
     this.api.sendMessageDetails(messageData).subscribe({
       next: (data: any) => {
-        console.log(data);
+
+        if (data.success) {
+          // TODO: pop up modal for feedback
+          console.log("Sikeres");
+
+          this.contactForm.reset()
+        }
       },
       error: (err: any) => {
         console.log(err)
@@ -49,7 +53,6 @@ export class ContactComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private api: ApiService
-
   ) {}
   ngOnInit(): void {
 
@@ -61,11 +64,4 @@ export class ContactComponent implements OnInit {
     })
   }
 
-}
-
-interface Message {
-  name: string,
-  email: string, 
-  subject: string,
-  message: string
 }
