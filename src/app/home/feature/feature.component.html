@@ -2,9 +2,9 @@
   <div class="row mb-5 text-end" *ngFor="let feature of features.features"
     [ngClass]="{'justify-content-end': feature.isReversed }">
 
-    <div class="col-md-6" [ngClass]="{'order-2 text-start' : feature.isReversed }">
+    <div class="col-md-6" [ngClass]="{'order-2 ' : feature.isReversed }">
       <h2>{{feature.title}}</h2>
-      <p>{{feature.text}}</p>
+      <p class="text-center">{{feature.text}}</p>
       <div class="row" [ngClass]="{'justify-content-end' : feature.isReversed}">
         <a role="button" class="w-50 btn btn-lg btn-outline-primary mx-2" routerLink="{{feature.refPath}}">
           {{feature.button}}

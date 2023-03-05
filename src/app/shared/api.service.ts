@@ -38,8 +38,6 @@ export class ApiService {
   }
 
   sendMessageDetails(message: any) {
-    //TODO: include id
-    //TODO: messageController - email client?
     let endpoint = 'messages'
     let url = environment.apihost + endpoint
 

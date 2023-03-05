@@ -1,25 +1,27 @@
 <section class="info">
 
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 220">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 180">
     <path fill="#273036" fill-opacity="1"
       d="M0,32L60,32C120,32,240,32,360,48C480,64,600,96,720,112C840,128,960,128,1080,122.7C1200,117,1320,107,1380,101.3L1440,96L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z">
     </path>
   </svg>
-  <div class="container text-center ">
+  <div class="container text-center col-md-6 justify-content-center">
 
     <h1>Időpontfoglalás</h1>
     <h3>Tudnivalók</h3>
-    <p>Vendéget kizárólag előre egyeztetett időpontban áll módomban fogadni.</p>
-    <p>Bejelentkezés előtt kérlek figyelmesen olvasd el az alábbi tájékoztatókat. A foglalás véglegesítésével ezeket
-      automatikusan elfogadod és magadra nézve kötelező érvényűnek tekinted.</p>
+    <p>Vendéget kizárólag előre egyeztetett időpontban áll módomban fogadni.<br>
+      A bejelentkezés megkezdése előtt kérlek figyelmesen olvasd el az alábbi tájékoztatókat. A foglalás
+      véglegesítésének feltétele ezek elfogadása.
+    </p>
 
-    <p>
-      <a href="/info/docs#terms" class="text-reset" target="_blank">Általános Szerződési Feltételek</a> <br>
-      <a href="/info/docs#terms" class="text-reset" target="_blank">Adatkezelési Tájékoztató</a>
+    <p class="p-3 focus col-md-4 ">
+      <a href="/info/docs#terms" class="text-reset text-decoration-none" target="_blank">Általános Szerződési Feltételek</a> <br>
+      <a href="/info/docs#privacy" class="text-reset text-decoration-none" target="_blank">Adatkezelési Tájékoztató</a>
     </p>
     <p>
-      Időpontfoglalásodat követően e-mailben visszaigazolás érkezik majd annak jóváhagyása után, amiben minden fontos,
-      a kezelés megkezdéséhez szükséges információt megtalálsz. <strong>Emiatt kérjük, hogy figyelmesen, a helyes e-mail
+      Időpontfoglalásodat és annak jóváhagyását követően e-mailben visszaigazolás érkezik. Ebben minden fontos,
+      a kezelés megkezdéséhez szükséges információt megtalálsz majd. <strong>Emiatt kérlek, hogy figyelmesen, a helyes
+        e-mail
         címed add meg!</strong>
     </p>
   </div>
@@ -34,6 +36,7 @@
       <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
 
         <div class="row">
+          <hr class="border border-2 opacity-50 border-success">
 
           <div class="col-md-3  my-3">
             <h5>Szolgáltatások</h5>
@@ -67,34 +70,35 @@
 
         </div>
 
-        <hr class="border border-danger border-2 opacity-50">
+        <hr class="border border-2 opacity-50 border-success">
 
         <h5>Időpont kiválasztása</h5>
 
         <p>Alább láthatod a foglalható időpontokat a választott szolgáltatásra.
           Kattintással választhatod ki a neked megfelelőt.</p>
 
-          <!-- TODO: appointments formatted, separate date and time -->
+        <!-- TODO: appointments formatted, separate date and time -->
         <!-- TODO: buttons toggle, deactivate others (buttongroup) -->
 
         <div class="btn-group col" role="group">
-          <button (click)="aptSelect($event)" value="{{apt.id}}" *ngFor="let apt of fitAppointments"
-            class="apt btn m-2" data-bs-toggle="button" autocomplete="off" id="{{apt.id}}">{{apt.date}} | {{apt.start}} - {{apt.end}}
+          <button (click)="aptSelect($event)" value="{{apt.id}}" *ngFor="let apt of fitAppointments" class="apt btn m-2"
+            data-bs-toggle="button" autocomplete="off" id="{{apt.id}}">{{apt.date}} | {{apt.start}} - {{apt.end}}
           </button>
           <br>
 
         </div>
 
-        <hr class="border border-danger border-2 opacity-50">
+        <hr class="border border-2 opacity-50 border-success">
 
-        <h5>Szemelyes adatok megadasa</h5>
+        <h5>Személyes adatok megadása</h5>
 
         <div class="row">
           <div class=" col-md-6 mb-2">
             <input id="fullName" type="text" placeholder="Full name" formControlName="fullName" class="form-control">
           </div>
           <div class="col-md-6 mb-2">
-            <input id="dob" type="text" placeholder="Date of birth (yyyy-mm-dd)" formControlName="dob" class="form-control">
+            <input id="dob" type="text" placeholder="Date of birth (yyyy-mm-dd)" formControlName="dob"
+              class="form-control">
           </div>
         </div>
 
@@ -109,8 +113,7 @@
 
         <div class="row">
           <div class="col-md-2 mb-2">
-            <input id="zipcode" type="text" placeholder="Zipcode" formControlName="zipCode"
-              class="form-control">
+            <input id="zipcode" type="text" placeholder="Zipcode" formControlName="zipCode" class="form-control">
           </div>
 
           <div class="col-md-4 mb-2">
@@ -122,8 +125,10 @@
           </div>
         </div>
 
+        <hr class="border border-2 opacity-50 border-success">
+
         <div class="form-check form-switch">
-          <input type="checkbox" class="form-check-input form-control" id="accept" formControlName="accept">
+          <input type="checkbox" class=" form-check-input form-control" id="accept" formControlName="accept">
           <label for="accept">I accept the <a href="/info/docs#terms" target="_blank" class="text-reset">Terms and
               Conditions</a> & <a href="/info/docs#privacy" target="_blank" class="text-reset">Privacy
               Policy</a>.</label>
@@ -132,7 +137,7 @@
         <!-- TODO: pop up modal for feedback -->
 
         <div class="row my-4">
-          <button class="btn" type="submit" id="submitBtn" data-bs-toggle="modal" data-bs-target="#confirmModal" >
+          <button class="btn" type="submit" id="submitBtn" data-bs-toggle="modal" data-bs-target="#confirmModal">
             Időpont lefoglalása
           </button>
         </div>

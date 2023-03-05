@@ -13,7 +13,6 @@ export class BookingComponent implements OnInit {
   constructor(
     private api: ApiService,
     private formBuilder: FormBuilder,
-    private emitter: EmitterService
   ) { }
 
   bookingForm !: FormGroup
@@ -52,14 +51,14 @@ export class BookingComponent implements OnInit {
   }
 
   serviceSelect(event: any) {
-    console.log('Service id: ' + event.target.value);
+    // console.log('Service id: ' + event.target.value);
   }
 
   typeSelect(event:any) {
 
     this.fitAppointments = []
 
-    console.log('Type id:' + event.target.value);
+    // console.log('Type id:' + event.target.value);
     let typeId = event.target.value - 1
     this.pickedType = this.types[typeId] 
 
@@ -78,20 +77,16 @@ export class BookingComponent implements OnInit {
 
       let aptDuration = ((endHour - startHour)*60) + minDiff
 
-      console.log(aptDuration, 'VS', this.pickedType.duration)
-
       if (aptDuration >= this.pickedType.duration) {
         this.fitAppointments.push(apt)
       }
 
     });
-
-    console.log("FIt", this.fitAppointments);
     
   }
 
   aptSelect(event: any) {
-    console.log('Appointment id: ' + event.target.value);
+    // console.log('Appointment id: ' + event.target.value);
     this.aptId = event.target.value
   }
 

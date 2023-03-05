@@ -38,7 +38,6 @@ export class ContactComponent implements OnInit {
 
         if (data.success) {
           // TODO: pop up modal for feedback
-          console.log("Sikeres");
 
           this.contactForm.reset()
         }
