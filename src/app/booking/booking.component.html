@@ -41,7 +41,7 @@
           <div class="col-md-3  my-3">
             <h5>Szolgáltatások</h5>
             <div class="">
-              <select class="form-select" (change)="serviceSelect($event)" formControlName="serviceId">
+              <select id="chooseService" class="form-select" (change)="serviceSelect($event)" formControlName="serviceId">
                 <option selected id="selected" value="Choose..">Valasszon..</option>
                 <option *ngFor="let service of services" value="{{service.id}}">{{service.name}}</option>
               </select>
@@ -51,7 +51,7 @@
           <div class="col-md-5 my-3">
             <h5>Típusok</h5>
             <div class="">
-              <select class="form-select" (change)="typeSelect($event)" formControlName="typeId">
+              <select id="chooseType" class="form-select" (change)="typeSelect($event)" formControlName="typeId">
                 <option selected id="selected" value="Choose..">Valasszon..</option>
                 <option *ngFor="let type of types" value="{{type.id}}">{{type.name}}</option>
               </select>

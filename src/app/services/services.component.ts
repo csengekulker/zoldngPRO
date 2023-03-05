@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../shared/api.service';
 import { EmitterService } from '../emitter.service';
 import servicesJson from './services.json'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-services',
@@ -13,10 +14,12 @@ export class ServicesComponent implements OnInit {
 
   constructor(
     private api: ApiService,
-    private emitter: EmitterService
+    private emitter: EmitterService,
+    private router: Router
   ) { }
 
   services!: any // JSON
+  selectedService!: any
 
   fetchedServices !: any
   fetchedTypes!:any
@@ -26,39 +29,45 @@ export class ServicesComponent implements OnInit {
 
   //TODO: pass desired service details to booking
   collectServiceDetails(event: any): Object {
+    let serviceId = event.path[7].childNodes[1].childNodes[1].innerHTML
+    let typeId = event.path[3].childNodes[3].innerHTML
     let name = event.path[7].childNodes[1].childNodes[0].innerHTML
     let type = event.path[3].childNodes[0].childNodes[0].nodeValue
     let duration = event.path[3].childNodes[1].childNodes[0].nodeValue
     let price = event.path[3].childNodes[2].childNodes[0].nodeValue
 
     let details = {
+      serviceId: serviceId,
+      typeId: typeId,
       name: name,
       type: type,
       duration: duration,
       price: price
-    }
+    }    
 
     return details
 
   }
 
   onClick(event: any) {
-    let details = this.collectServiceDetails(event)
+    this.selectedService = this.collectServiceDetails(event)
 
-    console.log(details);
-
-    // this.api.provideServiceDetails(details)
+    this.router.navigate(['/booking'], { state: { selectedService: this.selectedService}})
 
   }
 
-  ngOnInit(): void {
-
+  ngOnInit(): void {    
     this.services = servicesJson.services
 
     this.api.fetchServices().subscribe({
         next: (data:any) => {
           this.fetchedServices = data.data
-          console.log(data.data); 
+          // console.log(data.data); 
+          for(let i = 0; i < this.fetchedServices.length; i++) {
+            this.services[i].id = this.fetchedServices[i].id
+            this.services[i].name = this.fetchedServices[i].name
+            
+          }
         },
         error: (err:any) => {
           console.log("Hiba, nincs adat!");
@@ -68,7 +77,7 @@ export class ServicesComponent implements OnInit {
     this.api.fetchTypes().subscribe({
       next: (data:any) => {
         this.fetchedTypes = data.data
-        console.log(data.data); 
+        // console.log(data.data); 
       },
       error: (err:any) => {
         console.log("Hiba, nincs adat!");

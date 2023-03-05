@@ -11,6 +11,7 @@
 
     <div>
       <h2>{{service.name}}</h2>
+      <h6 hidden>{{service.id}}</h6>
       <div>
         <h4>Leírás</h4>
         <p>{{service.description}}</p>
@@ -52,8 +53,9 @@
             <td>{{type.name}}</td>
             <td>{{type.duration}}</td>
             <td>{{type.price}}</td>
+            <td hidden>{{type.id}}</td>
             <td>
-              <a href="/booking">
+              <a>
                 <button class="btn btn-outline-success" (click)="onClick($event)">Foglalás</button>
               </a>
             </td>

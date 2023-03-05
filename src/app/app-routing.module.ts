@@ -14,7 +14,7 @@ import { ServicesComponent } from './services/services.component';
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'services', component: ServicesComponent},
-  {path: 'booking', component: BookingComponent},
+  {path: 'booking', component: BookingComponent, data: {selectedService: null}},
   {path: 'gallery', component: GalleryComponent},
   {path: 'info', component: InfoComponent},
   {path: 'info/faq', component: FaqComponent},

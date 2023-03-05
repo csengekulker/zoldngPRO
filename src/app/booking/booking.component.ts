@@ -22,6 +22,7 @@ export class BookingComponent implements OnInit {
   types !: any
   aptId!:number
   pickedType:any = ''
+  selectedService!:any
 
   clientDetails!: Client
 
@@ -51,14 +52,15 @@ export class BookingComponent implements OnInit {
   }
 
   serviceSelect(event: any) {
-    // console.log('Service id: ' + event.target.value);
+    console.log('Service id: ' + event.target.value);
+
   }
 
   typeSelect(event:any) {
 
     this.fitAppointments = []
 
-    // console.log('Type id:' + event.target.value);
+    console.log('Type id:' + event.target.value);
     let typeId = event.target.value - 1
     this.pickedType = this.types[typeId] 
 
@@ -86,7 +88,7 @@ export class BookingComponent implements OnInit {
   }
 
   aptSelect(event: any) {
-    // console.log('Appointment id: ' + event.target.value);
+    console.log('Appointment id: ' + event.target.value);
     this.aptId = event.target.value
   }
 
@@ -130,11 +132,11 @@ export class BookingComponent implements OnInit {
 
   ngOnInit(): void {
 
+    // console.log(this.selectedService);    
+
     this.api.fetchOpenApts().subscribe({
       next: (data: any) => {
         this.appointments = data.data
-        console.log(this.appointments);
-
       },
       error: (err: any) => {
         console.log(err);
@@ -144,7 +146,6 @@ export class BookingComponent implements OnInit {
     this.api.fetchServices().subscribe({
       next: (data: any) => {
         this.services = data.data
-        console.log(this.services)
       },
       error: (err: any) => {
         console.log(err);
@@ -154,14 +155,13 @@ export class BookingComponent implements OnInit {
     this.api.fetchTypes().subscribe({
       next: (data: any) => {
         this.types = data.data
-        console.log(this.types)
       },
       error: (err: any) => {
         console.log(err);
       }
     })
 
-    let dateRegEx = new RegExp(/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/)
+    // let dateRegEx = new RegExp(/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/)
 
     this.bookingForm = this.formBuilder.group({
       serviceId: [V.required],
