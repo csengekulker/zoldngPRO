@@ -41,7 +41,7 @@
           <div class="col-md-3  my-3">
             <h5>Szolgáltatások</h5>
             <div class="">
-              <select id="chooseService" class="form-select" (change)="serviceSelect($event)" formControlName="serviceId">
+              <select id="chooseService" class="form-select" formControlName="serviceId">
                 <option selected id="selected" value="Choose..">Valasszon..</option>
                 <option *ngFor="let service of services" value="{{service.id}}">{{service.name}}</option>
               </select>
@@ -51,7 +51,7 @@
           <div class="col-md-5 my-3">
             <h5>Típusok</h5>
             <div class="">
-              <select id="chooseType" class="form-select" (change)="typeSelect($event)" formControlName="typeId">
+              <select id="chooseType" class="form-select" (change)="typePicked($event)" formControlName="typeId">
                 <option selected id="selected" value="Choose..">Valasszon..</option>
                 <option *ngFor="let type of types" value="{{type.id}}">{{type.name}}</option>
               </select>
@@ -77,14 +77,30 @@
         <p>Alább láthatod a foglalható időpontokat a választott szolgáltatásra.
           Kattintással választhatod ki a neked megfelelőt.</p>
 
-        <!-- TODO: appointments formatted, separate date and time -->
+        <div class="row focus p-1" id="aptSelector">
+          <!-- date -->
+          <div class="col-md-2" role="group">
+            <p>Datumok</p>
+            <ul class="list-group">
+                <button data-bs-toggle="button" autocomplete="off" class="date btn btn-lg list-group-item my-1" value="{{date}}" (click)="datePicked($event)" *ngFor="let date of distinctDates">{{date}}</button>
+            </ul>
+          </div>
 
-        <div class=" col" role="group">
-          <button (click)="aptSelect($event)"  id="{{apt.id}}" value="{{apt.id}}" *ngFor="let apt of fitAppointments" class="apt btn m-2"
-            data-bs-toggle="button" autocomplete="off" id="{{apt.id}}">{{apt.date}} | {{apt.start}} - {{apt.end}}
-          </button>
-          <br>
+          <!-- apt -->
+          <div class="col-md-6" role="group">
+            <p>Idopontok</p>
+            <p id="no_apts">{{noApts}}</p>
+            <button (click)="timePicked($event)"  id="{{one.id}}" value="{{one.id}}" *ngFor="let one of contents" class="apt btn m-2"
+              data-bs-toggle="button" autocomplete="off" id="{{one.id}}">{{one.start}} - {{one.end}}
+            </button>
+            <br>
+          </div>
 
+          <!-- TODO: summary card, with weekday -->
+          <div class="col-md-4" id="summary" hidden>
+            <h6>A valasztott idopont</h6>
+            <p></p>
+          </div>
         </div>
 
         <hr class="border border-2 opacity-50 border-success">

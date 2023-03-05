@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators as V } from '@angular/forms';
 import { ApiService } from '../shared/api.service';
-import { EmitterService } from '../emitter.service';
 
 @Component({
   selector: 'app-booking',
@@ -9,6 +8,7 @@ import { EmitterService } from '../emitter.service';
   styleUrls: ['./booking.component.scss']
 })
 export class BookingComponent implements OnInit {
+
 
   constructor(
     private api: ApiService,
@@ -22,9 +22,12 @@ export class BookingComponent implements OnInit {
   types !: any
   aptId!:number
   pickedType:any = ''
-  selectedService!:any
+  noApts!:any
 
-  dates: any[] = []
+  dates:any[] = []
+  distinctDates:string[] = []
+
+  contents!: any
 
   clientDetails!: Client
 
@@ -53,20 +56,19 @@ export class BookingComponent implements OnInit {
     return data
   }
 
-  serviceSelect(event: any) {
-    console.log('Service id: ' + event.target.value);
-
-  }
-
-  typeSelect(event:any) {
+  typePicked(event:any) {
 
     this.fitAppointments = []
 
-    console.log('Type id:' + event.target.value);
     let typeId = event.target.value - 1
     this.pickedType = this.types[typeId] 
 
     this.appointments.forEach((apt:any) => {
+
+      apt.date = apt.date.replaceAll('-', '. ')
+      this.dates.push(apt.date)
+
+      this.distinctDates = this.dates.filter((n, i) => this.dates.indexOf(n) === i)
 
       let start = apt.start.split(':')
       let startHour = Number(start[0])
@@ -84,29 +86,51 @@ export class BookingComponent implements OnInit {
       if (aptDuration >= this.pickedType.duration) {
         this.fitAppointments.push(apt)
       }
-
     });
-    
   }
 
-  aptSelect(event: any) {
-    let buttonId = event.target.id
-    // console.log('Appointment id: ' + event.target.value);
-    this.aptId = event.target.value
 
-    let aptButtons = document.querySelectorAll('.apt')    
-
-    aptButtons.forEach(button => {
-      if (button.id == buttonId) {
-        console.log('aptId:',this.aptId, 'buttonId:', buttonId);
-      } else {
+  datePicked(event:any) {
+    this.noApts = ''
+    event.target.classList.add('active')
+    let buttonId = event.target.innerHTML
+    document.querySelectorAll('.date').forEach(button => {      
+      if (!(buttonId == button.innerHTML)) {
         button.classList.remove('active')
       }
+    })
+
+    this.contents = []
+    let key = event.target.value    
+
+    let match:any = []    
+
+    this.fitAppointments.forEach((apt:any) => {
+      if (apt.date == key) {
+        match.push(apt)
+      }
+    })
+
+    this.contents = match  
+    
+    if (this.contents.length == 0) {
+      this.noApts = "A kivalasztott napon nincs idopont."      
+    }
+  }
+
+  timePicked(event: any) {
+
+    let buttonId = event.target.id
+    this.aptId = event.target.value
+
+    document.querySelectorAll('.apt').forEach(button => {
+      if (!(button.id == buttonId)) {
+        button.classList.remove('active')
+      } 
     })
   }
 
   onSubmit() {
-
     const target = this.bookingForm.value
 
     let serviceId = target.serviceId
@@ -147,13 +171,15 @@ export class BookingComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // TODO: filter out duplicate dates
-
     this.api.fetchOpenApts().subscribe({
       next: (data: any) => {
         this.appointments = data.data
         console.log(this.appointments);
         
+        this.appointments.forEach((apt:any) => {
+          apt.start = apt.start.substring(0, 5)
+          apt.end = apt.end.substring(0, 5)          
+        });
       },
       error: (err: any) => {
         console.log(err);
@@ -177,8 +203,6 @@ export class BookingComponent implements OnInit {
         console.log(err);
       }
     })
-
-    // let dateRegEx = new RegExp(/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/)
 
     this.bookingForm = this.formBuilder.group({
       serviceId: [V.required],
@@ -219,4 +243,9 @@ interface Booking {
     fullAddress: string
   },
   appointmentId: number
+}
+
+interface Content {
+  contentKey: string,
+  contentValues: any[]
 }
