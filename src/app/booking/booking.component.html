@@ -78,10 +78,9 @@
           Kattintással választhatod ki a neked megfelelőt.</p>
 
         <!-- TODO: appointments formatted, separate date and time -->
-        <!-- TODO: buttons toggle, deactivate others (buttongroup) -->
 
-        <div class="btn-group col" role="group">
-          <button (click)="aptSelect($event)" value="{{apt.id}}" *ngFor="let apt of fitAppointments" class="apt btn m-2"
+        <div class=" col" role="group">
+          <button (click)="aptSelect($event)"  id="{{apt.id}}" value="{{apt.id}}" *ngFor="let apt of fitAppointments" class="apt btn m-2"
             data-bs-toggle="button" autocomplete="off" id="{{apt.id}}">{{apt.date}} | {{apt.start}} - {{apt.end}}
           </button>
           <br>

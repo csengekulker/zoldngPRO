@@ -24,6 +24,8 @@ export class BookingComponent implements OnInit {
   pickedType:any = ''
   selectedService!:any
 
+  dates: any[] = []
+
   clientDetails!: Client
 
   collectPersonalDetails(): any {
@@ -88,8 +90,19 @@ export class BookingComponent implements OnInit {
   }
 
   aptSelect(event: any) {
-    console.log('Appointment id: ' + event.target.value);
+    let buttonId = event.target.id
+    // console.log('Appointment id: ' + event.target.value);
     this.aptId = event.target.value
+
+    let aptButtons = document.querySelectorAll('.apt')    
+
+    aptButtons.forEach(button => {
+      if (button.id == buttonId) {
+        console.log('aptId:',this.aptId, 'buttonId:', buttonId);
+      } else {
+        button.classList.remove('active')
+      }
+    })
   }
 
   onSubmit() {
@@ -110,6 +123,8 @@ export class BookingComponent implements OnInit {
       client: clientData,
       appointmentId: aptId
     }
+
+    console.log(bookingData)
 
     this.api.sendReservation(bookingData).subscribe({
       next: (data: any) => {
@@ -132,11 +147,13 @@ export class BookingComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // console.log(this.selectedService);    
+    // TODO: filter out duplicate dates
 
     this.api.fetchOpenApts().subscribe({
       next: (data: any) => {
         this.appointments = data.data
+        console.log(this.appointments);
+        
       },
       error: (err: any) => {
         console.log(err);
