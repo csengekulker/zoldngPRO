@@ -90,8 +90,8 @@
           <div class="col-md-6" role="group">
             <p>Idopontok</p>
             <p id="no_apts">{{noApts}}</p>
-            <button (click)="timePicked($event)"  id="{{one.id}}" value="{{one.id}}" *ngFor="let one of contents" class="apt btn m-2"
-              data-bs-toggle="button" autocomplete="off" id="{{one.id}}">{{one.start}} - {{one.end}}
+            <button (click)="timePicked($event)" formControlName="aptId"  id="{{one.id}}" value="{{one.id}}" *ngFor="let one of contents" class="apt btn m-2"
+              data-bs-toggle="button" autocomplete="off" id="{{one.id}}"  [ngClass]="{'closed disabled' : !one.isOpen}">{{one.start}} - {{one.end}}
             </button>
             <br>
           </div>

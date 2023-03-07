@@ -13,6 +13,10 @@ input.ng-valid .form-check-input:not {
 //     height: 10rem;
 // }
 
+.closed {
+    background-color: pink;
+}
+
 .apt, #submitBtn {
     color: #2b9777;
     border-color: #2b9777;

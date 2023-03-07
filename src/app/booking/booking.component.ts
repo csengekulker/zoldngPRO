@@ -9,17 +9,19 @@ import { ApiService } from '../shared/api.service';
 })
 export class BookingComponent implements OnInit {
 
-
   constructor(
     private api: ApiService,
     private formBuilder: FormBuilder,
   ) { }
 
   bookingForm !: FormGroup
+
   appointments !: any
   fitAppointments: any[] = []
   services !: any
   types !: any
+  contents!: any
+
   aptId!:number
   pickedType:any = ''
   noApts!:any
@@ -27,9 +29,7 @@ export class BookingComponent implements OnInit {
   dates:any[] = []
   distinctDates:string[] = []
 
-  contents!: any
-
-  clientDetails!: Client
+  clientDetails!: any
 
   collectPersonalDetails(): any {
 
@@ -121,8 +121,10 @@ export class BookingComponent implements OnInit {
   timePicked(event: any) {
 
     let buttonId = event.target.id
-    this.aptId = event.target.value
-
+    let aptId = event.target.value
+    console.log(aptId);
+    this.aptId = aptId
+    
     document.querySelectorAll('.apt').forEach(button => {
       if (!(button.id == buttonId)) {
         button.classList.remove('active')
@@ -131,40 +133,39 @@ export class BookingComponent implements OnInit {
   }
 
   onSubmit() {
-    const target = this.bookingForm.value
+    const target = this.bookingForm.value   
 
-    let serviceId = target.serviceId
-    let typeId = target.typeId
-    let aptId = this.aptId    
+    let clientData = this.collectPersonalDetails()    
 
-    let clientData = this.collectPersonalDetails()
-
-    let bookingData: Booking = {
-      service: {
-        serviceId: serviceId,
-        typeId: typeId
-      },
-      client: clientData,
-      appointmentId: aptId
+    let bookingData = {
+      service_id: target.serviceId,
+      type_id: target.typeId,
+      client_id: null,
+      appointment_id: this.aptId
     }
-
-    console.log(bookingData)
-
-    this.api.sendReservation(bookingData).subscribe({
-      next: (data: any) => {
-        console.log(data);
-      },
-      error: (err: any) => {
-        console.log(err);
-      }
-    })
 
     this.api.sendClientDetails(clientData).subscribe({
       next: (data: any) => {
-        console.log(data.data);
+        let clientId = data.data.id
+
+        if (data.success) {
+
+          bookingData.client_id = clientId
+          
+          this.api.sendReservation(bookingData).subscribe({
+            next: (data:any) => {
+              if (data.success) {
+                alert(data.message)
+              }              
+            },
+            error: (err:any) => {
+              console.log(err)
+            }
+          })
+        }
       },
       error: (err: any) => {
-        console.log(err)
+          console.log(err)
       }
     })
   }
@@ -207,7 +208,7 @@ export class BookingComponent implements OnInit {
     this.bookingForm = this.formBuilder.group({
       serviceId: [V.required],
       typeId: [V.required],
-      aptId: [V.required],
+      // aptId: [V.required],
       fullName: ['', V.required],
       dob: ['', V.required],
       email: ['', [V.required, V.email]],
@@ -222,30 +223,3 @@ export class BookingComponent implements OnInit {
 }
 
 
-interface Client {
-  fullName: string,
-  dob: string,
-  email: string,
-  phone: string,
-  fullAddress: string
-}
-
-interface Booking {
-  service: {
-    serviceId: number,
-    typeId: number
-  },
-  client: {
-    fullName: string,
-    dob: string,
-    email: string,
-    phone: string,
-    fullAddress: string
-  },
-  appointmentId: number
-}
-
-interface Content {
-  contentKey: string,
-  contentValues: any[]
-}

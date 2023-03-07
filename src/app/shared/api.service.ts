@@ -52,7 +52,7 @@ export class ApiService {
     return this.http.post<any>(url, message, httpOption)
   }
 
-  sendReservation(booking: Booking) {
+  sendReservation(booking: any) {
     let endpoint = 'bookings'
     let url = environment.apihost + endpoint
 
