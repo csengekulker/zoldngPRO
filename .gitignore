@@ -6,6 +6,7 @@
 /out-tsc
 /bazel-out
 *.txt
+*.odt#
 
 # Node
 /node_modules
