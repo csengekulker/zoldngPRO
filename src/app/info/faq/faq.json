@@ -13,7 +13,7 @@
         {
             "id": "three",
             "q": "Mi történik, ha nem jelenek meg a megbeszélt időpontban?",
-            "a": "Hogyha nem áll módodban megjelenni és ezt semmilyen formában nem is jelzed, akkor __"
+            "a": "Hogyha nem áll módodban megjelenni és ezt semmilyen formában nem is jelzed, akkor ilyen esetben a következő kezelés alkalmával ez előző kezelés 50%-át meg kell téríteni, hogy az újabb kezelés elkezdődjön majd ennek a ezelésnek is a teljes árát meg kell fizetni. Ha a kezelés előre ki lett fizetve ebben az esetben a befizetett összeget nem áll módunkban visszafizetni."
         }
     ]
 }

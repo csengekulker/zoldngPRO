@@ -82,7 +82,13 @@
           <div class="col-md-2" role="group">
             <p>Datumok</p>
             <ul class="list-group">
-                <button data-bs-toggle="button" autocomplete="off" class="date btn btn-lg list-group-item my-1" value="{{date}}" (click)="datePicked($event)" *ngFor="let date of distinctDates">{{date}}</button>
+                <button 
+                  data-bs-toggle="button" 
+                  autocomplete="off" 
+                  class="date btn btn-lg list-group-item my-1" 
+                  value="{{date}}" 
+                  (click)="datePicked($event)" 
+                  *ngFor="let date of distinctDates">{{date}}</button>
             </ul>
           </div>
 
@@ -90,8 +96,15 @@
           <div class="col-md-6" role="group">
             <p>Idopontok</p>
             <p id="no_apts">{{noApts}}</p>
-            <button (click)="timePicked($event)" formControlName="aptId"  id="{{one.id}}" value="{{one.id}}" *ngFor="let one of contents" class="apt btn m-2"
-              data-bs-toggle="button" autocomplete="off" id="{{one.id}}"  [ngClass]="{'closed disabled' : !one.isOpen}">{{one.start}} - {{one.end}}
+            <button 
+              (click)="timePicked($event)" 
+              formControlName="aptId"  
+              id="{{one.id}}" value="{{one.id}}" 
+              *ngFor="let one of contents" 
+              class="apt btn m-2"
+              data-bs-toggle="button" 
+              autocomplete="off" 
+              [ngClass]="{'closed disabled' : !one.isOpen}">{{one.start}} - {{one.end}}
             </button>
             <br>
           </div>

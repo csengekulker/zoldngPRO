@@ -52,7 +52,7 @@ export class ApiService {
     return this.http.post<any>(url, message, httpOption)
   }
 
-  sendReservation(booking: any) {
+  sendReservation(booking: Booking) {
     let endpoint = 'bookings'
     let url = environment.apihost + endpoint
 
@@ -93,10 +93,8 @@ interface Client {
 }
 
 interface Booking {
-  service: {
-    serviceId: number,
-    typeId: number
-  },
-  client: Client,
-  appointmentId: number
+  service_id: number,
+  type_id: number
+  client_id: number,
+  appointment_id: number
 }

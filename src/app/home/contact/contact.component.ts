@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators as V } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators as V } from '@angular/forms';
 import { ApiService } from '../../shared/api.service';
 
 @Component({
@@ -38,12 +38,22 @@ export class ContactComponent implements OnInit {
 
         if (data.success) {
           // TODO: pop up modal for feedback
+          let modal = document.querySelector('.modal')
+          console.log(modal);
+          if(modal!=null) {
+            modal.classList.add('show')
+            //body insert text
+          }
+          
+
+          // modal.id = 'messageSent'
 
           this.contactForm.reset()
         }
       },
       error: (err: any) => {
         console.log(err)
+        //body insert error
       }
     })
     

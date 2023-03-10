@@ -8,3 +8,11 @@ a:hover {
     color: white;
     border-color: #2b9777;
 }
+
+.accordion-body {
+    background-color: rgba(#2b9777, .4);
+}
+
+.collapsed {
+    border: none
+}

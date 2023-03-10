@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import iconsJson from './icons.json'
 
 @Component({
   selector: 'app-icons',
@@ -14,24 +15,7 @@ export class IconsComponent implements OnInit{
 
   ngOnInit(): void {
     
-    this.icons = [
-      {
-        path: '../assets/images/vert.png',
-        text: 'Reduces stress and increases relaxation.'
-      },
-      {
-        path: '../assets/images/vert.png',
-        text: 'Reduces pain, muscle soreness and tension.'
-      },
-      {
-        path: '../assets/images/vert.png',
-        text: 'Improves circulation, energy and alertness.'
-      },
-      {
-        path: '../assets/images/vert.png',
-        text: 'Lowers heart rate and blood pressure.'
-      }
-    ]
+    this.icons = iconsJson.icons
   }
 
 }

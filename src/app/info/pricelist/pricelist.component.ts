@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import servicesJson from '../../services/services.json'
-import { Service } from 'src/app/services/services.component';
 import { ApiService } from 'src/app/shared/api.service';
 
 @Component({
@@ -16,10 +14,7 @@ export class PricelistComponent implements OnInit {
 
   constructor(private api: ApiService) { }
 
-
   ngOnInit(): void { 
-
-    // console.log(servicesJson);
 
     this.api.fetchServices().subscribe({
       next: (data:any) => {
@@ -43,9 +38,6 @@ export class PricelistComponent implements OnInit {
         console.log(err);
         
       }
-    })
-
-    
+    }) 
   }
-
 }

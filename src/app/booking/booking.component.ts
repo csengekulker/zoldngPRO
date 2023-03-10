@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators as V } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators as V } from '@angular/forms';
 import { ApiService } from '../shared/api.service';
 
 @Component({
@@ -14,7 +14,13 @@ export class BookingComponent implements OnInit {
     private formBuilder: FormBuilder,
   ) { }
 
-  bookingForm !: FormGroup
+  bookingForm!: FormGroup
+
+  static assignService(service:any) {
+    console.log(service.serviceId, service.typeId); //ideert
+
+  }
+
 
   appointments !: any
   fitAppointments: any[] = []
@@ -92,27 +98,34 @@ export class BookingComponent implements OnInit {
 
   datePicked(event:any) {
     this.noApts = ''
+    
     event.target.classList.add('active')
+        console.log(event.target.classList.value);
+
     let buttonId = event.target.innerHTML
-    document.querySelectorAll('.date').forEach(button => {      
-      if (!(buttonId == button.innerHTML)) {
-        button.classList.remove('active')
-      }
+    console.log(buttonId);
+
+    let dateButtons = document.querySelectorAll('.date')
+    
+    dateButtons.forEach(button => {  
+      console.log(button);
+//ITT VAN valahol :)
+      // if (!(buttonId == button.innerHTML)) {
+      //   button.classList.remove('active')
+        
+      // }
     })
 
     this.contents = []
-    let key = event.target.value    
-
-    let match:any = []    
 
     this.fitAppointments.forEach((apt:any) => {
-      if (apt.date == key) {
-        match.push(apt)
+      if (apt.date == buttonId) {
+        this.contents.push(apt)
       }
     })
 
-    this.contents = match  
-    
+    console.log('Aznap:', this.contents);
+        
     if (this.contents.length == 0) {
       this.noApts = "A kivalasztott napon nincs idopont."      
     }
@@ -122,7 +135,7 @@ export class BookingComponent implements OnInit {
 
     let buttonId = event.target.id
     let aptId = event.target.value
-    console.log(aptId);
+    console.log('Apt Id:',aptId);
     this.aptId = aptId
     
     document.querySelectorAll('.apt').forEach(button => {
@@ -137,20 +150,18 @@ export class BookingComponent implements OnInit {
 
     let clientData = this.collectPersonalDetails()    
 
-    let bookingData = {
-      service_id: target.serviceId,
-      type_id: target.typeId,
-      client_id: null,
-      appointment_id: this.aptId
-    }
-
     this.api.sendClientDetails(clientData).subscribe({
       next: (data: any) => {
         let clientId = data.data.id
 
         if (data.success) {
 
-          bookingData.client_id = clientId
+          let bookingData = {
+            service_id: target.serviceId,
+            type_id: target.typeId,
+            client_id: clientId, 
+            appointment_id: this.aptId
+          }
           
           this.api.sendReservation(bookingData).subscribe({
             next: (data:any) => {
@@ -170,12 +181,12 @@ export class BookingComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
 
     this.api.fetchOpenApts().subscribe({
       next: (data: any) => {
         this.appointments = data.data
-        console.log(this.appointments);
+        console.log('Open:', this.appointments);
         
         this.appointments.forEach((apt:any) => {
           apt.start = apt.start.substring(0, 5)
@@ -208,7 +219,7 @@ export class BookingComponent implements OnInit {
     this.bookingForm = this.formBuilder.group({
       serviceId: [V.required],
       typeId: [V.required],
-      // aptId: [V.required],
+      aptId: [V.required],
       fullName: ['', V.required],
       dob: ['', V.required],
       email: ['', [V.required, V.email]],

@@ -1,0 +1,20 @@
+{
+    "icons": [
+        {
+          "path": "../assets/images/vert.png",
+          "text": "Reduces stress and increases relaxation."
+        },
+        {
+          "path": "../assets/images/vert.png",
+          "text": "Reduces pain, muscle soreness and tension."
+        },
+        {
+          "path": "../assets/images/vert.png",
+          "text": "Improves circulation, energy and alertness."
+        },
+        {
+          "path": "../assets/images/vert.png",
+          "text": "Lowers heart rate and blood pressure."
+        }
+      ]
+}
