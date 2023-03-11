@@ -15,7 +15,8 @@
     </p>
 
     <p class="p-3 focus col-md-4 ">
-      <a href="/info/docs#terms" class="text-reset text-decoration-none" target="_blank">Általános Szerződési Feltételek</a> <br>
+      <a href="/info/docs#terms" class="text-reset text-decoration-none" target="_blank">Általános Szerződési
+        Feltételek</a> <br>
       <a href="/info/docs#privacy" class="text-reset text-decoration-none" target="_blank">Adatkezelési Tájékoztató</a>
     </p>
     <p>
@@ -79,16 +80,11 @@
 
         <div class="row focus p-1" id="aptSelector">
           <!-- date -->
-          <div class="col-md-2" role="group">
+          <div class="col-md-2">
             <p>Datumok</p>
             <ul class="list-group">
-                <button 
-                  data-bs-toggle="button" 
-                  autocomplete="off" 
-                  class="date btn btn-lg list-group-item my-1" 
-                  value="{{date}}" 
-                  (click)="datePicked($event)" 
-                  *ngFor="let date of distinctDates">{{date}}</button>
+              <button data-bs-toggle="button" autocomplete="off" class="date btn btn-lg list-group-item my-1"
+             id="{{date}}" (click)="datePicked($event)" *ngFor="let date of distinctDates">{{date}}</button>
             </ul>
           </div>
 
@@ -96,21 +92,17 @@
           <div class="col-md-6" role="group">
             <p>Idopontok</p>
             <p id="no_apts">{{noApts}}</p>
-            <button 
-              (click)="timePicked($event)" 
-              formControlName="aptId"  
-              id="{{one.id}}" value="{{one.id}}" 
-              *ngFor="let one of contents" 
-              class="apt btn m-2"
-              data-bs-toggle="button" 
-              autocomplete="off" 
-              [ngClass]="{'closed disabled' : !one.isOpen}">{{one.start}} - {{one.end}}
-            </button>
+            <div class="timeButtons" hidden>
+              <button (click)="timePicked($event)" formControlName="aptId" id="{{one.id}}" value="{{one.id}}"
+                *ngFor="let one of times" class="apt btn m-2" data-bs-toggle="button" autocomplete="off"
+                [ngClass]="{'closed disabled' : !one.isOpen}">{{one.start}} - {{one.end}}
+              </button>
+            </div>
             <br>
           </div>
 
           <!-- TODO: summary card, with weekday -->
-          <div class="col-md-4" id="summary" hidden>
+          <div class="col-md-4" id="summary">
             <h6>A valasztott idopont</h6>
             <p></p>
           </div>
@@ -170,18 +162,31 @@
           </button>
         </div>
 
-        <div class="modal fade" id="" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <!-- booking.service_id.name
+        booking.type_id.name
+        booking.type_id.duration
+        booking.client (all)
+        booking.appointment_id.date
+        booking.appointment_id.start -->
+
+        <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Summary</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">{{modalHeader}}</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-              <div class="modal-body">
-                ...
-              </div>
+              <!-- <div class="modal-body">
+                <h2>Details</h2>
+                <ul class="list-group">
+                  <li>{{booking.service.name}}</li>
+                  <li>{{booking.type.name}}, {{booking.type.duration}} perc, {{booking.type.price}}</li>
+                </ul>
+              </div> -->
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button class="btn btn-primary">OK</button>
+
               </div>
             </div>
           </div>

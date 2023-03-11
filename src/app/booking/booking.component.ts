@@ -18,15 +18,13 @@ export class BookingComponent implements OnInit {
 
   static assignService(service:any) {
     console.log(service.serviceId, service.typeId); //ideert
-
   }
 
-
-  appointments !: any
+  appointments:any[] = []
   fitAppointments: any[] = []
   services !: any
   types !: any
-  contents!: any
+  times!: any
 
   aptId!:number
   pickedType:any = ''
@@ -36,6 +34,8 @@ export class BookingComponent implements OnInit {
   distinctDates:string[] = []
 
   clientDetails!: any
+  booking:any = {}
+  modalHeader:string = ''
 
   collectPersonalDetails(): any {
 
@@ -100,34 +100,33 @@ export class BookingComponent implements OnInit {
     this.noApts = ''
     
     event.target.classList.add('active')
-        console.log(event.target.classList.value);
 
-    let buttonId = event.target.innerHTML
+    let buttonId = event.target.id
     console.log(buttonId);
 
-    let dateButtons = document.querySelectorAll('.date')
-    
-    dateButtons.forEach(button => {  
-      console.log(button);
-//ITT VAN valahol :)
-      // if (!(buttonId == button.innerHTML)) {
-      //   button.classList.remove('active')
-        
-      // }
+    document.querySelectorAll('.date').forEach(button => {
+      if (!(button.id == buttonId)) {
+        button.classList.remove('active')
+      } 
     })
 
-    this.contents = []
+
+    this.times = []
 
     this.fitAppointments.forEach((apt:any) => {
       if (apt.date == buttonId) {
-        this.contents.push(apt)
+        this.times.push(apt)
       }
     })
 
-    console.log('Aznap:', this.contents);
+    console.log('Aznap:', this.times);
+    // here show timebuttonsdiv
         
-    if (this.contents.length == 0) {
+    if (this.times.length == 0) {
       this.noApts = "A kivalasztott napon nincs idopont."      
+    } else {
+      let div = document.querySelector('.timeButtons')
+      div.removeAttribute('hidden')
     }
   }
 
@@ -161,42 +160,66 @@ export class BookingComponent implements OnInit {
             type_id: target.typeId,
             client_id: clientId, 
             appointment_id: this.aptId
-          }
+          } 
           
           this.api.sendReservation(bookingData).subscribe({
             next: (data:any) => {
               if (data.success) {
-                alert(data.message)
+                // we get booking id
+                let id = data.data.id
+                alert(`Booking id:' ${id}`)
               }              
             },
             error: (err:any) => {
-              console.log(err)
+              console.log("Hiba a foglalas soran.")
             }
           })
         }
       },
       error: (err: any) => {
-          console.log(err)
+        if (err.message.email == "The email has already been taken.") {
+          alert("Szia megint!")
+        }
+          console.log('Hiba a vendeg felvetele soran.')
       }
     })
+  }
+
+  buildBookingDetails(b:any) {
+    let details = {
+      service: {
+        name: b.service_id.name,
+        type: b.type_id.name,
+        dur: b.type_id.duration,
+        price: b.type_id.price
+      },
+      client: b.client,
+      apt: {
+        date: b.appointment_id.date,
+        start: b.appointment_id.start
+      }
+    }
+
+    return details
   }
 
   ngOnInit(): void {    
 
     this.api.fetchOpenApts().subscribe({
-      next: (data: any) => {
+      next: (data:any) => {
         this.appointments = data.data
-        console.log('Open:', this.appointments);
-        
+
         this.appointments.forEach((apt:any) => {
-          apt.start = apt.start.substring(0, 5)
-          apt.end = apt.end.substring(0, 5)          
-        });
+          apt.start = apt.start.substring(0,5)
+          apt.end = apt.end.substring(0,5)
+        })
+        console.log('Open:', this.appointments);
       },
-      error: (err: any) => {
+      error: (err:any) => {
         console.log(err);
       }
     })
+    
 
     this.api.fetchServices().subscribe({
       next: (data: any) => {

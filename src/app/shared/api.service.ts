@@ -67,6 +67,13 @@ export class ApiService {
     return this.http.post<any>(url, booking, httpOption)
   }
 
+  getReservationDetails(id:number) {
+    let endpoint = `bookings/${id}`
+    let url = environment.apihost + endpoint
+
+    return this.http.get<any>(url)
+  }
+
   sendClientDetails(client: Client) {
     let endpoint = 'clients'
     let url = environment.apihost + endpoint

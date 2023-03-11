@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../shared/api.service';
-import { EmitterService } from '../emitter.service';
 import servicesJson from './services.json'
 import { Router } from '@angular/router';
 import { BookingComponent } from '../booking/booking.component';
