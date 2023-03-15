@@ -2,6 +2,18 @@ section {
    background: #273036
 }
 
+.send {
+    font-weight: 300;
+    background-color: #273036;
+    color: #f8f9fa;
+    border: solid 1px #f8f9fa;
+}
+
+.send:hover {
+    background-color: #2b9777;
+    border-color: #2b9777;
+}
+
 a.btn-primary {
     display: flex;
     padding: 0.875em 2em;
@@ -29,16 +41,4 @@ a.btn-primary:focus {
 
 input, label {
     color: #273036;
-}
-
-#msg {
-    color: #273036;
-    background-color: #fff;
-    border-color: #fff;
-}
-
-#msg:hover {
-    background-color: #2b9777;
-    color: #fff;
-    border-color: #273036;
 }

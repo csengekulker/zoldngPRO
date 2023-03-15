@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container big">
   <div class="row mb-5 text-end" *ngFor="let feature of features.features"
     [ngClass]="{'justify-content-end': feature.isReversed }">
 
@@ -15,5 +15,28 @@
     <div class="col-md-4 justify-content-end " [ngClass]="{'' : feature.isReversed }">
       <img class="featurepix" src="{{feature.imagePath}}" alt="{{feature.alttext}}">
     </div>
+  </div>
+</div>
+
+<!-- TODO: small feature on 768  -->
+
+<div class="container small">
+  <div class="col mb-5 text-center justify-content-center" *ngFor="let feature of features.features">
+
+    <div class="">
+      <img class="featurepix" src="{{feature.imagePath}}" alt="{{feature.alttext}}">
+    </div>
+
+    <div class="pt-3">
+      <h2>{{feature.title}}</h2>
+      <p>{{feature.text}}</p>
+      <div>
+        <a role="button" class="btn w-50 btn-outline-primary" routerLink="{{feature.refPath}}">
+          {{feature.button}}
+        </a>
+      </div>
+    </div>
+
+    
   </div>
 </div>

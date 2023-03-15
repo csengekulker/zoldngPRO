@@ -12,7 +12,7 @@
         {
             "title": "Kukkants be a stúdióba!",
             "text": "Nézd meg a stúdióról készült képeket és ha közel érzed magadhoz a hangulatát vagy úgy érzed eljött az ideje a relaxálásnak akkor jelentkezz be hozzám te is egy jó kis évindító felfrissülésre és ne várj addig, míg összeomlik a rendszer.",
-            "button": "Go to gallery",
+            "button": "Képgyűjtemény",
             "refPath": "/gallery",
             "imagePath": "../assets/images/features/gallery.png",
             "alttext": "Gallery",
@@ -21,7 +21,7 @@
         {
             "title": "Szolgáltatásaim",
             "text": "Találd meg a számodra legmegfelelőbb masszázst. A rendszeres masszázs nem csak tested felfrissítése, izmaid ellazítása céljából fontos, hanem idegrendszeredre is jótékonyan hat. Teljesítőképességed fokozódik, kevésbé leszel fáradt, jobban ellenállsz a téged érő negatív energiáknak és nyugodtabbá, kisimultabbá, magabiztosabbá válsz általa. ",
-            "button": "Browse",
+            "button": "Böngészés",
             "refPath": "/services",
             "imagePath": "../assets/images/features/services.png",
             "alttext": "Services",
@@ -30,7 +30,7 @@
         {
             "title": "Bejelentkezés",
             "text": "Set up an appointment and come refresh your body and soul Proin et tortor diam. Donec ut mattis nibh. Etiam tellus eros, gravida non congue ut, consectetur in justo.",
-            "button": "Reserve",
+            "button": "Foglalás",
             "refPath": "/booking",
             "imagePath": "../assets/images/features/booking.png",
             "alttext": "Booking",
