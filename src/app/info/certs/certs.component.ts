@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./certs.component.scss']
 })
 export class CertsComponent {
-  buttonText :string = "< Information"
+  buttonText :string = "< Információk"
 
 }

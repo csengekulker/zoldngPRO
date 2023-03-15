@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -43,12 +43,13 @@ import { CertsComponent } from './info/certs/certs.component';
     DocsComponent,
     NotfoundComponent,
     CertsComponent
-    ],
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

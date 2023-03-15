@@ -1,31 +1,39 @@
 {
     "features": [
         {
-            "title": "Introducing myself",
-            "text": "Bemutatkozom, Marti vagyokCurabitur vitae odio id purus dapibus imperdiet. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean fringilla, tellus sit amet pulvinar imperdiet, felis massa volutpat massa, in laoreet ex turpis sit amet dolor. <br> Vivamus ut placerat magna. Pellentesque eu ante eu lorem tristique mattis quis id odio. Proin et tortor diam. Donec ut mattis nibh. Etiam tellus eros, gravida non congue ut, consectetur in justo. Etiam euismod fringilla leo, vel cursus nibh.",
-            "button": "References",
+            "title": "Üdvözöllek!",
+            "text": "A nevem Kállay Márta Ilona és most úgy szeretnék nektek bemutatkozni mint a Zöldpont Masszázs Stúdió megalkotója. Minden szeretetemet beleadva alkottam meg ezt a kis masszázsstúdiót, itt a X. kerületben, Kőbánya szívében.",
+            "button": "Tanúsítványok",
             "refPath": "/info/docs",
+            "imagePath": "../assets/images/features/welcome.png",
+            "alttext": "Welcome",
             "isReversed": false
         },
         {
-            "title": "Take a look inside",
-            "text": "Watch the pictures representing the placeCurabitur vitae odio id purus dapibus imperdiet. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.Curabitur vitae odio id purus dapibus imperdiet. ",
+            "title": "Kukkants be a stúdióba!",
+            "text": "Nézd meg a stúdióról készült képeket és ha közel érzed magadhoz a hangulatát vagy úgy érzed eljött az ideje a relaxálásnak akkor jelentkezz be hozzám te is egy jó kis évindító felfrissülésre és ne várj addig, míg összeomlik a rendszer.",
             "button": "Go to gallery",
             "refPath": "/gallery",
+            "imagePath": "../assets/images/features/gallery.png",
+            "alttext": "Gallery",
             "isReversed": true
         },
         {
-            "title": "Massage services",
+            "title": "Szolgáltatásaim",
             "text": "Találd meg a számodra legmegfelelőbb masszázst. A rendszeres masszázs nem csak tested felfrissítése, izmaid ellazítása céljából fontos, hanem idegrendszeredre is jótékonyan hat. Teljesítőképességed fokozódik, kevésbé leszel fáradt, jobban ellenállsz a téged érő negatív energiáknak és nyugodtabbá, kisimultabbá, magabiztosabbá válsz általa. ",
             "button": "Browse",
             "refPath": "/services",
+            "imagePath": "../assets/images/features/services.png",
+            "alttext": "Services",
             "isReversed": false
         },
         {
-            "title": "Appointments",
+            "title": "Bejelentkezés",
             "text": "Set up an appointment and come refresh your body and soul Proin et tortor diam. Donec ut mattis nibh. Etiam tellus eros, gravida non congue ut, consectetur in justo.",
             "button": "Reserve",
             "refPath": "/booking",
+            "imagePath": "../assets/images/features/booking.png",
+            "alttext": "Booking",
             "isReversed": true
         }
     ]

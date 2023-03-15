@@ -14,6 +14,8 @@
       véglegesítésének feltétele ezek elfogadása.
     </p>
 
+    <p>Felhivom figyelmed, hogy az elso kezeles elott mindig, a tovabbi kezelesek elott pedig szukseg eseten allapotfelmerest vegzek. Ennek celja a problema reszletes feltarasa es ___ egy rovid beszelgetes keretein belul, hogy az igenyeidnek legmegfelelobb kezelest nyujtassam.</p>
+
     <p class="p-3 focus col-md-4 ">
       <a href="/info/docs#terms" class="text-reset text-decoration-none" target="_blank">Általános Szerződési
         Feltételek</a> <br>
@@ -38,17 +40,17 @@
 
         <div class="row">
           <hr class="border border-2 opacity-50 border-success">
-
+    
           <div class="col-md-3  my-3">
             <h5>Szolgáltatások</h5>
-            <div class="">
+            <div>
               <select id="chooseService" class="form-select" formControlName="serviceId">
                 <option selected id="selected" value="Choose..">Valasszon..</option>
                 <option *ngFor="let service of services" value="{{service.id}}">{{service.name}}</option>
               </select>
             </div>
           </div>
-
+    
           <div class="col-md-5 my-3">
             <h5>Típusok</h5>
             <div class="">
@@ -58,60 +60,68 @@
               </select>
             </div>
           </div>
-
+    
           <div class="col-md-2 my-3  col">
             <h5>Időtartam</h5>
             <input type="text" readonly disabled class=" form-control" value="{{pickedType.duration}}">
           </div>
-
+    
           <div class="col-md-2 my-3 col">
             <h5>Ár (Ft)</h5>
             <input type="text" readonly disabled class=" form-control" value="{{pickedType.price}}">
           </div>
-
+    
         </div>
-
+    
         <hr class="border border-2 opacity-50 border-success">
-
+    
         <h5>Időpont kiválasztása</h5>
-
+    
         <p>Alább láthatod a foglalható időpontokat a választott szolgáltatásra.
           Kattintással választhatod ki a neked megfelelőt.</p>
-
+    
         <div class="row focus p-1" id="aptSelector">
           <!-- date -->
           <div class="col-md-2">
             <p>Datumok</p>
-            <ul class="list-group">
-              <button data-bs-toggle="button" autocomplete="off" class="date btn btn-lg list-group-item my-1"
-             id="{{date}}" (click)="datePicked($event)" *ngFor="let date of distinctDates">{{date}}</button>
-            </ul>
+    
+            <mat-button-toggle-group name="datepicker" aria-label="Date Picker">
+              <div class="btn-group-vertical" id="dateDiv">
+              <mat-button-toggle 
+                class="date btn"
+                value="{{date}}" 
+                (click)="datePicked($event)" 
+                *ngFor="let date of distinctDates">{{date}}</mat-button-toggle>
+            </div>
+            </mat-button-toggle-group>
+            
           </div>
-
+    
           <!-- apt -->
-          <div class="col-md-6" role="group">
+          <div class="col-md-6">
             <p>Idopontok</p>
             <p id="no_apts">{{noApts}}</p>
-            <div class="timeButtons" hidden>
-              <button (click)="timePicked($event)" formControlName="aptId" id="{{one.id}}" value="{{one.id}}"
-                *ngFor="let one of times" class="apt btn m-2" data-bs-toggle="button" autocomplete="off"
-                [ngClass]="{'closed disabled' : !one.isOpen}">{{one.start}} - {{one.end}}
-              </button>
-            </div>
-            <br>
+    
+            <mat-button-toggle-group name="timepicker" aria-label="Time Picker">
+              <mat-button-toggle 
+              class="apt btn m-2"
+              value="{{one.id}}" id="{{one.id}}" 
+              (click)="timePicked($event)" formControlName="aptId" 
+              *ngFor="let one of times" 
+              [ngClass]="{'closed disabled' : !one.isOpen}">{{one.start}} - {{one.end}}</mat-button-toggle>
+            </mat-button-toggle-group>
           </div>
-
+    
           <!-- TODO: summary card, with weekday -->
           <div class="col-md-4" id="summary">
             <h6>A valasztott idopont</h6>
-            <p></p>
           </div>
         </div>
-
+    
         <hr class="border border-2 opacity-50 border-success">
-
+    
         <h5>Személyes adatok megadása</h5>
-
+    
         <div class="row">
           <div class=" col-md-6 mb-2">
             <input id="fullName" type="text" placeholder="Full name" formControlName="fullName" class="form-control">
@@ -121,7 +131,7 @@
               class="form-control">
           </div>
         </div>
-
+    
         <div class="row">
           <div class=" col-md-6 mb-2">
             <input id="email" type="text" placeholder="E-mail address" formControlName="email" class="form-control">
@@ -130,45 +140,38 @@
             <input id="phone" type="text" placeholder="Phone number" formControlName="phone" class="form-control">
           </div>
         </div>
-
+    
         <div class="row">
           <div class="col-md-2 mb-2">
             <input id="zipcode" type="text" placeholder="Zipcode" formControlName="zipCode" class="form-control">
           </div>
-
+    
           <div class="col-md-4 mb-2">
             <input id="city" type="text" placeholder="City" formControlName="city" class="form-control">
           </div>
-
+    
           <div class="col-md-6 mb-2">
             <input id="address" type="text" placeholder="Address" formControlName="address" class="form-control">
           </div>
         </div>
-
+    
         <hr class="border border-2 opacity-50 border-success">
-
+    
         <div class="form-check form-switch">
           <input type="checkbox" class=" form-check-input form-control" id="accept" formControlName="accept">
           <label for="accept">I accept the <a href="/info/docs#terms" target="_blank" class="text-reset">Terms and
               Conditions</a> & <a href="/info/docs#privacy" target="_blank" class="text-reset">Privacy
               Policy</a>.</label>
         </div>
-
+    
         <!-- TODO: pop up modal for feedback -->
-
+    
         <div class="row my-4">
           <button class="btn" type="submit" id="submitBtn" data-bs-toggle="modal" data-bs-target="#confirmModal">
             Időpont lefoglalása
           </button>
         </div>
-
-        <!-- booking.service_id.name
-        booking.type_id.name
-        booking.type_id.duration
-        booking.client (all)
-        booking.appointment_id.date
-        booking.appointment_id.start -->
-
+    
         <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -176,22 +179,16 @@
                 <h1 class="modal-title fs-5" id="exampleModalLabel">{{modalHeader}}</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-              <!-- <div class="modal-body">
-                <h2>Details</h2>
-                <ul class="list-group">
-                  <li>{{booking.service.name}}</li>
-                  <li>{{booking.type.name}}, {{booking.type.duration}} perc, {{booking.type.price}}</li>
-                </ul>
-              </div> -->
+         
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button class="btn btn-primary">OK</button>
-
+    
               </div>
             </div>
           </div>
         </div>
-
+    
       </form>
     </div>
   </section>

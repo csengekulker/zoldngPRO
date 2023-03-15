@@ -1,20 +1,20 @@
 {
     "icons": [
         {
-          "path": "../assets/images/vert.png",
-          "text": "Reduces stress and increases relaxation."
+          "path": "../assets/images/icons/serotonin.png",
+          "text": "Serkenti az oxitocin és a szerotonin kibocsájtását."
         },
         {
-          "path": "../assets/images/vert.png",
-          "text": "Reduces pain, muscle soreness and tension."
+          "path": "../assets/images/icons/stress.png",
+          "text": "Fontos szerepet játszik a mindennapi stressz leküzdésében."
         },
         {
-          "path": "../assets/images/vert.png",
-          "text": "Improves circulation, energy and alertness."
+          "path": "../assets/images/icons/focus.png",
+          "text": "Élénkíti a test mellett a lelket is, fókuszáltabbá tesz."
         },
         {
-          "path": "../assets/images/vert.png",
-          "text": "Lowers heart rate and blood pressure."
+          "path": "../assets/images/icons/circulation.png",
+          "text": "Javítja a keringést és csökkenti a magas vérnyomást."
         }
       ]
 }

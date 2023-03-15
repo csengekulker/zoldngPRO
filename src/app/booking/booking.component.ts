@@ -28,6 +28,7 @@ export class BookingComponent implements OnInit {
 
   aptId!:number
   pickedType:any = ''
+  dateBtn!:Element
   noApts!:any
 
   dates:any[] = []
@@ -98,22 +99,11 @@ export class BookingComponent implements OnInit {
 
   datePicked(event:any) {
     this.noApts = ''
+    this.times = []    
     
-    event.target.classList.add('active')
+    let buttonId = event.target.innerHTML
 
-    let buttonId = event.target.id
-    console.log(buttonId);
-
-    document.querySelectorAll('.date').forEach(button => {
-      if (!(button.id == buttonId)) {
-        button.classList.remove('active')
-      } 
-    })
-
-
-    this.times = []
-
-    this.fitAppointments.forEach((apt:any) => {
+    this.fitAppointments.forEach((apt:any) => {      
       if (apt.date == buttonId) {
         this.times.push(apt)
       }
@@ -121,27 +111,22 @@ export class BookingComponent implements OnInit {
 
     console.log('Aznap:', this.times);
     // here show timebuttonsdiv
+    /* 
+      error: if this.times not empty, cannot read properties of null (reading 'writeValue')
+    */
         
     if (this.times.length == 0) {
       this.noApts = "A kivalasztott napon nincs idopont."      
-    } else {
-      let div = document.querySelector('.timeButtons')
-      div.removeAttribute('hidden')
-    }
+    } else { }
   }
 
   timePicked(event: any) {
 
     let buttonId = event.target.id
     let aptId = event.target.value
-    console.log('Apt Id:',aptId);
+    console.log('Apt Id:',buttonId);
     this.aptId = aptId
-    
-    document.querySelectorAll('.apt').forEach(button => {
-      if (!(button.id == buttonId)) {
-        button.classList.remove('active')
-      } 
-    })
+
   }
 
   onSubmit() {
@@ -203,7 +188,7 @@ export class BookingComponent implements OnInit {
     return details
   }
 
-  ngOnInit(): void {    
+  ngOnInit(): void {        
 
     this.api.fetchOpenApts().subscribe({
       next: (data:any) => {

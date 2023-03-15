@@ -1,41 +1,39 @@
 <div class="container text-light text-center justify-content-center">
   <h1 class="h1-responsive font-weight-bold mb-5">Kapcsolatfelvétel</h1>
-  <p class=" w-responsive mx-auto">Do you have any questions? Please do not hesitate to contact us
-    directly. Our team will come back to you within
-    a matter of hours to help you.</p>
+  <p class=" w-responsive mx-auto">Nálam a masszázs során a regenerálódás és a teljes felfrissülés mellett a nyugalom és a harmónia megteremtése a cél. <br> Szeretettel várlak és ha kérdésed van, vedd fel velem a kapcsolatot az alábbi űrlapon keresztül, szívesen válaszolok.</p>
+  <p><strong>A válaszüzenet az általad megadott e-mail címre fog érkezni.</strong></p>
   <div class="row m-5 ">
 
     <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
 
       <div class=" mb-4 form-floating ">
         <input formControlName="name" type="text" id="name" class="form-control" placeholder="Your name">
-        <label for="name">Name</label>
+        <label for="name">Név</label>
       </div>
 
       <div class="  mb-4 form-floating">
         <input formControlName="email" type="text" id="email" class="form-control" placeholder="Your email">
-        <label for="email" class="">Email</label>
+        <label for="email" class="">E-mail cím</label>
       </div>
 
       <div class=" mb-4 form-floating">
         <input formControlName="subject" type="text" id="subject" class="form-control" placeholder="Subject">
-        <label for="subject" class="">Subject</label>
+        <label for="subject" class="">Tárgy</label>
       </div>
 
       <div class="row mb-2">
         <div class="mb-4">
           <div class="md-form w-5">
-            <h4>Your message</h4>
+            <h4>Az üzeneted</h4>
             <textarea formControlName="message" id="message" class="form-control" cols="20" rows="10"></textarea>
           </div>
         </div>
       </div>
 
       <div class="text-center text-md-left">
-        <button id="msg" type="submit" data-bs-toggle="modal" data-bs-target="#messageSent" class="btn btn-primary w-100 btn-lg ">Send message</button>
+        <button id="msg" type="submit" data-bs-toggle="modal" data-bs-target="#messageSent" class="btn btn-primary w-100 btn-lg ">Küldés</button>
       </div>
     </form>
-
   </div>
 </div>
 

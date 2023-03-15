@@ -25,7 +25,6 @@ export class ServicesComponent implements OnInit {
   fetchedServices !: any
   fetchedTypes!:any
 
-  path: string = '../assets/images/vert.png';
   alttext: string = 'A kép leírása';
 
   //TODO: pass desired service details to booking

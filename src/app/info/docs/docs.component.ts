@@ -10,11 +10,7 @@ let toTop = document.querySelector('#toTop')
 })
 export class DocsComponent implements OnInit {
 
-  buttonText :string = "< Information"
+  buttonText :string = "< Információk"
 
-
-  ngOnInit(): void {
-
-
-  }
+  ngOnInit(): void { }
 }
