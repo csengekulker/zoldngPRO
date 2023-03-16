@@ -7,6 +7,25 @@ import { Component } from '@angular/core';
 })
 export class GalleryComponent {
 
-  path: string = '../assets/images/zold1.jpg';
+  path: string = '../assets/gallery/forest.jpg';
+  path1: string = '../assets/gallery/nature-wallpaper.jpg';
+
+
+  base:string = '../assets/gallery/'
+
+  paths1:string[] = [
+    'forest.jpg',
+    'nature-wallpaper.jpg',
+    'trees-3.jpg',
+    'trees.jpg'
+  ]
+
+  paths2:string[] = [
+    'essential-oil.jpg',
+    'glass.jpg',
+    'massage.jpg',
+    'oil.jpg',
+    'wellness.jpg'
+  ]
 
 }

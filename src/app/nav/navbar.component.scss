@@ -3,7 +3,7 @@
 }
 
 .small {
-    display: non;
+    display: none;
 }
 
 @media (max-width: 854px) {
@@ -15,13 +15,13 @@
     }
 }
 
-.smallBtn {
+button, .smallBtn {
     font-weight: 200;
     background-color: #273036;
     color: #f8f9fa;
 }
 
-.smallBtn:hover {
+button:hover, .smallBtn:hover {
     font-weight: 300;
     transition: font-weight, background-color, color .2s;
     background-color: #f8f9fa;
