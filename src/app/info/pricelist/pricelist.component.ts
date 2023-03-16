@@ -7,7 +7,7 @@ import { ApiService } from 'src/app/shared/api.service';
   styleUrls: ['./pricelist.component.scss']
 })
 export class PricelistComponent implements OnInit {
-  buttonText :string = "< Information"
+  buttonText :string = " Információk"
   services!:any
   types!:any
   serviceTypes!:any

@@ -23,6 +23,7 @@ import { PricelistComponent } from './info/pricelist/pricelist.component';
 import { DocsComponent } from './info/docs/docs.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { CertsComponent } from './info/certs/certs.component';
+import { ButtonComponent } from './info/button/button.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { CertsComponent } from './info/certs/certs.component';
     PricelistComponent,
     DocsComponent,
     NotfoundComponent,
-    CertsComponent
+    CertsComponent,
+    ButtonComponent
   ],
   imports: [
     BrowserModule,

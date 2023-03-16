@@ -15,13 +15,13 @@
     }
 }
 
-button {
+.smallBtn {
     font-weight: 200;
     background-color: #273036;
     color: #f8f9fa;
 }
 
-button:hover {
+.smallBtn:hover {
     font-weight: 300;
     transition: font-weight, background-color, color .2s;
     background-color: #f8f9fa;

@@ -26,7 +26,10 @@
           <div class=" my-2">
             <h4>Kinek ajánlott?</h4>
             <ul class="list-group">
-              <li class="list-group-item" *ngFor="let reason of service.dos">{{reason}}</li>
+              <li class="list-group-item" *ngFor="let reason of service.dos">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-dot" viewBox="0 0 16 16">
+                  <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+                </svg>{{reason}}</li>
             </ul>
           </div>
   

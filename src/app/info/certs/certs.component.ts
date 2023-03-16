@@ -5,7 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './certs.component.html',
   styleUrls: ['./certs.component.scss']
 })
-export class CertsComponent {
-  buttonText :string = "< Információk"
-
-}
+export class CertsComponent { }

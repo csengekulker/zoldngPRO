@@ -21,9 +21,9 @@
   <div class="collapse" id="collapse">
     <ul class="nav justify-content-center col text-center mx-auto ">
       
-        <button class="btn nav-item fs-5 rounded my-1 w-100" *ngFor="let button of buttons">
+        <div class="smallBtn py-2 nav-item fs-5 w-100" *ngFor="let button of buttons">
           <a class="nav-link text-reset" routerLink="{{button[1]}}">{{button[0]}}</a>
-        </button>
+        </div>
       
     </ul>
   </div>

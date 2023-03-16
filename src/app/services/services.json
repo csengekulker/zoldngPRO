@@ -10,10 +10,10 @@
         "A svédmasszázs olajos masszázs, mely során gyógynövény olajat használok. A kezelés masszázságyon történik."
       ],
       "dos": [
-        "🟢 akiknek stresszes életvitelből adódóan alig van idejük önmagukra",
-        "🟢 akik testmozgás hiányában szeretnék izmaikat átmozogtatni, megdolgoztatni",
-        "🟢 akik testében sok a merevség, elég egy mozdulat és görcsbe rándul a test",
-        "🟢 akik kiszakadnának pár órára a mindennapi rohanásból megpihentetni lelküket"
+        "akiknek stresszes életvitelből adódóan alig van idejük önmagukra",
+        "akik testmozgás hiányában szeretnék izmaikat átmozogtatni, megdolgoztatni",
+        "akik testében sok a merevség, elég egy mozdulat és görcsbe rándul a test",
+        "akik kiszakadnának pár órára a mindennapi rohanásból megpihentetni lelküket"
       ],
       "imagePath": "../assets/images/services/sweidsh.png"
     },
@@ -26,7 +26,7 @@
         "Egyik legnagyobb előnye, hogy intenzív és mélyre ható, erőteljes fogásai miatt sokkal gyorsabban és tartósabban hat, mint a legtöbb egyéb masszázsfajta. A másik előnye, ami miatt sok szempontból verhetetlen, hogy mivel a gyúrás, ütögetés és rezegtetés pont az a három fogása a svédmasszázsnak, amelyek nem igényelnek feltétlenül vivőanyagot (olajat, krémet) - sőt, anélkül sokszor könnyebben kivitelezhetőek: adott esetben sokkal kevesebb előkészülettel, mondhatni szükség esetén bárhol, bármikor alkalmazhatóak egy jó kis frissítő gyúrás apropóján."
       ],
       "dos":[
-        "🟢 akik aktív sportolók és a sportolás következtében testük fáradt, izmaik feszültek és kemények"
+        "akik aktív sportolók és a sportolás következtében testük fáradt, izmaik feszültek és kemények"
       ],
       "imagePath": "../assets/images/services/sport.png"
     },
@@ -40,9 +40,9 @@
         "Szeretném viszont kiemelni, hogy ez NEM orvosi reflexológia, ez a fajta masszázs módszer a természetgyógyászat egyik ágazata. A gyógyulási idö lassabb, de sokkal kevesebb mellékhatással jár,a végeredmény pedig tartósabb gyógyulást eredményez."
       ],
       "dos": [
-        "🟢 akik egész nap álló- illetve fizikai munkát végeznek",
-        "🟢 akik sokat járkálnak, lépcsőznek",
-        "🟢 akik mozgásszervi vagy belső szervi problémákkal küzdenek"
+        "akik egész nap álló- illetve fizikai munkát végeznek",
+        "akik sokat járkálnak, lépcsőznek",
+        "akik mozgásszervi vagy belső szervi problémákkal küzdenek"
       ],
       "imagePath": "../assets/images/services/feet.png"
     },
@@ -55,9 +55,9 @@
         "A mágneses matrac illetve úgy általában a mágnesterápiás eszközök testünk mágneses terének egyensúlyát állítják vissza, mely a szervezet egészséges működéséhez elengedhetetlen."
       ],
       "dos": [
-        "🟢 akik egész nap álló- illetve fizikai munkát végeznek",
-        "🟢 akik sokat járkálnak,lépcsőznek",
-        "🟢 akik mozgásszervi vagy belső szervi problémákkal küzdenek"
+        "akik egész nap álló- illetve fizikai munkát végeznek",
+        "akik sokat járkálnak,lépcsőznek",
+        "akik mozgásszervi vagy belső szervi problémákkal küzdenek"
       ],
       "imagePath": "../assets/images/services/magnet.png"
     }
