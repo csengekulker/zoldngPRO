@@ -99,25 +99,26 @@ export class BookingComponent implements OnInit {
 
   datePicked(event:any) {
     this.noApts = ''
-    this.times = []    
+    this.times = []
+
     
     let buttonId = event.target.innerHTML
+    console.log(event.target.classList);
+    // event.target.classList.add('active')
 
+    console.log(this.fitAppointments);
+    
     this.fitAppointments.forEach((apt:any) => {      
       if (apt.date == buttonId) {
         this.times.push(apt)
       }
     })
-
-    console.log('Aznap:', this.times);
-    // here show timebuttonsdiv
-    /* 
-      error: if this.times not empty, cannot read properties of null (reading 'writeValue')
-    */
-        
+ 
     if (this.times.length == 0) {
-      this.noApts = "A kivalasztott napon nincs idopont."      
-    } else { }
+      this.noApts.innerHTML = "A kivalasztott napon nincs idopont."      
+    } else { 
+      console.log('Aznap:', this.times);
+    }
   }
 
   timePicked(event: any) {
@@ -144,7 +145,7 @@ export class BookingComponent implements OnInit {
             service_id: target.serviceId,
             type_id: target.typeId,
             client_id: clientId, 
-            appointment_id: this.aptId
+            appointment_id: target.aptId
           } 
           
           this.api.sendReservation(bookingData).subscribe({
@@ -156,16 +157,13 @@ export class BookingComponent implements OnInit {
               }              
             },
             error: (err:any) => {
-              console.log("Hiba a foglalas soran.")
+              console.log(err)
             }
           })
         }
       },
       error: (err: any) => {
-        if (err.message.email == "The email has already been taken.") {
-          alert("Szia megint!")
-        }
-          console.log('Hiba a vendeg felvetele soran.')
+        console.log(err)
       }
     })
   }
@@ -198,7 +196,7 @@ export class BookingComponent implements OnInit {
           apt.start = apt.start.substring(0,5)
           apt.end = apt.end.substring(0,5)
         })
-        console.log('Open:', this.appointments);
+        // console.log('Open:', this.appointments);
       },
       error: (err:any) => {
         console.log(err);

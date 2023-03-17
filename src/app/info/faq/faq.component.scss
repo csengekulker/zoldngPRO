@@ -9,10 +9,28 @@ a:hover {
     border-color: #2b9777;
 }
 
+.accordion-button {
+    background-color: #f8f9fa;
+}
+
 .accordion-body {
-    background-color: rgba(#2b9777, .4);
+    background-color: rgba(#2b9777, .5);
 }
 
 .collapsed {
     border: none
+}
+.accordion-button:hover {
+    background-color: rgba(#2b9777, .5);
+
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: rgba(#2b9777, .5);
+    border: none;
+    color: black
 }

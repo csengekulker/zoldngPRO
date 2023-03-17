@@ -31,29 +31,25 @@ export class ContactComponent implements OnInit {
    }
 
   onSubmit() {
-    let messageData = this.collectMessageDetails()    
+    let messageData = this.collectMessageDetails()   
+    let modal = document.querySelector('.modal-body') 
 
     this.api.sendMessageDetails(messageData).subscribe({
       next: (data: any) => {
 
         if (data.success) {
-          // TODO: pop up modal for feedback
-          let modal = document.querySelector('.modal')
-          console.log(modal);
-          if(modal!=null) {
-            modal.classList.add('show')
-            //body insert text
+
+          if (modal !=null) {
+            modal.innerHTML = "OK"
           }
           
-
-          // modal.id = 'messageSent'
-
           this.contactForm.reset()
         }
       },
       error: (err: any) => {
-        console.log(err)
-        //body insert error
+        if (modal !=null) {
+          modal.innerHTML = err.message
+        }
       }
     })
     

@@ -24,6 +24,8 @@ import { DocsComponent } from './info/docs/docs.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { CertsComponent } from './info/certs/certs.component';
 import { ButtonComponent } from './info/button/button.component';
+import { BookingInfoComponent } from './booking/info/info.component';
+import { FormComponent } from './booking/form/form.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import { ButtonComponent } from './info/button/button.component';
     ContactComponent,
     FooterComponent,
     BookingComponent,
+    BookingInfoComponent,
     ServicesComponent,
     GalleryComponent,
     FeatureComponent,
@@ -44,7 +47,8 @@ import { ButtonComponent } from './info/button/button.component';
     DocsComponent,
     NotfoundComponent,
     CertsComponent,
-    ButtonComponent
+    ButtonComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,

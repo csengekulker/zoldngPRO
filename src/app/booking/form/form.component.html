@@ -1,0 +1,161 @@
+<form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+
+    <div class="row">
+        <hr class="border border-2 opacity-50 border-success">
+
+        <div class="col-md-3  my-3">
+            <h5>Szolgáltatások</h5>
+            <div>
+                <select id="chooseService" class="form-select" (change)="servicePicked($event)" formControlName="serviceId">
+                    <option selected id="selected" value="Choose..">Válasszon..</option>
+                    <option *ngFor="let service of services" value="{{service.id}}">{{service.name}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-md-5 my-3">
+            <h5>Típusok</h5>
+            <div class="">
+                <select id="chooseType" class="form-select" (change)="typePicked($event)" formControlName="typeId">
+                    <option selected id="selected" value="Choose..">Válasszon..</option>
+                    <option *ngFor="let type of types" value="{{type.id}}">{{type.name}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-md-2 my-3  col">
+            <h5>Időtartam</h5>
+            <input type="text" id="dur" readonly disabled class="form-control" value="{{pickedType.duration}}">
+        </div>
+
+        <div class="col-md-2 my-3 col">
+            <h5>Ár (Ft)</h5>
+            <input type="text" id="price" readonly disabled class="form-control" value="{{pickedType.price}}">
+        </div>
+
+    </div>
+
+    <hr class="border border-2 opacity-50 border-success">
+
+    <h5>Időpont kiválasztása</h5>
+
+    <p>Alább láthatod a foglalható időpontokat a választott szolgáltatásra.
+        Kattintással választhatod ki a neked megfelelőt.</p>
+
+    <div class="row focus p-1" id="aptSelector">
+        <div class="col-md-2">
+            <p>Datumok</p>
+            <div name="datepicker" aria-label="Date Picker">
+                <div class="btn-group-vertical" id="dateDiv">
+                    <button type="button" data-bs-toggle="button" autocomplete="off" class="btn"
+                        (click)="datePicked($event)" *ngFor="let each of datetimes">{{each.date}}</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <p>Idopontok</p>
+            <div name="timepicker" aria-label="Time Picker">
+                <button type="button" class="btn m-2" (click)="timePicked($event)" *ngFor="let each of datetimes"
+                    formControlName="aptId">
+                    {{each.times}} </button>
+            </div>
+        </div>
+
+    </div>
+
+    <hr class="border border-2 opacity-50 border-success">
+
+    <h5>Személyes adatok megadása</h5>
+
+    <div class="row">
+        <div class=" col-md-6 mb-2">
+            <input id="fullName" type="text" placeholder="Teljes név" formControlName="fullName" class="form-control">
+        </div>
+        <div class="col-md-6 mb-2">
+            <input id="dob" type="text" placeholder="Születési idő" formControlName="dob" class="form-control">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class=" col-md-6 mb-2">
+            <input id="email" type="text" placeholder="E-mail cím" formControlName="email" class="form-control">
+        </div>
+        <div class="col-md-6 mb-2">
+            <input id="phone" type="text" placeholder="Telefonszám" formControlName="phone" class="form-control">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2 mb-2">
+            <input id="zipcode" type="text" placeholder="Irányítószám" formControlName="zipCode" class="form-control">
+        </div>
+
+        <div class="col-md-4 mb-2">
+            <input id="city" type="text" placeholder="Település" formControlName="city" class="form-control">
+        </div>
+
+        <div class="col-md-6 mb-2">
+            <input id="address" type="text" placeholder="Lakcím" formControlName="address" class="form-control">
+        </div>
+    </div>
+
+    <hr class="border border-2 opacity-50 border-success">
+
+    <div class="form-check form-switch">
+        <input type="checkbox" class=" form-check-input form-control" id="accept" formControlName="accept">
+        <label for="accept">Elolvastam és elfogadom az <a href="/info/docs#terms" target="_blank"
+                class="text-reset">Általános Szerződési Feltételek</a>et és az <a href="/info/docs#privacy"
+                target="_blank" class="text-reset">Adatkezelési Tájékoztató</a>t.</label>
+    </div>
+
+    <!-- TODO: pop up modal for feedback -->
+
+    <div class="row my-4">
+        <button class="btn" id="submitBtn" data-bs-toggle="modal" data-bs-target="#confirmModal">
+            Tovább az áttekintéshez
+        </button>
+    </div>
+
+    <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Áttekintés</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4>Szolgáltatás részletei</h4>
+                    <p>
+                        <strong>Kezelés: </strong>{{pickedService.name}}<br>
+                        <strong>Tipus: </strong>{{pickedType.name}}<br>
+                        <strong>Idotartam: </strong>{{pickedType.duration}}<br>
+                        <strong>Ar: </strong>{{pickedType.price}}
+                    </p>
+                    <h4>Időpont</h4>
+                    <p>
+                        <strong>Datum: </strong>{{bookingId}}<br>
+                        <strong>Idopont: </strong>{{aptId}}
+                    </p>
+                    <h4>Személyes adatok</h4>
+                    <p>
+                        <strong>Teljes név: </strong>{{bookingForm.value.fullName}}<br>
+                        <strong>Születési idő: </strong>{{bookingForm.value.dob}}<br>
+                        <strong>E-mail: </strong>{{bookingForm.value.email}}<br>
+                        <strong>Telefon: </strong>{{bookingForm.value.phone}}<br>
+                        <strong>Cím: </strong>{{bookingForm.value.fullAddress}}
+                    </p>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Vissza</button>
+                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Foglalás indítása</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>

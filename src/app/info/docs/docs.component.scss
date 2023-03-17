@@ -3,9 +3,11 @@ a {
     border-color: #2b9777;
 }
 
-.list-group-item:hover, a:hover {
-    background-color: #2b9777;
-    color: white;
-    border-color: #2b9777;
+.list-group-item:hover {
+    background-color: rgba(#2b9777, .5);
+}
+
+.list-group-item {
+    background-color: #f8f9fa;
 }
 

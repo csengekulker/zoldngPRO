@@ -37,6 +37,13 @@ export class ApiService {
     return this.http.get<any>(url)
   }
 
+  fetchBookingById(id:number) {
+    let endpoint = `bookings/${id}`
+    let url = environment.apihost + endpoint
+
+    return this.http.get<any>(url)
+  }
+
   sendMessageDetails(message: any) {
     let endpoint = 'messages'
     let url = environment.apihost + endpoint

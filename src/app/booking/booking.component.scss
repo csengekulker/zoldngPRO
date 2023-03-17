@@ -8,36 +8,25 @@ input.ng-valid .form-check-input:not {
     border-left: 5px solid green
 }
 
-.cdk-focused {
-    background-color: #2b9777;
-    color:white;
-}
-
 .closed {
     background-color: pink;
 }
 
 .apt, #submitBtn {
     color: #2b9777;
-    border-color: #2b9777;
+    border: solid 1px #2b9777;
 }
 
-.apt:hover, #submitBtn:hover {
+.apt:hover, #submitBtn:hover, .divider, .active {
     background-color: #2b9777;
     color: white;
-    border-color: #2b9777;
-    border: none
 }
 
-.divider {
-    background-color:#2b9777
-}
 
 .focus {
     background-color: #2b9777;
     background-color: rgba($color: #2b9777, $alpha: 0.3);
     border-radius: 10px;
-    
 }
 
 a:hover {
