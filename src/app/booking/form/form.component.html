@@ -15,7 +15,7 @@
 
         <div class="col-md-5 my-3">
             <h5>Típusok</h5>
-            <div class="">
+            <div>
                 <select id="chooseType" class="form-select" (change)="typePicked($event)" formControlName="typeId">
                     <option selected id="selected" value="Choose..">Válasszon..</option>
                     <option *ngFor="let type of types" value="{{type.id}}">{{type.name}}</option>
@@ -39,35 +39,14 @@
 
     <h5>Időpont kiválasztása</h5>
 
-    <p>Alább láthatod a foglalható időpontokat a választott szolgáltatásra.
-        Kattintással választhatod ki a neked megfelelőt.</p>
-
-    <!-- <div class="row focus p-1" id="aptSelector">
-        <div class="col-md-2">
-            <p>Datumok</p>
-            <div name="datepicker" aria-label="Date Picker">
-                <div class="btn-group-vertical" id="dateDiv">
-                    <button type="button" data-bs-toggle="button" autocomplete="off" class="btn"
-                        (click)="datePicked($event)" *ngFor="let each of datetimes">{{each.date}}</button>
-                </div>
-            </div>
+    <div class="focus p-3">
+        <p>Alábbi listában a foglalható időpontokat láthatod a választott szolgáltatásra.</p>
+        <div>
+            <select id="chooseType" class="form-select" (change)="aptPicked($event)" formControlName="aptId">
+                <option selected id="selected" value="Choose..">Válasszon..</option>
+                <option *ngFor="let apt of fitAppointments" value="{{apt.id}}">{{apt.date}} | {{apt.start}} - {{apt.end}}</option>
+            </select>
         </div>
-
-        <div class="col-md-6">
-            <p>Idopontok</p>
-            <div name="timepicker" aria-label="Time Picker">
-                <button type="button" class="btn m-2" (click)="timePicked($event)" *ngFor="let each of datetimes"
-                    formControlName="aptId">
-                    {{each.times}} </button>
-            </div>
-        </div>
-
-    </div> -->
-
-    <div class="focus">
-        <ul class="list-group p-3">
-            <li class="list-group-item" *ngFor="let apt of appointments">{{apt.date}} | {{apt.start}} - {{apt.end}}</li>
-        </ul>
     </div>
 
     <hr class="border border-2 opacity-50 border-success">
@@ -115,7 +94,6 @@
                 target="_blank" class="text-reset">Adatkezelési Tájékoztató</a>t.</label>
     </div>
 
-    <!-- TODO: pop up modal for feedback -->
 
     <div class="row my-4">
         <button class="btn" id="submitBtn" type="button" data-bs-toggle="modal" data-bs-target="#confirmModal">
@@ -134,14 +112,16 @@
                     <h4>Szolgáltatás részletei</h4>
                     <p>
                         <strong>Kezelés: </strong>{{pickedService.name}}<br>
-                        <strong>Tipus: </strong>{{pickedType.name}}<br>
-                        <strong>Idotartam: </strong>{{pickedType.duration}}<br>
-                        <strong>Ar: </strong>{{pickedType.price}}
+                        <strong>Típus: </strong>{{pickedType.name}}<br>
+                        <strong>Időtartam: </strong>{{pickedType.duration}}<br>
+                        <strong>Ár: </strong>{{pickedType.price}}
                     </p>
-                    <h4>Időpont</h4>
+                    <h4>Időpont részletei</h4>
                     <p>
-                        <strong>Datum: </strong>{{bookingId}}<br>
-                        <strong>Idopont: </strong>{{aptId}}
+                        <strong>Dátum: </strong>{{pickedApt.date}}<br>
+                        <strong>Időpont kezdete: </strong>{{pickedApt.start}}<br>
+                        <strong>Időpont vége: </strong>{{pickedApt.end}}
+
                     </p>
                     <h4>Személyes adatok</h4>
                     <p>

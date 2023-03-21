@@ -48,6 +48,7 @@ export class ContactComponent implements OnInit {
       },
       error: (err: any) => {
         if (modal !=null) {
+          console.log(err)
           modal.innerHTML = err.message
         }
       }

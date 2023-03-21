@@ -18,17 +18,11 @@ export class FormComponent implements OnInit {
   appointments!: any
   fitAppointments: any[] = []
 
-  datetimes: DateTime[] = []
-
   aptId!: number
   pickedType: any = ''
   pickedService:any = ''
-
-  dates: any[] = []
-  distinctDates: string[] = []
-
+  pickedApt:any = ''
   bookingId!:number
-  bookingData!:any
 
   collectPersonalDetails(): any {
 
@@ -46,7 +40,7 @@ export class FormComponent implements OnInit {
 
     let data = {
       fullName,
-      dob: dob,
+      dob,
       email,
       phone,
       fullAddress
@@ -78,58 +72,26 @@ export class FormComponent implements OnInit {
     });
 
     this.fitAppointments.forEach((apt: any) => {
-      apt.date = apt.date.replaceAll('-', '. ')
-      this.dates.push(apt.date)
-      this.distinctDates = this.dates.filter((n, i) => this.dates.indexOf(n) === i)
     })
   }
 
   servicePicked(event:any) {
     this.pickedService = this.services[event.target.value - 1]
-    console.log(this.pickedService.name);
     
   }
 
   typePicked(event: any) {
 
-    this.dates = []
-    this.datetimes = []
-    this.fitAppointments = [] //reset apts fitting for picked type
-
+    this.fitAppointments = []
     this.pickedType = this.types[event.target.value - 1]
     this.filterApts()
 
-    //lehet hulyeseg de NEM LETT AZ HAHAHA
-
-    this.distinctDates.forEach((date: string) => {
-      let datetime: DateTime = {
-        date: '',
-        times: []
-      }
-      this.fitAppointments.forEach((apt: any) => {
-        let timeStr = `${apt.start} - ${apt.end}`
-        if (date == apt.date) {
-          datetime.date = date
-          datetime.times.push(timeStr)
-        }
-      })
-
-      this.datetimes.push(datetime)
-    })
-
-    console.log(this.datetimes);
-
   }
 
-  datePicked(event: any) {
-
-    event.target.classList.add('active')
-    console.log(event.target.innerHTML);
+  aptPicked(event:any) {
+    this.pickedApt = this.fitAppointments[this.bookingForm.value.aptId]
     
-
   }
-
-  timePicked(event: any) { }
 
   fetchBookingById(id:number) {
     this.api.fetchBookingById(id).subscribe({
@@ -163,13 +125,12 @@ export class FormComponent implements OnInit {
             service_id: target.serviceId,
             type_id: target.typeId,
             client_id: clientId, 
-            appointment_id: 2 //mocked!!
+            appointment_id: target.aptId
           } 
           
           this.api.sendReservation(bookingData).subscribe({
             next: (data:any) => {
               if (data.success) {
-                // we get booking id
                 this.bookingId = data.data.id
                 this.fetchBookingById(this.bookingId)
               }              
@@ -203,6 +164,7 @@ export class FormComponent implements OnInit {
         this.appointments = data.data
 
         this.appointments.forEach((apt: any) => {
+          apt.date = apt.date.replaceAll('-', '. ')
           apt.start = apt.start.substring(0, 5)
           apt.end = apt.end.substring(0, 5)
         })
@@ -246,9 +208,4 @@ export class FormComponent implements OnInit {
     })
   }
 
-}
-
-interface DateTime {
-  date: string,
-  times: string[]
 }
