@@ -42,7 +42,7 @@
     <p>Alább láthatod a foglalható időpontokat a választott szolgáltatásra.
         Kattintással választhatod ki a neked megfelelőt.</p>
 
-    <div class="row focus p-1" id="aptSelector">
+    <!-- <div class="row focus p-1" id="aptSelector">
         <div class="col-md-2">
             <p>Datumok</p>
             <div name="datepicker" aria-label="Date Picker">
@@ -62,6 +62,12 @@
             </div>
         </div>
 
+    </div> -->
+
+    <div class="focus">
+        <ul class="list-group p-3">
+            <li class="list-group-item" *ngFor="let apt of appointments">{{apt.date}} | {{apt.start}} - {{apt.end}}</li>
+        </ul>
     </div>
 
     <hr class="border border-2 opacity-50 border-success">
@@ -112,7 +118,7 @@
     <!-- TODO: pop up modal for feedback -->
 
     <div class="row my-4">
-        <button class="btn" id="submitBtn" data-bs-toggle="modal" data-bs-target="#confirmModal">
+        <button class="btn" id="submitBtn" type="button" data-bs-toggle="modal" data-bs-target="#confirmModal">
             Tovább az áttekintéshez
         </button>
     </div>

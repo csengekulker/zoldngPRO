@@ -134,8 +134,11 @@ export class FormComponent implements OnInit {
   fetchBookingById(id:number) {
     this.api.fetchBookingById(id).subscribe({
       next: (data:any) => {
-        console.log(data);
-        this.bookingData = data.data
+        // console.log(data);
+        if (data.success) {
+          alert("Sikeres foglalás")
+          this.bookingForm.reset()
+        }
         
       },
       error: (err:any) => {

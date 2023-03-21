@@ -29,16 +29,18 @@ export class ServicesComponent implements OnInit {
 
   //TODO: pass desired service details to booking
   // service id type id enough
-  collectServiceDetails(event: any): Object {
-    let serviceId = event.path[7].childNodes[1].childNodes[1].innerHTML
-    let typeId = event.path[3].childNodes[3].innerHTML
+  collectServiceDetails(event: any) {
+    console.log(event.path);
+    
+    // let serviceId = event.path[7].childNodes[1].childNodes[1].innerHTML
+    // let typeId = event.path[3].childNodes[3].innerHTML
 
-    let details = {
-      serviceId: serviceId,
-      typeId: typeId
-    }    
+    // let details = {
+    //   serviceId: serviceId,
+    //   typeId: typeId
+    // }    
 
-    return details
+    // return details
 
   }
 
@@ -48,7 +50,6 @@ export class ServicesComponent implements OnInit {
     this.router.navigate(['/booking'])
 
     console.log(this.selectedService);
-    BookingComponent.assignService(this.selectedService)
 
   }
 
