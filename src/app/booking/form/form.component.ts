@@ -1,6 +1,9 @@
+import { TranslationWidth } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators as V } from '@angular/forms';
+import { EmitterService } from 'src/app/emitter.service';
 import { ApiService } from 'src/app/shared/api.service';
+import { PassService } from 'src/app/shared/pass.service';
 
 @Component({
   selector: 'booking-form',
@@ -11,7 +14,12 @@ export class FormComponent implements OnInit {
 
   constructor(
     private api: ApiService,
+    private pass: PassService,
+    private emitter: EmitterService,
     private form: FormBuilder) { }
+
+  selectService!:any
+  selectType!:any
 
   services!: any; types!: any
   bookingForm!: FormGroup
@@ -23,6 +31,34 @@ export class FormComponent implements OnInit {
   pickedService:any = ''
   pickedApt:any = ''
   bookingId!:number
+
+  autoSelect() {
+    console.log('autoselect fired');
+    
+    // this.pickedType = ''
+    this.pass.currentService.subscribe({
+      next: (sid:number) => {
+        this.selectService = sid
+      },
+      error: (err:any) => {
+        console.log(err);
+        
+      }
+    })
+
+    this.pass.currentType.subscribe({
+      next: (tid:number) => {
+        this.selectType = tid
+        console.log('type id', tid);
+        this.typePicked(tid - 1)
+        
+      },
+      error: (err:any) => {
+        console.log(err);
+        
+      }
+    })
+  }
 
   collectPersonalDetails(): any {
 
@@ -80,16 +116,28 @@ export class FormComponent implements OnInit {
     
   }
 
-  typePicked(event: any) {
+  typePicked(event?: any, id?:number) {    
 
     this.fitAppointments = []
-    this.pickedType = this.types[event.target.value - 1]
+    // console.log('typeid', event.target.value -1);
+    
+    if (event != undefined) {
+      this.pickedType = this.types[event.target.value - 1]
+
+    } else if (id) {
+      console.log(id);
+      this.pickedType = this.types[id]
+      
+    }
     this.filterApts()
 
   }
 
   aptPicked(event:any) {
-    this.pickedApt = this.fitAppointments[this.bookingForm.value.aptId]
+
+    this.pickedApt = this.fitAppointments[this.bookingForm.value.aptId - 1]
+    console.log(this.pickedApt);
+    
     
   }
 
@@ -158,6 +206,11 @@ export class FormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.autoSelect()
+
+    this.emitter.event.subscribe(() => {
+      this.autoSelect()
+    })
 
     this.api.fetchOpenApts().subscribe({
       next: (data: any) => {
@@ -204,7 +257,7 @@ export class FormComponent implements OnInit {
       zipCode: ['', V.required],
       city: ['', V.required],
       address: ['', V.required],
-      accept: [V.requiredTrue]
+      accept: [false, V.requiredTrue]
     })
   }
 

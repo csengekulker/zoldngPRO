@@ -4,3 +4,18 @@
 .list-group-item:hover {
     background-color: rgba(#2b9777, .5);
 }
+
+a {
+    color: #2b9777;
+    border-color: #2b9777;
+}
+
+a:hover {
+    background-color: #2b9777;
+    color: white;
+    border-color: #2b9777;
+}
+
+table, tr, th, td {
+    border: solid 1px black;
+}

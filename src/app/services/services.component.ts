@@ -3,6 +3,8 @@ import { ApiService } from '../shared/api.service';
 import servicesJson from './services.json'
 import { Router } from '@angular/router';
 import { BookingComponent } from '../booking/booking.component';
+import { EmitterService } from '../emitter.service';
+import { PassService } from '../shared/pass.service';
 
 @Component({
   selector: 'app-services',
@@ -10,46 +12,30 @@ import { BookingComponent } from '../booking/booking.component';
   styleUrls: ['./services.component.scss']
 })
 export class ServicesComponent implements OnInit {
-  products!: any
 
   constructor(
     private api: ApiService,
+    private pass: PassService,
+    private emitter: EmitterService,
     private router: Router
   ) { }
 
-  book!:BookingComponent
-
   services!: any // JSON
-  selectedService!: any
-
   fetchedServices !: any
   fetchedTypes!:any
 
-  alttext: string = 'A kép leírása';
-
   //TODO: pass desired service details to booking
-  // service id type id enough
-  collectServiceDetails(event: any) {
-    console.log(event.path);
-    
-    // let serviceId = event.path[7].childNodes[1].childNodes[1].innerHTML
-    // let typeId = event.path[3].childNodes[3].innerHTML
-
-    // let details = {
-    //   serviceId: serviceId,
-    //   typeId: typeId
-    // }    
-
-    // return details
-
-  }
 
   onClick(event: any) {
-    this.selectedService = this.collectServiceDetails(event)
-
+    let sid = event.path[7].id
+    let tid = event.path[3].id
+    
+    this.pass.setService(sid)
+    this.pass.setType(tid)
     this.router.navigate(['/booking'])
 
-    console.log(this.selectedService);
+    //need emitter to fire autoSelect()
+    this.emitter.onButtonClick()
 
   }
 
@@ -62,7 +48,6 @@ export class ServicesComponent implements OnInit {
           for(let i = 0; i < this.fetchedServices.length; i++) {
             this.services[i].id = this.fetchedServices[i].id
             this.services[i].name = this.fetchedServices[i].name
-            
           }
         },
         error: (err:any) => {

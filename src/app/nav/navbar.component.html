@@ -6,8 +6,6 @@
   </ul>
 </div>
 
-<!-- TODO: fix smallscreen navbar toggle -->
-
 <!-- for smallscreen: toggle collapse at 600px -->
 
 <div class="navbar nav sticky-top small">
@@ -21,7 +19,7 @@
   <div class="collapse" id="collapse">
     <ul class="nav justify-content-center col text-center mx-auto ">
       
-        <div class="smallBtn py-2 nav-item fs-5 w-100" *ngFor="let button of buttons">
+        <div data-bs-toggle="collapse" data-bs-target="#collapse" class="smallBtn py-2 nav-item fs-5 w-100" *ngFor="let button of buttons">
           <a class="nav-link text-reset" routerLink="{{button[1]}}">{{button[0]}}</a>
         </div>
       

@@ -6,7 +6,7 @@
         <div class="col-md-3  my-3">
             <h5>Szolgáltatások</h5>
             <div>
-                <select id="chooseService" class="form-select" (change)="servicePicked($event)" formControlName="serviceId">
+                <select [(ngModel)]="selectService" id="chooseService" class="form-select" (change)="servicePicked($event)" formControlName="serviceId">
                     <option selected id="selected" value="Choose..">Válasszon..</option>
                     <option *ngFor="let service of services" value="{{service.id}}">{{service.name}}</option>
                 </select>
@@ -16,7 +16,7 @@
         <div class="col-md-5 my-3">
             <h5>Típusok</h5>
             <div>
-                <select id="chooseType" class="form-select" (change)="typePicked($event)" formControlName="typeId">
+                <select [(ngModel)]="selectType" id="chooseType" class="form-select" (change)="typePicked($event)" formControlName="typeId">
                     <option selected id="selected" value="Choose..">Válasszon..</option>
                     <option *ngFor="let type of types" value="{{type.id}}">{{type.name}}</option>
                 </select>
@@ -88,7 +88,7 @@
     <hr class="border border-2 opacity-50 border-success">
 
     <div class="form-check form-switch">
-        <input type="checkbox" class=" form-check-input form-control" id="accept" formControlName="accept">
+        <input type="checkbox" class=" form-check-input form-control" id="accept" formControlName="accept" >
         <label for="accept">Elolvastam és elfogadom az <a href="/info/docs#terms" target="_blank"
                 class="text-reset">Általános Szerződési Feltételek</a>et és az <a href="/info/docs#privacy"
                 target="_blank" class="text-reset">Adatkezelési Tájékoztató</a>t.</label>

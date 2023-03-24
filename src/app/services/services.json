@@ -2,7 +2,7 @@
   "services": [
     {
       "id": 1,
-      "name": "Svédmasszázs",
+      "name": "",
       "description": [
         "A svédmasszázs egy a nyugati hagyományokon alapuló masszázsfajták közül.Ez a kezelés a legismertebb masszázsterápiák közé tartozik, mert az egész testre kiterjed, az izmok, inak, és ízületek átmasszírozására irányul. Célja a  helyi keringés fokozása. A vérellátás javulása a bőr rugalmasságát is javítja, az izmok vérellátása is fokozódik, ezeken kívül kedvezően hat a légzőközpontra és a vegetatív idegrendszerre is.",
         "A  svédmasszázs egy kifejezetten testet átgyúró, izmokat jól megmozgató, erőteljesebben végzett masszázs. Legelterjedtebb fogásai a gyúró, dörzsölő, simító és rezegtető mozdulatok.",
@@ -19,7 +19,7 @@
     },
     {
       "id": 2,
-      "name": "Sportmasszazs",
+      "name": "",
       "description": [
         "A sportmasszázs az izmok valamilyen fizikai megterhelésre történő felkészítése, teljesítmény-növelés, vagy terhelés utáni regeneráció céljából való alkalmazása  svédmasszázs bizonyos fogásainak alkalmazásával. Minden masszázs eredendően relaxál és energetizál is. Amennyiben a masszőr az előbbit szeretné jobban támogatni, akkor lassabb, lágyabb technikákat alkalmaz hosszabb ideig. Ha pedig az utóbbit, akkor intenzívebb fogásokat végez rövidebb ideig.",
         "Sportmasszázs alkalmával a sok intenzív gyúró, ütögető és rezegtető technika bevetése miatt a masszázs alap hatásai (vérkeringés és anyagcsere serkenése) sokkal nagyobb mértékben jelentkeznek, mint egy sima svédmasszázsnál. Továbbá, mivel a gyúrással szó szerint a normál helyükről kiemelve dolgozzuk át az izmokat, így az izomgörcsöket, izomfeszüléseket is hatékonyabban tudjuk kezelni, aminek köszönhetően a sportmasszázs az egyik legjobb stresszoldó masszázs.",
@@ -32,7 +32,7 @@
     },
     {
       "id": 3,
-      "name": "Talpmasszázs",
+      "name": "",
       "description": [
         "Talpunk az egyik legjobban igénybevett mozgásszervünk, amely szoros kapcsolatban áll a közérzetünkkel, a szellemi teljesítőképességünkkel, illetve szerveink megfelelő működésével.",
         "Biztos Te is észrevetted már, hogy egy hosszú, fárasztó nap után jól esik lerúgni a cipőket, és néhány ropogtató bokakörzéssel fényévekkel jobban érzed magad, vagy ha egy kicsit megnyomkodod a talpad, máris derűsebb hangulatba kerülsz.. Nem véletlen, hiszen minden szervünk idegvégződése a talpunkban összpontosul. Úgyis tekinthetünk rá, mint egy térképére, mivel a jobb és a bal lábunk együttesen igazodik a testünk felépítéséhez.",
@@ -48,7 +48,7 @@
     },
     {
       "id": 4,
-      "name": "Mágnesterápia",
+      "name": "",
       "description": [
         "A mágnesterápiás kezelés egy fizikoterápiás módszer, amely elektromágneses energiát használ a súlyosan károsodott szövetek regenerációjának serkentésére, az öngyógyulási folyamatok támogatására.",
         "Főképp a csontok, ízületek és porcok károsodása esetén segíthet a panaszaid mérséklésében. Csonttörés, csontritkulás, artrózis, reuma, artritisz, sarkantyú, gerincsérv, lumbágó és számos további állapotban javaslom alkalmazását, de kedvező hatású nyiroködéma esetén is.",

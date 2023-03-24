@@ -4,7 +4,7 @@ import { ApiService } from 'src/app/shared/api.service';
 @Component({
   selector: 'app-pricelist',
   templateUrl: './pricelist.component.html',
-  styleUrls: ['./pricelist.component.scss']
+  styleUrls: ['../info.component.scss']
 })
 export class PricelistComponent implements OnInit {
   buttonText :string = " Információk"

@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { BookingComponent } from './booking/booking.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { HomeComponent } from './home/home.component';
-import { CertsComponent } from './info/certs/certs.component';
+// import { CertsComponent } from './info/certs/certs.component';
 import { DocsComponent } from './info/docs/docs.component';
 import { FaqComponent } from './info/faq/faq.component';
 import { InfoComponent } from './info/info.component';
@@ -20,7 +20,7 @@ const routes: Routes = [
   {path: 'info/faq', component: FaqComponent},
   {path: 'info/pricing', component: PricelistComponent},
   {path: 'info/docs', component: DocsComponent},
-  {path: 'info/certs', component: CertsComponent},
+  // {path: 'info/certs', component: CertsComponent},
   {path: '**', component: NotfoundComponent}
 
 ];

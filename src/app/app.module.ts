@@ -20,7 +20,7 @@ import { FaqComponent } from './info/faq/faq.component';
 import { PricelistComponent } from './info/pricelist/pricelist.component';
 import { DocsComponent } from './info/docs/docs.component';
 import { NotfoundComponent } from './notfound/notfound.component';
-import { CertsComponent } from './info/certs/certs.component';
+// import { CertsComponent } from './info/certs/certs.component';
 import { ButtonComponent } from './info/button/button.component';
 import { BookingInfoComponent } from './booking/info/info.component';
 import { FormComponent } from './booking/form/form.component';
@@ -44,7 +44,7 @@ import { FormComponent } from './booking/form/form.component';
     PricelistComponent,
     DocsComponent,
     NotfoundComponent,
-    CertsComponent,
+    // CertsComponent,
     ButtonComponent,
     FormComponent
   ],
