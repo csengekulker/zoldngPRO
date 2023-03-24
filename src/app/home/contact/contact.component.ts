@@ -32,7 +32,7 @@ export class ContactComponent implements OnInit {
 
   onSubmit() {
     let messageData = this.collectMessageDetails()   
-    let modal = document.querySelector('.modal-body') 
+    const modal = document.querySelector('.modal-body') 
 
     this.api.sendMessageDetails(messageData).subscribe({
       next: (data: any) => {
@@ -48,8 +48,16 @@ export class ContactComponent implements OnInit {
       },
       error: (err: any) => {
         if (modal !=null) {
-          console.log(err)
-          modal.innerHTML = err.message
+          let e: keyof typeof err.error.message
+          for (e in err.error.message) {
+            let v = err.error.message[e]
+            console.log(v[0]);
+            modal.innerHTML += (v[0] + '<br>')
+
+            
+          }
+          // console.log(err.error.message)
+          // err.error.message
         }
       }
     })

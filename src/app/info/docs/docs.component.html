@@ -1,6 +1,10 @@
 <div class="container mt-4">
     <info-button></info-button>
 
+    <button type="button" class="btn btn-danger btn-floating btn-lg" id="btn-back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
     <div class="text-center my-4">
         <h2>Dokumentumok</h2>
         <ul class="nav justify-content-center row text-center list-group">
@@ -46,13 +50,11 @@
 
     <div id="privacy">
         <h3>Adatkezelési Tájékoztató</h3>
-        <p>Az oldalon az adataidat kizárólag az időpontfoglalásodat illetve kapcsolatfelvételedet illetően kezeljük.</p>
-        <p>Harmadik fél számára soha nem adjuk ki a személyes adatokat.</p>
-        <p>A lakcímed megadása a kezelés elvégeztét követően a számla kiállítása céljából szükséges.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae fuga accusamus veritatis sed adipisci
-            perspiciatis beatae officiis asperiores, quos ratione labore alias expedita laborum porro. Nisi impedit
-            aspernatur, temporibus veritatis ut totam voluptates vitae asperiores obcaecati, officiis dolorum deserunt
-            perferendis commodi id illo et accusamus? Dolore debitis sit ratione quam?</p>
+        <p>Az oldal üzemeltetője az adatkezelés során alábbi alapelveket követi:</p>
+        <ol>
+            <li *ngFor="let each of docs.privacy">{{each}}</li>
+        </ol>
+
     </div>
 
 </div>

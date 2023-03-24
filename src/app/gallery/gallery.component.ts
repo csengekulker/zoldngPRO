@@ -22,7 +22,7 @@ export class GalleryComponent {
 
   paths2:string[] = [
     'essential-oil.jpg',
-    'glass.jpg',
+    'glass1920.jpg',
     'massage.jpg',
     'oil.jpg',
     'wellness.jpg'

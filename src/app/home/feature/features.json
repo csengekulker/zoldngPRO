@@ -3,8 +3,8 @@
         {
             "title": "Üdvözöllek!",
             "text": "A nevem Kállay Márta Ilona és most úgy szeretnék nektek bemutatkozni mint a Zöldpont Masszázs Stúdió megalkotója. Minden szeretetemet beleadva alkottam meg ezt a kis masszázsstúdiót, itt a X. kerületben, Kőbánya szívében.",
-            "button": "Tanúsítványok",
-            "refPath": "/info/docs",
+            "button": "GYIK",
+            "refPath": "/info/faq",
             "imagePath": "../assets/images/features/welcome.png",
             "alttext": "Welcome",
             "isReversed": false

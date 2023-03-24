@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import docsJson from './docs.json'
 
-let toTop = document.querySelector('#toTop')
-
+// TODO: scroll to top button, long page
 
 @Component({
   selector: 'app-docs',
@@ -11,11 +10,11 @@ let toTop = document.querySelector('#toTop')
 })
 export class DocsComponent implements OnInit {
 
-  buttonText :string = " Információk"
+  docs!: any
 
-  docs!:any
-
-  ngOnInit(): void { 
+  ngOnInit():void {
     this.docs = docsJson
   }
+
+
 }

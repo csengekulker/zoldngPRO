@@ -1,4 +1,3 @@
-import { TranslationWidth } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators as V } from '@angular/forms';
 import { EmitterService } from 'src/app/emitter.service';
@@ -16,20 +15,22 @@ export class FormComponent implements OnInit {
     private api: ApiService,
     private pass: PassService,
     private emitter: EmitterService,
-    private form: FormBuilder) { }
+    private build: FormBuilder) { }
 
   selectService!:any
   selectType!:any
+  selectApt!:any
 
   services!: any; types!: any
-  bookingForm!: FormGroup
+  form!: FormGroup
   appointments!: any
   fitAppointments: any[] = []
 
-  aptId!: number
+  // aptId!: number
+  pickedService: any = ''
   pickedType: any = ''
-  pickedService:any = ''
   pickedApt:any = ''
+
   bookingId!:number
 
   autoSelect() {
@@ -60,9 +61,19 @@ export class FormComponent implements OnInit {
     })
   }
 
+  // collectAddress(e:any) {
+  //   const target = this.form.value
+
+  //   let zipCode: number = target.zipCode!
+  //   let city: string = target.city!
+  //   let address:string = target.address!
+
+  //   this.form.value.fullAddress = `${zipCode} ${city}, ${address}`
+  // }
+
   collectPersonalDetails(): any {
 
-    const target = this.bookingForm.value
+    const target = this.form.value
 
     let fullName: string = target.fullName!
     let dob: string = target.dob!
@@ -72,7 +83,10 @@ export class FormComponent implements OnInit {
     let city: string = target.city!
     let address:string = target.address!
 
-    let fullAddress = `${zipCode} ${city}, ${address}`
+    let fullAddress:string = `${zipCode} ${city}, ${address}`
+    console.log(fullAddress);
+    
+
 
     let data = {
       fullName,
@@ -84,6 +98,8 @@ export class FormComponent implements OnInit {
 
     return data
   }
+
+  // FIXME: a requiredtrue ha igaz csak akkor rakja be a dob-ot a summaryba (??)
 
   filterApts() {
 
@@ -107,19 +123,16 @@ export class FormComponent implements OnInit {
 
     });
 
-    this.fitAppointments.forEach((apt: any) => {
-    })
   }
 
-  servicePicked(event:any) {
-    this.pickedService = this.services[event.target.value - 1]
-    
+  servicePicked(event:any) { 
+    console.log(event.target.value)
+    this.pickedService = this.services[1]
   }
 
   typePicked(event?: any, id?:number) {    
 
     this.fitAppointments = []
-    // console.log('typeid', event.target.value -1);
     
     if (event != undefined) {
       this.pickedType = this.types[event.target.value - 1]
@@ -135,9 +148,8 @@ export class FormComponent implements OnInit {
 
   aptPicked(event:any) {
 
-    this.pickedApt = this.fitAppointments[this.bookingForm.value.aptId - 1]
+    this.pickedApt = this.fitAppointments[this.form.value.aptId - 1]
     console.log(this.pickedApt);
-    
     
   }
 
@@ -147,7 +159,7 @@ export class FormComponent implements OnInit {
         // console.log(data);
         if (data.success) {
           alert("Sikeres foglalás")
-          this.bookingForm.reset()
+          this.form.reset()
         }
         
       },
@@ -159,9 +171,13 @@ export class FormComponent implements OnInit {
   }
 
   onSubmit() { 
-    const target = this.bookingForm.value
+    const target = this.form.value
+    const modal = document.querySelector('.modal-body') 
+
 
     let clientData = this.collectPersonalDetails()
+    console.log(clientData);
+    
 
     this.api.sendClientDetails(clientData).subscribe({
       next: (data: any) => {
@@ -183,14 +199,30 @@ export class FormComponent implements OnInit {
                 this.fetchBookingById(this.bookingId)
               }              
             },
-            error: (err:any) => {
-              console.log(err)
+            error: (err: any) => {
+              if (modal !=null) {
+                // modal.innerHTML = ''
+                let e: keyof typeof err.error.message
+                for (e in err.error.message) {
+                  let v = err.error.message[e]
+                  console.log(v[0]);
+                  // modal.innerHTML += (v[0] + '<br>')
+                }
+              }
             }
           })
         }
       },
       error: (err: any) => {
-        console.log(err)
+        if (modal !=null) {
+          // modal.innerHTML = ''
+          let e: keyof typeof err.error.message
+          for (e in err.error.message) {
+            let v = err.error.message[e]
+            console.log(v[0]);
+            // modal.innerHTML += (v[0] + '<br>')            
+          }
+        }
       }
     })
   }
@@ -246,17 +278,19 @@ export class FormComponent implements OnInit {
       }
     })
 
-    this.bookingForm = this.form.group({
+    // FIXME: date validation
+    this.form = this.build.group({
       serviceId: [V.required],
       typeId: [V.required],
       aptId: [V.required],
       fullName: ['', V.required],
-      dob: ['', V.required],
+      dob: ['', V.required, V.pattern(/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/)],
       email: ['', [V.required, V.email]],
       phone: ['', V.required],
       zipCode: ['', V.required],
       city: ['', V.required],
       address: ['', V.required],
+      fullAddress: ['', V.required],
       accept: [false, V.requiredTrue]
     })
   }

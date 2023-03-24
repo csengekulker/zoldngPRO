@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,6 +24,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { ButtonComponent } from './info/button/button.component';
 import { BookingInfoComponent } from './booking/info/info.component';
 import { FormComponent } from './booking/form/form.component';
+// import { ScrollComponent } from './scroll/scroll.component';
 
 @NgModule({
   declarations: [
@@ -47,12 +48,14 @@ import { FormComponent } from './booking/form/form.component';
     // CertsComponent,
     ButtonComponent,
     FormComponent
+    // ScrollComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

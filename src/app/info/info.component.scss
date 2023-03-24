@@ -1,12 +1,19 @@
 .list-group-item {
     background-color: #f8f9fa;
+    color: #2b9777;
+    font-weight: 300;
 }
 .list-group-item:hover {
-    background-color: rgba(#2b9777, .5);
+    background-color: #2b9777;
+    color: #f8f9fa;
+}
+
+#backBtn {
+    color: #2b9777;
+    border-color: #2b9777;
 }
 
 a {
-    color: #2b9777;
     border-color: #2b9777;
 }
 
@@ -16,6 +23,15 @@ a:hover {
     border-color: #2b9777;
 }
 
+// pricelist
 table, tr, th, td {
     border: solid 1px black;
 }
+
+//totop
+#btn-back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+  }
