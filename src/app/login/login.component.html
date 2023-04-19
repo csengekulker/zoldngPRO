@@ -1,0 +1,16 @@
+<h3>Belépés</h3>
+ 
+<form [formGroup]="loginForm" (submit)="login()">
+    <div class="mb-3">
+      <label for="user" class="form-label">Felhasználónév</label>
+      <input type="text" class="form-control" id="user"
+      formControlName="user">
+ 
+    </div>
+    <div class="mb-3">
+      <label for="pass" class="form-label">Jelszó</label>
+      <input type="password" class="form-control" id="exampleInputPassword1"
+      formControlName="pass">
+    </div>
+    <button type="submit" class="btn btn-primary">Belépés</button>
+  </form>

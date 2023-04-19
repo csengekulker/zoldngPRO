@@ -9,6 +9,13 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
+  fetchClients() {
+    let endpoint = 'clients'
+    let url = environment.apihost + endpoint
+
+    return this.http.get<any>(url)
+  }
+
   fetchApts() {
     let endpoint = 'appointments'
     let url = environment.apihost + endpoint
@@ -94,6 +101,52 @@ export class ApiService {
     };
     
     return this.http.post<any>(url, client, httpOption)
+  }
+
+  addClient(client: any) {
+    let jsonUserData: any = localStorage.getItem('userData');
+    let userData = JSON.parse(jsonUserData);
+ 
+    let httpHeaders = new HttpHeaders()
+    .set('Authorization', `none`);
+ 
+    const httpOptions = {
+      headers: httpHeaders
+    }
+    let endpoint = 'clients';
+    let url = environment.apihost + endpoint;
+ 
+    return this.http.post<any>(url, client, httpOptions);
+  }
+
+  updateClient(client: any) {
+    // let jsonUserData: any = localStorage.getItem('userData');
+    // let userData = JSON.parse(jsonUserData);
+ 
+    let httpHeaders = new HttpHeaders()
+    .set('Authorization', `none`);
+ 
+    const httpOptions = {
+      headers: httpHeaders
+    }
+    let endpoint = 'clients';
+    let url = environment.apihost + endpoint + '/' + client.id;
+ 
+    return this.http.put<any>(url, client, httpOptions);
+  }
+
+  delClient(id: number) {
+    // let jsonUserData: any = localStorage.getItem('userData');
+    // let userData = JSON.parse(jsonUserData);  
+    let httpHeaders = new HttpHeaders()
+    .set('Authorization', `none`);
+    const httpOptions = {
+      headers: httpHeaders
+    }
+ 
+    let endpoint = 'clients';
+    let url = environment.apihost + endpoint + '/' + id;
+    return this.http.delete<any>(url, httpOptions);    
   }
 
 }

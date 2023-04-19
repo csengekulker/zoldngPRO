@@ -24,6 +24,9 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { ButtonComponent } from './info/button/button.component';
 import { BookingInfoComponent } from './booking/info/info.component';
 import { FormComponent } from './booking/form/form.component';
+import { LoginComponent } from './login/login.component';
+import { ClientsComponent } from './admin/clients/clients.component';
+import { MainComponent } from './admin/main/main.component';
 // import { ScrollComponent } from './scroll/scroll.component';
 
 @NgModule({
@@ -47,7 +50,10 @@ import { FormComponent } from './booking/form/form.component';
     NotfoundComponent,
     // CertsComponent,
     ButtonComponent,
-    FormComponent
+    FormComponent,
+    LoginComponent,
+    ClientsComponent,
+    MainComponent
     // ScrollComponent
   ],
   imports: [
