@@ -10,17 +10,19 @@ import { DocsComponent } from './info/docs/docs.component';
 import { FaqComponent } from './info/faq/faq.component';
 import { InfoComponent } from './info/info.component';
 import { PricelistComponent } from './info/pricelist/pricelist.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './admin/login/login.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { ServicesComponent } from './services/services.component';
 import { BookingsComponent } from './admin/bookings/bookings.component';
+import { AppointmentsComponent } from './admin/appointments/appointments.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'int', component: MainComponent,
     children: [
       {path: 'clients', component: ClientsComponent},
-      {path: 'bookings', component: BookingsComponent}
+      {path: 'bookings', component: BookingsComponent},
+      {path: 'appointments', component: AppointmentsComponent}
     ]
   },
   {path: '', component: HomeComponent,

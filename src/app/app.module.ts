@@ -20,17 +20,17 @@ import { FaqComponent } from './info/faq/faq.component';
 import { PricelistComponent } from './info/pricelist/pricelist.component';
 import { DocsComponent } from './info/docs/docs.component';
 import { NotfoundComponent } from './notfound/notfound.component';
-// import { CertsComponent } from './info/certs/certs.component';
 import { ButtonComponent } from './info/button/button.component';
 import { BookingInfoComponent } from './booking/info/info.component';
 import { FormComponent } from './booking/form/form.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './admin/login/login.component';
 import { ClientsComponent } from './admin/clients/clients.component';
 import { MainComponent } from './admin/main/main.component';
 import { BlogComponent } from './blog/blog.component';
 import { EditmodalComponent } from './core/editmodal/editmodal.component';
 import { BookingsComponent } from './admin/bookings/bookings.component';
-// import { ScrollComponent } from './scroll/scroll.component';
+import { SidebarComponent } from './admin/main/sidebar/sidebar.component';
+import { AppointmentsComponent } from './admin/appointments/appointments.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +51,6 @@ import { BookingsComponent } from './admin/bookings/bookings.component';
     PricelistComponent,
     DocsComponent,
     NotfoundComponent,
-    // CertsComponent,
     ButtonComponent,
     FormComponent,
     LoginComponent,
@@ -59,8 +58,9 @@ import { BookingsComponent } from './admin/bookings/bookings.component';
     MainComponent,
     BlogComponent,
     EditmodalComponent,
-    BookingsComponent
-    // ScrollComponent
+    BookingsComponent,
+    SidebarComponent,
+    AppointmentsComponent
   ],
   imports: [
     BrowserModule,
