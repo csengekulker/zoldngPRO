@@ -1,0 +1,21 @@
+<section class="bookings">
+    <h2>Foglalasok</h2>
+    <hr class="border border-2 opacity-50 border-success">
+
+    <table class="table table-hover">
+        <thead>
+            <th>Id</th>
+            <th>Vendeg</th>
+            <th>Masszazs</th>
+            <th>Tipus</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let book of bookings">
+                <td>{{book.id}}</td>
+                <td>{{book.client_id}}</td>
+                <td>{{book.service_id}}</td>
+                <td>{{book.type_id}}</td>
+            </tr>
+        </tbody>
+    </table>
+</section>

@@ -9,6 +9,13 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
+  fetchBookings() {
+    let endpoint = 'bookings'
+    let url = environment.apihost + endpoint
+
+    return this.http.get<any>(url)
+  }
+
   fetchClients() {
     let endpoint = 'clients'
     let url = environment.apihost + endpoint

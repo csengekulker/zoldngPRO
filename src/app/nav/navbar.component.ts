@@ -31,6 +31,10 @@ export class NavigationComponent implements OnInit {
       [
         'Gallery',
         '/gallery'
+      ],
+      [
+        'Blog',
+        '/blog'
       ]
     ]
   }

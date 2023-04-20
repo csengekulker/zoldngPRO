@@ -27,6 +27,9 @@ import { FormComponent } from './booking/form/form.component';
 import { LoginComponent } from './login/login.component';
 import { ClientsComponent } from './admin/clients/clients.component';
 import { MainComponent } from './admin/main/main.component';
+import { BlogComponent } from './blog/blog.component';
+import { EditmodalComponent } from './core/editmodal/editmodal.component';
+import { BookingsComponent } from './admin/bookings/bookings.component';
 // import { ScrollComponent } from './scroll/scroll.component';
 
 @NgModule({
@@ -53,7 +56,10 @@ import { MainComponent } from './admin/main/main.component';
     FormComponent,
     LoginComponent,
     ClientsComponent,
-    MainComponent
+    MainComponent,
+    BlogComponent,
+    EditmodalComponent,
+    BookingsComponent
     // ScrollComponent
   ],
   imports: [
