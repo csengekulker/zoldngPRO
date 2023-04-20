@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ClientsComponent } from './admin/clients/clients.component';
 import { MainComponent } from './admin/main/main.component';
-
+import { BlogComponent } from './blog/blog.component';
 import { BookingComponent } from './booking/booking.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { HomeComponent } from './home/home.component';
@@ -13,20 +13,33 @@ import { PricelistComponent } from './info/pricelist/pricelist.component';
 import { LoginComponent } from './login/login.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { ServicesComponent } from './services/services.component';
+import { BookingsComponent } from './admin/bookings/bookings.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
-  {path: 'int/clients', component: ClientsComponent},
-  {path: 'int', component: MainComponent},
-
-  {path: '', component: HomeComponent},
+  {path: 'int', component: MainComponent,
+    children: [
+      {path: 'clients', component: ClientsComponent},
+      {path: 'bookings', component: BookingsComponent}
+    ]
+  },
+  {path: '', component: HomeComponent,
+    children: [
+      
+    ]
+  },
   {path: 'services', component: ServicesComponent},
   {path: 'booking', component: BookingComponent, data: {selectedService: null}},
   {path: 'gallery', component: GalleryComponent},
-  {path: 'info', component: InfoComponent},
-  {path: 'info/faq', component: FaqComponent},
-  {path: 'info/pricing', component: PricelistComponent},
-  {path: 'info/docs', component: DocsComponent},
+  {path: 'blog', component: BlogComponent},
+  {path: 'info', component: InfoComponent,
+    children: [
+      {path: 'faq', component: FaqComponent},
+      {path: 'pricing', component: PricelistComponent},
+      {path: 'docs', component: DocsComponent},
+    ]
+  },
+
   {path: '**', component: NotfoundComponent}
 
 ];
