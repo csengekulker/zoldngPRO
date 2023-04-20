@@ -9,9 +9,9 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-    login(user: string, pass: string) {
+    login(email: string, pass: string) {
     const authData = {
-      name: user,
+      email: email,
       password: pass
     }
     let httpHeaders = new HttpHeaders();

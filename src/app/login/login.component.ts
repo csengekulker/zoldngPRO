@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators as V } from '@angular/forms';
 import { AuthService } from '../shared/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,21 +14,23 @@ export class LoginComponent implements OnInit {
  
   constructor(
     private auth: AuthService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
       ) { }
  
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      user: ['', [V.required]],
+      email: ['', [V.required]],
       pass: ['', [V.required]]
     });
   }
   login() {
-    let user = this.loginForm.value.user;
+    let email = this.loginForm.value.email;
     let pass = this.loginForm.value.pass;
-    this.auth.login(user, pass).subscribe({
+    this.auth.login(email, pass).subscribe({
       next: data => {
         localStorage.setItem('userData', JSON.stringify(data));
+        this.router.navigate(['/int'])
       },
       error: err => {
         console.log(err);
