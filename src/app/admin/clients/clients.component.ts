@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ApiService } from 'src/app/shared/api.service';
+import { ClientApiService } from 'src/app/shared/api/client/clientApi.service';
 
 @Component({
   selector: 'admin-clients',
@@ -8,7 +8,7 @@ import { ApiService } from 'src/app/shared/api.service';
   styleUrls: ['./clients.component.scss']
 })
 export class ClientsComponent implements OnInit {
-  constructor(private api: ApiService, private build: FormBuilder) {}
+  constructor(private api: ClientApiService, private build: FormBuilder) {}
   clients!:any
   clientForm!:FormGroup
   editForm !: FormGroup;
