@@ -1,9 +1,19 @@
-<div class="navbar sticky-top big">
-    <ul class="nav justify-content-center col text-center mx-auto ">
-        <button class="btn nav-item col-md-2 fs-5 rounded mx-1" >
-          <a class="nav-link text-reset" routerLink="/int/clients">vendegek</a>
-        </button>
-    </ul>
+<section class="main">
+  <h1>ZP ADMIN</h1>
+
+  <hr class="border border-2 opacity-50 border-success">
+
+  <div class="row">
+    <div class="col-md-2">
+
+      <a role="button" class="nav-link text-reset btn btn-danger fs-5 rounded mx-1 " routerLink="/int/clients">vendegek</a>
+      <a role="button" class="nav-link text-reset btn fs-5 rounded mx-1 " routerLink="/int/bookings">Foglalasok</a>
+    </div>
+
+    <div class="col-md-10">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 
-  <router-outlet></router-outlet>
+</section>
+

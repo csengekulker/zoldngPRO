@@ -1,81 +1,91 @@
-<form [formGroup]="clientForm" (submit)="addClient()">
-    <div>
-        <label for="name">Név</label>
-        <input type="text" id="name" formControlName="fullName">
-    </div>
-    <div>
-        <label for="city">dob</label>
-        <input type="text" id="city" formControlName="dob">
-    </div>
-    <div>
-        <label for="salary">mail</label>
-        <input type="text" formControlName="email">
-    </div>
-    <div>
-        <label for="salary">tel</label>
-        <input type="text" formControlName="phone">
-    </div>
-    <div>
-        <label for="salary">cim</label>
-        <input type="text" formControlName="fullAddress">
-    </div>
- 
-    <button type="submit">Mentés</button>
-</form>
+<div class="container">
 
-<div *ngIf="editPanel">
-    <form [formGroup]="editForm" (submit)="updateClient()">
+    <h2>Vendégek</h2>
+    <hr class="border border-2 opacity-50 border-success">
+
+    <form [formGroup]="clientForm" (submit)="addClient()">
         <div>
-            <label for="id">Id</label>
-            <input type="text" id="id" formControlName="id">
+            <label for="name">Teljes név</label>
+            <input class="form-control" type="text" id="name" formControlName="fullName">
         </div>
         <div>
-            <label for="name">Név</label>
-            <input type="text" id="name" formControlName="fullName">
+            <label for="city">Születési idő</label>
+            <input class="form-control" type="text" id="city" formControlName="dob">
         </div>
         <div>
-            <label for="city">dob</label>
-            <input type="text" id="city" formControlName="dob">
+            <label for="salary">E-mail cím</label>
+            <input class="form-control" type="text" formControlName="email">
         </div>
         <div>
-            <label for="salary">mail</label>
-            <input type="text" formControlName="email">
+            <label for="salary">Telefon</label>
+            <input class="form-control" type="text" formControlName="phone">
         </div>
         <div>
-            <label for="salary">tel</label>
-            <input type="text" formControlName="phone">
+            <label for="salary">Lakcím</label>
+            <input class="form-control" type="text" formControlName="fullAddress">
         </div>
-        <div>
-            <label for="salary">cim</label>
-            <input type="text" formControlName="fullAddress">
-        </div>
-     
-        <button type="submit">Mentés</button>
+    
+        <button class="btn btn-primary" type="submit">Mentés</button>
     </form>
+    
+    <div *ngIf="editPanel">
+        <form [formGroup]="editForm" (submit)="updateClient()">
+            <div>
+                <label for="id">Id</label>
+                <input type="text" id="id" formControlName="id">
+            </div>
+            <div>
+                <label for="name">Név</label>
+                <input type="text" id="name" formControlName="fullName">
+            </div>
+            <div>
+                <label for="city">dob</label>
+                <input type="text" id="city" formControlName="dob">
+            </div>
+            <div>
+                <label for="salary">mail</label>
+                <input type="text" formControlName="email">
+            </div>
+            <div>
+                <label for="salary">tel</label>
+                <input type="text" formControlName="phone">
+            </div>
+            <div>
+                <label for="salary">cim</label>
+                <input type="text" formControlName="fullAddress">
+            </div>
+    
+            <button type="submit">Mentés</button>
+        </form>
+    </div>
+    
+    <table class="table table-hover">
+        <thead>
+            <th>Id</th>
+            <th>Név</th>
+            <th>Születési idő</th>
+            <th>E-mail cím</th>
+            <th>Telefon</th>
+            <th>Lakcím</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let client of clients">
+                <td>{{ client.id }}</td>
+                <td>{{ client.fullName }}</td>
+                <td>{{ client.dob }}</td>
+                <td>{{ client.email }}</td>
+                <td>{{ client.phone }}</td>
+                <td>{{ client.fullAddress }}</td>
+                <!-- TODO: modal window for editing -->
+                <td>
+                    <button class="btn btn-warning" (click)="showEdit(client)">Szerkesztés</button>
+                </td>
+                <!-- TODO: confirm deletion modal-->
+                <td>
+                    <button class="btn btn-danger" (click)="delClient(client)">Törlés</button>
+                </td>
+    
+            </tr>
+        </tbody>
+    </table>
 </div>
-
-<table>
-    <thead>
-        <th>Id</th>
-        <th>Név</th>
-        <th>Település</th>
-        <th>Fizetés</th>
-    </thead>
-    <tbody>
-        <tr *ngFor="let client of clients">
-            <td>{{ client.id }}</td>
-            <td>{{ client.fullName }}</td>
-            <td>{{ client.dob }}</td>
-            <td>{{ client.email }}</td>
-            <td>{{ client.phone }}</td>
-            <td>{{ client.fullAddress }}</td>
-
-            <td>
-                <button (click)="delClient(client)">Törlés</button>
-            </td>
-            <td>
-                <button (click)="showEdit(client)">Szerkesztés</button>
-            </td>
-        </tr>
-    </tbody>
-</table>

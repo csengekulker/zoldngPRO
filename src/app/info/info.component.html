@@ -1,16 +1,17 @@
 <div class="container my-4">
   <h1>Információk</h1>
 
-  <p>Az alábbi linkeket követve további hasznos információkat, dokumentumokat, felmerülő kérdéseidre válaszokat találhatsz. <br> Ha ezután is marad amit megkérdeznél, kérlek vedd fel velem a kapcsolatot. </p>
-
-  <div class="list-group col-md-4">
-    <a href="/info/faq" class="list-group-item list-group-item-action">Gyakran Ismételt Kérdések</a>
-    <a href="/info/pricing" class="list-group-item list-group-item-action">Árlista</a>
-    <a href="/info/docs" class="list-group-item list-group-item-action">Dokumentumok</a>
-    <a href="/info/certs" class="list-group-item list-group-item-action">Tanúsítványok</a>
-
+  <div class="row">
+    <div class="list-group col-md-4">
+      <a href="info/faq" class="list-group-item list-group-item-action">Gyakran Ismételt Kérdések</a>
+      <a href="/info/pricing" class="list-group-item list-group-item-action">Árlista</a>
+      <a href="/info/docs" class="list-group-item list-group-item-action">Dokumentumok</a>
+      <a href="/info/certs" class="list-group-item list-group-item-action">Tanúsítványok</a>
+    </div>
+    <div class="col-md-8">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 
-  <router-outlet></router-outlet>
 
 </div>
