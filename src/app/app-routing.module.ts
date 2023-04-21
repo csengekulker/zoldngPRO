@@ -15,6 +15,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { ServicesComponent } from './services/services.component';
 import { BookingsComponent } from './admin/bookings/bookings.component';
 import { AppointmentsComponent } from './admin/appointments/appointments.component';
+import { MessagesComponent } from './admin/messages/messages.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -22,7 +23,8 @@ const routes: Routes = [
     children: [
       {path: 'clients', component: ClientsComponent},
       {path: 'bookings', component: BookingsComponent},
-      {path: 'appointments', component: AppointmentsComponent}
+      {path: 'appointments', component: AppointmentsComponent},
+      {path: 'messages', component: MessagesComponent}
     ]
   },
   {path: '', component: HomeComponent,

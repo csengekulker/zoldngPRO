@@ -31,6 +31,9 @@ import { EditmodalComponent } from './core/editmodal/editmodal.component';
 import { BookingsComponent } from './admin/bookings/bookings.component';
 import { SidebarComponent } from './admin/main/sidebar/sidebar.component';
 import { AppointmentsComponent } from './admin/appointments/appointments.component';
+import { MessagesComponent } from './admin/messages/messages.component';
+import { BookingfilterPipe } from './shared/pipe/bookingfilter.pipe';
+import { ClientfilterPipe } from './shared/pipe/clientfilter.pipe';
 
 @NgModule({
   declarations: [
@@ -60,7 +63,10 @@ import { AppointmentsComponent } from './admin/appointments/appointments.compone
     EditmodalComponent,
     BookingsComponent,
     SidebarComponent,
-    AppointmentsComponent
+    AppointmentsComponent,
+    MessagesComponent,
+    BookingfilterPipe,
+    ClientfilterPipe
   ],
   imports: [
     BrowserModule,

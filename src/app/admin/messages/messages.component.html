@@ -1,0 +1,26 @@
+<section class="messages">
+    <h3>Inbox</h3>
+
+    <hr class="border border-2 opacity-50 border-success">
+
+    <div class="inbox">
+
+        <div 
+        *ngFor="let each of messages"
+        class="card m-2" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">{{each.name}}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">{{each.email}}</h6>
+              <p class="card-text">{{each.body}}</p>
+              <div class="actions col justify-content-between">
+                <button class="btn">valasz</button>
+                <button class="btn btn-danger">valasz</button>
+              </div>
+          
+
+            </div>
+          </div>
+
+    </div>
+
+</section>
