@@ -12,28 +12,45 @@ export class ClientsComponent implements OnInit {
   clients!:any
   clientForm!:FormGroup
   editForm !: FormGroup;
+  keyword!:string
 
   editPanel: boolean = false;
 
+  search(key: string): void {
+    this.clients = this.clients.filter((val:any) =>
+      val.fullName.toLowerCase().includes(key)
+    );
+  }
+
+  fetchClients() {
+    this.api.fetchClients().subscribe({
+      next: (data:any) => {
+        console.log(data);
+        this.clients = data.data
+      },
+      error: (e:any) => console.log(e)
+    })
+  }
 
   addClient() {
+    // TODO: validate on backend, then load errors in modal
     let client = {
       fullName: this.clientForm.value.fullName,
       dob: this.clientForm.value.dob,
       email: this.clientForm.value.email,
       phone: this.clientForm.value.phone,
       fullAddress: this.clientForm.value.fullAddress,
-
-
     }
  
     this.api.addClient(client).subscribe({
       next: res => {
         console.log(res)
-        this.clients.push(res);
+        // this.clients.push(res.data);
+        this.fetchClients()
       }
     });
   }
+
   updateClient() {
     let client = {
       id: this.editForm.value.id,
@@ -42,14 +59,13 @@ export class ClientsComponent implements OnInit {
       email: this.editForm.value.email,
       phone: this.editForm.value.phone,
       fullAddress: this.editForm.value.fullAddress
-
-
     }
+
     this.api.updateClient(client).subscribe({
       next: res => {
         console.log(res);
         this.editPanel = false;
-        this.api.fetchClients();
+        this.fetchClients();
       }      
     });    
   }
@@ -80,17 +96,7 @@ export class ClientsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      this.api.fetchClients().subscribe({
-        next: (data:any) => {
-          console.log(data);
-          this.clients = data.data
-          
-        },
-        error: (e:any) => {
-          console.log(e);
-          
-        }
-      })
+    this.fetchClients()
 
       this.clientForm = this.build.group({
         fullName: [''],

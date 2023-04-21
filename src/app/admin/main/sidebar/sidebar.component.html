@@ -1,7 +1,9 @@
 <div>
-    <a 
-    *ngFor="let each of menu"
-    role="button" 
-    class="nav-link text-reset btn fs-5 rounded mx-1 " 
-    routerLink="/int/{{each.ref}}">{{each.text}}</a>
+    <div class="btn" *ngFor="let each of menu">
+        <a
+        class="btn nav-link text-reset btn fs-5 rounded mx-1 "
+        routerLink="/int/{{each.ref}}">
+        {{each.text}}
+    </a>
+    </div>
 </div>

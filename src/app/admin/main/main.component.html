@@ -1,9 +1,13 @@
 <section class="main">
-  <h1>ZP ADMIN</h1>
+  <div class="p-3">
+    <h1>ZP ADMIN</h1>
 
-  <hr class="border border-2 opacity-50 border-success">
+    <button class="btn" (click)="requestLogout()">Kijelentkezes</button>
+  </div>
 
-  <div class="row">
+  <hr class="border border-2 opacity-50 border-success mt-0">
+
+  <div class="row container">
 
     <div class="col-md-2">
       <app-sidebar></app-sidebar>
@@ -11,7 +15,7 @@
     </div>
 
 
-    <div class="col-md-10">
+    <div class="col-md-8">
       <router-outlet></router-outlet>
     </div>
   </div>

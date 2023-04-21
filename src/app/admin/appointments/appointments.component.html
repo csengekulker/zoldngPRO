@@ -2,6 +2,15 @@
     <h2>Idopontok</h2>
     <hr class="border border-2 opacity-50 border-success">
 
+    <div class="btn-group">
+        <button class="btn">Bevitel</button>
+        <button class="btn">Naptar mod</button>
+
+    </div>
+
+    <hr class="border border-2 opacity-50 border-success">
+
+
     <table class="table table-hover">
         <thead>
             <th>Id</th>
@@ -10,11 +19,14 @@
             <th>Veg</th>
         </thead>
         <tbody>
-            <tr *ngFor="let apt of appointments">
+            <tr
+            [ngClass]="apt.isOpen ? '' : 'bg-dark'"
+            *ngFor="let apt of appointments">
                 <td>{{apt.id}}</td>
                 <td>{{apt.date}}</td>
                 <td>{{apt.start}}</td>
                 <td>{{apt.end}}</td>
+                
             </tr>
         </tbody>
     </table>

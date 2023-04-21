@@ -11,6 +11,7 @@ export class SidebarComponent {
     {ref: 'clients', text: 'Vendegek' },
     {ref: 'bookings', text: 'Foglalasok'},
     {ref: 'appointments', text: 'Idopontok'},
+    {ref: 'messages', text: 'Uzenetek'},
     {ref: 'services', text: 'Masszazsok'},
     {ref: 'types', text: 'Tipusok'}
   ]
