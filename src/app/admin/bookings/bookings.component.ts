@@ -11,6 +11,8 @@ import { ClientApiService } from 'src/app/shared/api/client/clientApi.service';
 export class BookingsComponent implements OnInit {
 
   bookings!:any
+  approved!:any
+  status!:boolean
 
   constructor(
     private api: BookingApiService, 
@@ -18,6 +20,24 @@ export class BookingsComponent implements OnInit {
     // TODO: implement service and typeapi
     private generalApi: ApiService
   ) { }
+
+  filterBookings(isApproved: boolean) {
+  }
+
+  approve(id:number) {
+    this.api.approveBooking(id).subscribe({
+      next: (data:any) => {
+        console.log('approved')
+      }
+    })
+  }
+
+
+  loadClient(id:number) {
+    // TODO: in modal, load details
+    console.log(id);
+    
+  }
 
   fetchBookings() {
     this.api.fetchBookings().subscribe({
@@ -41,7 +61,11 @@ export class BookingsComponent implements OnInit {
   }
 
   ngOnInit():void {
+
     this.fetchBookings()
+
+    console.log(this.bookings);
+    
 
   }
 }

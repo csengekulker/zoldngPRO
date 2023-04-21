@@ -32,7 +32,14 @@ export class BookingApiService {
     }
 
     approveBooking(id: number) {
+        let endpoint = 'bookings/approve/' + id
+        let url = env.apihost + endpoint
+        const httpOptions = {
+            headers: new HttpHeaders()
+        }
 
+
+        return this.http.put(url, httpOptions)
     }
 
     updateBookingDetails(id: number) {

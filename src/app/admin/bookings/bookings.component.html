@@ -2,19 +2,41 @@
     <h2>Foglalasok</h2>
     <hr class="border border-2 opacity-50 border-success">
 
-    <table class="table table-hover">
+    <div class="filter d-flex">
+        <button class="btn" id="approved" (click)="filterBookings(true)">approved</button>
+        <button class="btn">not approved</button>
+        <input [(ngModel)]="status">
+    </div>
+
+    <hr class="border border-2 opacity-50 border-success">
+
+
+    <table class="table table-hover align-middle">
         <thead>
             <th>Id</th>
             <th>Vendeg</th>
+
+            <th>Idopont</th>
             <th>Masszazs</th>
             <th>Tipus</th>
         </thead>
         <tbody>
-            <tr *ngFor="let book of bookings">
+            <tr
+            class="w-100"
+            *ngFor="let book of bookings | bookingfilter: status" 
+            [ngClass]="book.isApproved ? 'bg-success' : 'bg-warning'" >
                 <td>{{book.id}}</td>
-                <td>{{book.client}}</td>
+                <td>
+                    <a (click)="loadClient(book.client_id)" >{{book.client}}</a>
+                </td>
+             
+                <td>{{book.appointment_id}}</td>
                 <td>{{book.service}}</td>
                 <td>{{book.type}}</td>
+                
+                <td>
+                    <button *ngIf="!book.isApproved" (click)="approve(book.id)" class="btn btn-secondary btn-sm my-0">Approve</button>
+                </td>
             </tr>
         </tbody>
     </table>
