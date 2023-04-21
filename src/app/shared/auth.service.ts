@@ -23,4 +23,20 @@ export class AuthService {
     let url = environment.apihost + endpoint;
     return this.http.post<any>(url, authData, httpOptions);
   }
+
+  isLoggedIn() {
+    if (localStorage.getItem('currentUser') === null) {
+      return false;
+    }    
+    let data:any = localStorage.getItem('currentUser');
+    let currentUser = JSON.parse(data);
+    let token = currentUser.token;
+    return token;
+  }
+
+  logout() {
+
+  }
+
+
 }
