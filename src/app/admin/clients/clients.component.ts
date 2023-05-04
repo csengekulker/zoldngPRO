@@ -47,6 +47,10 @@ export class ClientsComponent implements OnInit {
         console.log(res)
         // this.clients.push(res.data);
         this.fetchClients()
+      },
+      error: (e:any) => {
+        console.log(e.error.message);
+        
       }
     });
   }

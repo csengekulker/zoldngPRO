@@ -15,6 +15,11 @@ export class AppointmentsComponent implements OnInit {
       this.api.fetchApts().subscribe({
         next: (data:any) => {
           console.log(data.data);
+          data.data.forEach((row:any) => {
+            row.date = row.date.replaceAll('-', '. ')
+            row.start = row.start.slice(0, 5)
+            row.end = row.end.slice(0, 5)
+          });
           
           this.appointments = data.data
         },
