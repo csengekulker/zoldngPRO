@@ -16,7 +16,7 @@ export class MessageApiService {
     }
 
     fetchMessageById(id: number) {
-        let endpoint = 'clients/' + id
+        let endpoint = 'messages/' + id
         let url = env.apihost + endpoint
 
         return this.http.get<any>(url)

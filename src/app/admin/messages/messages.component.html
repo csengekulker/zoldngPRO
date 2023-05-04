@@ -7,20 +7,58 @@
 
         <div 
         *ngFor="let each of messages"
-        class="card m-2" style="width: 18rem;">
+        class="card m-2" style="flex-direction: row;">
             <div class="card-body">
               <h5 class="card-title">{{each.name}}</h5>
-              <h6 class="card-subtitle mb-2 text-muted">{{each.email}}</h6>
-              <p class="card-text">{{each.body}}</p>
-              <div class="actions col justify-content-between">
-                <button class="btn">valasz</button>
-                <button class="btn btn-danger">valasz</button>
-              </div>
-          
+              <h6 class="card-subtitle mb-2 text-muted"><i>{{each.email}}</i></h6>
+              <p>Targy: <i>{{each.subject}}</i></p>
+              <p class="card-text">
+                
+                {{each.short}}
+                <span id="dots{{each.id}}">...</span>
+                <span id="more{{each.id}}">{{each.body}}</span>
+                <a (click)="expand(each.id)" id="toggle{{each.id}}" role="button" class="link-primary" >More</a>
+              </p>
 
+              <div class="actions">
+                <button 
+                (click)="fetchMessageById(each.id)"
+                class="btn btn-outline-secondary" 
+                data-bs-toggle="modal" 
+                data-bs-target="#replyModal">Válasz</button>
+                <button 
+                class="btn btn-outline-danger"
+                data-bs-toggle="modal"
+                data-bs-target="#confirmModal"
+                >Törlés</button>
+              </div>
             </div>
           </div>
 
     </div>
 
 </section>
+
+
+<!-- replyModal -->
+<div class="modal fade" id="replyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Reply to <b>{{sender.name}}</b></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <section class="details">
+          <input disabled type="text" class="form-control my-2" value="To: {{sender.email}}">
+          <input type="text" class="form-control my-2" value="RE: {{sender.subject}}">
+          <textarea id="message" class="form-control" cols="20" rows="10"></textarea>
+        </section>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
