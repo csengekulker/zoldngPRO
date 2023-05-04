@@ -8,11 +8,11 @@ import { Component } from '@angular/core';
 export class SidebarComponent {
 
   menu = [
-    {ref: 'clients', text: 'Vendegek' },
-    {ref: 'bookings', text: 'Foglalasok'},
-    {ref: 'appointments', text: 'Idopontok'},
-    {ref: 'messages', text: 'Uzenetek'},
-    {ref: 'services', text: 'Masszazsok'},
+    {ref: 'clients', text: 'Vendéglista' },
+    {ref: 'bookings', text: 'Foglalások'},
+    {ref: 'appointments', text: 'Időpontok'},
+    {ref: 'messages', text: 'Üzenetek'},
+    {ref: 'services', text: 'Masszázsok'},
     {ref: 'types', text: 'Tipusok'}
   ]
 }

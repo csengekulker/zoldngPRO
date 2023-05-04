@@ -1,32 +1,29 @@
 <section class="appointments">
-    <h2>Idopontok</h2>
+    <h2>Időpontok</h2>
     <hr class="border border-2 opacity-50 border-success">
 
     <div class="btn-group">
-        <button class="btn">Bevitel</button>
-        <button class="btn">Naptar mod</button>
+        <button class="btn action">Bevitel</button>
+        <button class="btn action">Naptar mod</button>
+        <button class="btn action">Lista mod</button>
 
     </div>
 
     <hr class="border border-2 opacity-50 border-success">
 
-
     <table class="table table-hover">
         <thead>
-            <th>Id</th>
-            <th>Datum</th>
-            <th>Kezdet</th>
-            <th>Veg</th>
+            <th>#</th>
+            <th>Dátum</th>
+            <th>Időtartam</th>
         </thead>
         <tbody>
             <tr
-            [ngClass]="apt.isOpen ? '' : 'bg-dark'"
+            [ngClass]="apt.isOpen ? 'bg-success' : 'bg-dark'"
             *ngFor="let apt of appointments">
                 <td>{{apt.id}}</td>
                 <td>{{apt.date}}</td>
-                <td>{{apt.start}}</td>
-                <td>{{apt.end}}</td>
-                
+                <td>{{apt.start}} - {{apt.end}}</td>                
             </tr>
         </tbody>
     </table>
