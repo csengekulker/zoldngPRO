@@ -16,6 +16,7 @@ import { ServicesComponent } from './services/services.component';
 import { BookingsComponent } from './admin/bookings/bookings.component';
 import { AppointmentsComponent } from './admin/appointments/appointments.component';
 import { MessagesComponent } from './admin/messages/messages.component';
+import { AuthGuard } from './shared/auth/auth.guard';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -25,7 +26,8 @@ const routes: Routes = [
       {path: 'bookings', component: BookingsComponent},
       {path: 'appointments', component: AppointmentsComponent},
       {path: 'messages', component: MessagesComponent}
-    ]
+    ],
+    canActivate: [AuthGuard]
   },
   {path: '', component: HomeComponent,
     children: [

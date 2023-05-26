@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { AuthService } from 'src/app/shared/auth.service';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/shared/auth/auth.service';
 
 @Component({
   selector: 'app-main',
@@ -8,9 +9,10 @@ import { AuthService } from 'src/app/shared/auth.service';
 })
 export class MainComponent {
 
-  constructor(private auth: AuthService) {}
+  constructor(private auth: AuthService, private router: Router) {}
 
-  requestLogout() {
+  requestLogout() {    
+    this.auth.logout()
 
   }
 }
