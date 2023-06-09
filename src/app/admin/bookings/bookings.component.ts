@@ -8,7 +8,7 @@ import { ClientApiService } from 'src/app/shared/api/client/clientApi.service';
   templateUrl: './bookings.component.html',
   styleUrls: ['./bookings.component.scss']
 })
-export class BookingsComponent implements OnInit {
+export default class BookingsComponent implements OnInit {
 
   bookings!:any
   approved!:any

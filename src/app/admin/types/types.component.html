@@ -1,0 +1,21 @@
+<section class="bookings">
+    <h2>Szolgaltatasok</h2>
+    <hr class="border border-2 opacity-50 border-success">
+
+    <table class="table table-hover align-middle">
+        <thead>
+            <th>#</th>
+            <th>Nev</th>
+
+        </thead>
+        <tbody>
+            <tr
+            class="w-100"
+            *ngFor="let type of types" 
+            >
+                <td>{{type.id}}</td>
+                <td>{{type.name}}</td>
+            </tr>
+        </tbody>
+    </table>
+</section>

@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Message } from 'src/app/models/Message';
 import { environment as env } from 'src/environments/environment';
 
 @Injectable({
@@ -19,7 +20,7 @@ export class MessageApiService {
         let endpoint = 'messages/' + id
         let url = env.apihost + endpoint
 
-        return this.http.get<any>(url)
+        return this.http.get<Message>(url)
     }
 
     sendReplyEmail() { }

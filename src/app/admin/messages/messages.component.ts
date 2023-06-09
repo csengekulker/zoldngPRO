@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SuccessResponse as Res } from 'src/app/models/HttpResponse';
+import { Message } from 'src/app/models/Message';
 import { MessageApiService } from 'src/app/shared/api/messages/messageApi.service';
 
 @Component({
@@ -6,14 +8,14 @@ import { MessageApiService } from 'src/app/shared/api/messages/messageApi.servic
   templateUrl: './messages.component.html',
   styleUrls: ['./messages.component.scss']
 })
-export class MessagesComponent implements OnInit {
+export default class MessagesComponent implements OnInit {
 
   constructor(private api: MessageApiService) { }
 
-  messages!: any
+  messages!: Message[]
   sender: any = {}
 
-  expand(id: number) {
+  expand(id: number|null) {
     var dots = document.getElementById(`dots${id}`); //span
     var more = document.getElementById(`more${id}`); //span id
     var toggle = document.getElementById(`toggle${id}`); //a id
@@ -34,8 +36,8 @@ export class MessagesComponent implements OnInit {
 
   fetchMessages() {
     this.api.fetchMessages().subscribe({
-      next: (data: any) => {
-        data.data.forEach((msg: any) => {
+      next: (data: Res) => {
+        data.data.forEach((msg: Message) => {
           let short = msg.body.slice(0, 100)
           msg.short = short
         });

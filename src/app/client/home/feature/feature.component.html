@@ -1,0 +1,43 @@
+<div class="container big">
+  <div class="row mb-5 text-end" *ngFor="let f of features"
+    [ngClass]="{'justify-content-end': f.isReversed }">
+
+    <div class="col-md-6" [ngClass]="{'order-2 ' : f.isReversed }">
+      <h2>{{f.title}}</h2>
+      <p class="text-center">{{f.text}}</p>
+      <div class="row" [ngClass]="{'justify-content-end' : f.isReversed}">
+        <a role="button" class="w-50 btn btn-lg btn-outline-primary mx-2" routerLink="{{f.refPath}}">
+          {{f.button}}
+        </a>
+      </div>
+    </div>
+
+    <div class="col-md-4 justify-content-end " [ngClass]="{'' : f.isReversed }">
+      <img class="featurepix" src="{{f.imagePath}}" alt="{{f.alttext}}">
+    </div>
+  </div>
+</div>
+<!-- TODO: merge two renders -->
+
+<!--FIXME: 770 990 px kozott a featurebutton osszeugrik -->
+
+<div class="container small">
+  <div class="col mb-5 text-center justify-content-center" *ngFor="let f of features">
+
+    <div class="">
+      <img class="featurepix" src="{{f.imagePath}}" alt="{{f.alttext}}">
+    </div>
+
+    <div class="pt-3">
+      <h2>{{f.title}}</h2>
+      <p>{{f.text}}</p>
+      <div>
+        <a role="button" class="btn w-50 btn-outline-primary" routerLink="{{f.refPath}}">
+          {{f.button}}
+        </a>
+      </div>
+    </div>
+
+    
+  </div>
+</div>

@@ -17,12 +17,12 @@
                 {{each.short}}
                 <span id="dots{{each.id}}">...</span>
                 <span id="more{{each.id}}">{{each.body}}</span>
-                <a (click)="expand(each.id)" id="toggle{{each.id}}" role="button" class="link-primary" >More</a>
+                <a id="toggle{{each.id}}" role="button" class="link-primary" >More</a>
               </p>
 
               <div class="actions">
                 <button 
-                (click)="fetchMessageById(each.id)"
+               
                 class="btn btn-outline-secondary" 
                 data-bs-toggle="modal" 
                 data-bs-target="#replyModal">Válasz</button>

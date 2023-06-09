@@ -1,6 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment as env } from 'src/environments/environment';
+import { Message } from '../models/Message';
+import { Booking } from '../models/Booking';
+import { Client } from '../models/Client';
 
 @Injectable({
   providedIn: 'root'
@@ -58,7 +61,7 @@ export class ApiService {
     return this.http.get<any>(url)
   }
 
-  sendMessageDetails(message: any) {
+  sendMessageDetails(message: Message) {
     let endpoint = 'messages'
     let url = env.apihost + endpoint
 
@@ -114,17 +117,4 @@ export class ApiService {
 
 }
 
-interface Client {
-  fullName: string,
-  dob: string,
-  email: string,
-  phone: string,
-  fullAddress: string
-}
 
-interface Booking {
-  service_id: number,
-  type_id: number
-  client_id: number,
-  appointment_id: number
-}

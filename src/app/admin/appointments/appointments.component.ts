@@ -6,7 +6,7 @@ import { AppointmentApiService } from 'src/app/shared/api/appointments/appointme
   templateUrl: './appointments.component.html',
   styleUrls: ['./appointments.component.scss']
 })
-export class AppointmentsComponent implements OnInit {
+export default class AppointmentsComponent implements OnInit {
   appointments!:any
 
   constructor(private api: AppointmentApiService) { }

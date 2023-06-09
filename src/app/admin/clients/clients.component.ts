@@ -7,7 +7,7 @@ import { ClientApiService } from 'src/app/shared/api/client/clientApi.service';
   templateUrl: './clients.component.html',
   styleUrls: ['./clients.component.scss']
 })
-export class ClientsComponent implements OnInit {
+export default class ClientsComponent implements OnInit {
   constructor(private api: ClientApiService, private build: FormBuilder) {}
   clients!:any
   clientForm!:FormGroup

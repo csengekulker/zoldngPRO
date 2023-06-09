@@ -7,7 +7,7 @@ import { AuthService } from 'src/app/shared/auth/auth.service';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent {
+export default class MainComponent {
 
   constructor(private auth: AuthService, private router: Router) {}
 
