@@ -26,10 +26,11 @@ import {
   ClientsComponent } from './admin';
 import { AuthGuard } from './shared/auth/auth.guard';
 import { TypesComponent } from './admin/types/types.component';
+import { ClientComponent } from './client/client.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
-  {path: 'int', component: MainComponent,
+  {path: 'admin', component: MainComponent,
     children: [
       {path: 'clients', component: ClientsComponent},
       {path: 'bookings', component: BookingsComponent},
@@ -40,22 +41,23 @@ const routes: Routes = [
     ],
     canActivate: [AuthGuard]
   },
-  {path: '', component: HomeComponent,
+  {path: '', component: ClientComponent,
     children: [
-      
+      {path: '', component: HomeComponent},
+      {path: 'services', component: ClientServices},
+      {path: 'booking', component: BookingComponent, data: {selectedService: null}},
+      {path: 'gallery', component: GalleryComponent},
+      {path: 'blog', component: BlogComponent},
+      {path: 'info', component: InfoComponent,
+        children: [
+          {path: 'faq', component: FaqComponent},
+          {path: 'pricing', component: PricelistComponent},
+          {path: 'docs', component: DocsComponent},
+        ]
+      }
     ]
   },
-  {path: 'services', component: ClientServices},
-  {path: 'booking', component: BookingComponent, data: {selectedService: null}},
-  {path: 'gallery', component: GalleryComponent},
-  {path: 'blog', component: BlogComponent},
-  {path: 'info', component: InfoComponent,
-    children: [
-      {path: 'faq', component: FaqComponent},
-      {path: 'pricing', component: PricelistComponent},
-      {path: 'docs', component: DocsComponent},
-    ]
-  },
+
 
   {path: '**', component: NotfoundComponent}
 

@@ -1,13 +1,34 @@
-/* You can add global styles to this file, and also import other style files */
-@import "bootstrap";
-@import "bootstrap-icons";
+
+@import 'node_modules/bootstrap/scss/_functions.scss';
+@import 'node_modules/bootstrap/scss/_variables.scss';
 @import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;500&display=swap');
 
+// Theme colors
+$primary: rgb(97, 155, 138);
+$secondary: rgb(144, 144, 144);
+$success: rgb(144, 144, 144);
+$warning: rgb(144, 144, 144);
+$danger: rgb(144, 144, 144);
+$light: rgb(204, 227, 222);
+// cce3de
+
+// Merge 
+$theme-colors: map-merge($theme-colors, (
+    "primary": $primary,
+    "secondary": $secondary,
+    "light": $light
+));
+
+// Set changes
+@import "bootstrap";
+@import "bootstrap-icons";
+
 body {
     background-color: #f8f9fa;
+    margin: 0; 
+    font-family: "Montserrat", sans-serif; 
+    font-weight: 300;
 }
 
-
 html, body { height: 100%; }
-body { margin: 0; font-family: "Montserrat", sans-serif; font-weight: 300;}

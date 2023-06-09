@@ -49,12 +49,16 @@ import {
 import { BookingfilterPipe } from './shared/pipe/bookingfilter.pipe';
 import { ClientfilterPipe } from './shared/pipe/clientfilter.pipe';
 import { TypesComponent } from './admin/types/types.component';
+import { ClientComponent } from './client/client.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ContactComponent,
+    AdminComponent,
+    ClientComponent,
     FooterComponent,
     BookingComponent,
     BookingInfoComponent,

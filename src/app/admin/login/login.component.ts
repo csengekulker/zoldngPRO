@@ -30,7 +30,7 @@ export default class LoginComponent implements OnInit {
     this.auth.login(email, pass).subscribe({
       next: data => {
         localStorage.setItem('userData', JSON.stringify(data));
-        this.router.navigate(['/int'])
+        this.router.navigate(['/admin'])
       },
       error: err => {
         console.log(err);

@@ -1,16 +1,25 @@
-<h3>Belépés</h3>
- 
-<form [formGroup]="loginForm" (submit)="login()">
-    <div class="mb-3">
-      <label for="user" class="form-label">E-mail</label>
-      <input type="text" class="form-control" id="email"
-      formControlName="email">
- 
+<div class=" d-flex  container text-center justify-content-center  h-100 ">
+
+
+    <div class="flex-column align-items-center  my-auto">
+
+      <img src="../../../assets/images/title.png" class="img-fluid" alt="">
+
+      <form [formGroup]="loginForm" (submit)="login()">
+          <div class="mb-3 form-floating">
+            <input type="text" class="form-control" id="email" placeholder="Your email"
+            formControlName="email">
+            <label for="email" class="form-label">E-mail</label>
+
+      
+          </div>
+          <div class="mb-3 form-floating">
+            <input type="password" class="form-control" id="password" placeholder="Your email"
+            formControlName="pass">
+            <label for="password" class="form-label">Jelszó</label>
+
+          </div>
+          <button type="submit" class="btn w-100 btn-outline-primary ">Belépés</button>
+        </form>
     </div>
-    <div class="mb-3">
-      <label for="pass" class="form-label">Jelszó</label>
-      <input type="password" class="form-control" id="password"
-      formControlName="pass">
-    </div>
-    <button type="submit" class="btn btn-primary">Belépés</button>
-  </form>
+</div>
