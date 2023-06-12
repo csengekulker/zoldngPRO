@@ -6,3 +6,19 @@
 .list-group-item {
     background-color: rgba(#2b9777, 0.25);
 }
+
+.show:hover {
+    width: 8.5rem;
+    height: 8.5rem;
+}
+
+.show {
+    width: 8.125rem;
+    height: 8.125rem;
+}
+
+.btn-floating {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}

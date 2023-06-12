@@ -1,43 +1,59 @@
 <div class="page">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 220"><path fill="#273036" fill-opacity="1" d="M0,160L60,165.3C120,171,240,181,360,154.7C480,128,600,64,720,64C840,64,960,128,1080,133.3C1200,139,1320,85,1380,58.7L1440,32L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg>
-  
-  <div class="container col">
-  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 220">
+    <path fill="#273036" fill-opacity="1"
+      d="M0,160L60,165.3C120,171,240,181,360,154.7C480,128,600,64,720,64C840,64,960,128,1080,133.3C1200,139,1320,85,1380,58.7L1440,32L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z">
+    </path>
+  </svg>
+
+  <div class="container d-flex flex-column col">
+
+    <div class="d-inline d-flex justify-content-evenly m-3">
+      <!-- FIXME: types and title loading on first click -->
+      <img class="massageimg show" *ngFor="let service of services" src="{{service.imagePath}}"
+        (click)="scrollIntoView(service.id)" role="button" alt="{{service.name}}">
+    </div>
+
+    <hr>
+
+
+    <button type="button" class="btn btn-primary btn-lg btn-floating rounded-circle">
+      <i class="bi bi-arrow-up"></i>
+    </button>
+
     <h1>Masszázsterápiák</h1>
 
-    <!-- TODO: 4 buttons, filter service -->
-  
-    <div class="col my-5" id="{{service.id}}" *ngFor="let service of services">
+    <div class="col my-3" id="service{{service.id}}" *ngFor="let service of services">
       <div class="mb-3">
         <img class="massageimg" src="{{service.imagePath}}" alt="logo">
       </div>
-  
+
       <div>
         <h2>{{service.name}}</h2>
         <div>
-          <h4>Leírás</h4>
           <p *ngFor="let p of service.description">{{p}}</p>
-  
+
           <ul class="list-group">
             <li class="list-group-item" *ngFor="let step of service.process">{{step}}</li>
           </ul>
         </div>
-  
+
         <div class="row my-3">
           <div class=" my-2">
             <h4>Kinek ajánlott?</h4>
             <ul class="list-group">
               <li class="list-group-item" *ngFor="let reason of service.dos">
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-dot" viewBox="0 0 16 16">
-                  <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
-                </svg>{{reason}}</li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-dot"
+                  viewBox="0 0 16 16">
+                  <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
+                </svg>{{reason}}
+              </li>
             </ul>
           </div>
-  
+
         </div>
-  
+
       </div>
-  
+
       <div class=" justify-content-center text-center">
         <table class="col table table-hover">
           <thead>
@@ -49,7 +65,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let type of fetchedTypes" id="{{type.id}}" >
+            <tr *ngFor="let type of fetchedTypes" id="{{type.id}}">
               <td>{{type.name}}</td>
               <td>{{type.duration}}</td>
               <td>{{type.price}}</td>
@@ -62,9 +78,9 @@
           </tbody>
         </table>
       </div>
-  
-  
+
+
     </div>
-  
+
   </div>
 </div>

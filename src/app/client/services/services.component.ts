@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
 import { ApiService } from '../../shared/api.service';
 import servicesJson from './services.json'
 import { Router } from '@angular/router';
@@ -7,12 +7,16 @@ import { PassService } from '../../shared/pass.service';
 import Service from 'src/app/models/Service';
 import { Type } from 'src/app/models/Type';
 import { SuccessResponse as Res, ErrorResponse as Err } from 'src/app/models/HttpResponse';
+import { Observable, fromEvent, map } from 'rxjs';
+import { DOCUMENT, ViewportScroller } from '@angular/common';
 
 
 @Component({
   selector: 'app-services',
   templateUrl: './services.component.html',
-  styleUrls: ['./services.component.scss']
+  styleUrls: ['./services.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
+
 })
 export default class ServicesComponent implements OnInit {
 
@@ -25,6 +29,10 @@ export default class ServicesComponent implements OnInit {
 
   services!: Service[]
   fetchedTypes!: Type[]
+
+  scrollIntoView(id:number) {
+    document.getElementById(`service${id}`)?.scrollIntoView()    
+  }
 
   //TODO: pass desired service details to booking
 
