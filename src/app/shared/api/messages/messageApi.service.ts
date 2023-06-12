@@ -1,12 +1,12 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Message } from 'src/app/models/Message';
+import { Message } from 'src/app/models';
 import { environment as env } from 'src/environments/environment';
 
 @Injectable({
     providedIn: 'root'
 })
-export class MessageApiService {
+export default class MessageApiService {
     constructor(private http: HttpClient) { }
 
     fetchMessages() {

@@ -1,0 +1,7 @@
+export { default as AppointmentApiService} from './appointments/appointmentApi.service'
+export { default as BookingApiService } from './booking/bookingApi.service'
+export { default as ClientApiService} from './client/clientApi.service'
+export { default as MessageApiService } from './messages/messageApi.service'
+export { default as ServiceApiService } from './services/serviceApi.service'
+export { default as TypeApiService } from './types/typeApi.service'
+export { default as ApiService } from './api.service'

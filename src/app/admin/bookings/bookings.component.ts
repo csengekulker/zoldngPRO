@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from 'src/app/shared/api.service';
-import { BookingApiService } from 'src/app/shared/api/booking/bookingApi.service';
-import { ClientApiService } from 'src/app/shared/api/client/clientApi.service';
+import {
+  BookingApiService,
+  ClientApiService,
+  ServiceApiService,
+  TypeApiService,
+  ApiService
+} from '../../shared/api'
 
 @Component({
   selector: 'admin-bookings',
@@ -15,17 +19,18 @@ export default class BookingsComponent implements OnInit {
   status!:boolean
 
   constructor(
-    private api: BookingApiService, 
+    private bookingApi: BookingApiService, 
     private clientApi: ClientApiService,
-    // TODO: implement service and typeapi
-    private generalApi: ApiService
+    private serviceApi: ServiceApiService,
+    private typeApi: TypeApiService,
+    private api: ApiService
   ) { }
 
   filterBookings(isApproved: boolean) {
   }
 
   approve(id:number) {
-    this.api.approveBooking(id).subscribe({
+    this.bookingApi.approveBooking(id).subscribe({
       next: (data:any) => {
         console.log('approved')
       }
@@ -40,16 +45,16 @@ export default class BookingsComponent implements OnInit {
   }
 
   fetchBookings() {
-    this.api.fetchBookings().subscribe({
+    this.bookingApi.fetchBookings().subscribe({
       next: (data:any) => {
         data.forEach((book:any) => {
           this.clientApi.fetchClientById(book.client_id).subscribe({
             next: (client:any) => book.client = client.data.fullName
           })
-          this.generalApi.fetchServiceById(book.service_id).subscribe({
+          this.serviceApi.fetchServiceById(book.service_id).subscribe({
             next: (service: any) => book.service = service.data.name
           })
-          this.generalApi.fetchTypeById(book.type_id).subscribe({
+          this.typeApi.fetchTypeById(book.type_id).subscribe({
             next: (type:any) => book.type = type.name
           })
           

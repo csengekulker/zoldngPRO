@@ -1,4 +1,4 @@
-export interface Feature {
+export default interface Feature {
     title: string,
     text: string,
     button: string,

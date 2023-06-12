@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import Service from 'src/app/models/Service';
-import { ApiService } from 'src/app/shared/api.service';
+import {Service} from 'src/app/models';
+import { ServiceApiService } from 'src/app/shared/api';
 
 @Component({
   selector: 'app-services',
@@ -11,7 +11,7 @@ export default class ServicesComponent implements OnInit {
 
   services!:Service[]
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ServiceApiService) {}
 
   ngOnInit():void {
     this.api.fetchServices().subscribe({

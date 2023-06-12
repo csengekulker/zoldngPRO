@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators as V } from '@angular/forms';
 import { EmitterService } from 'src/app/emitter.service';
-import { ApiService } from 'src/app/shared/api.service';
+import { 
+  AppointmentApiService,
+  BookingApiService,
+  ClientApiService,
+  ServiceApiService,
+  TypeApiService
+ } from 'src/app/shared/api';
 import { PassService } from 'src/app/shared/pass.service';
 
 @Component({
@@ -12,7 +18,11 @@ import { PassService } from 'src/app/shared/pass.service';
 export class FormComponent implements OnInit {
 
   constructor(
-    private api: ApiService,
+    private appointmentApi: AppointmentApiService,
+    private bookingApi: BookingApiService,
+    private clientApi: ClientApiService,
+    private serviceApi: ServiceApiService,
+    private typeApi: TypeApiService,
     private pass: PassService,
     private emitter: EmitterService,
     private build: FormBuilder) { }
@@ -154,7 +164,7 @@ export class FormComponent implements OnInit {
   }
 
   fetchBookingById(id:number) {
-    this.api.fetchBookingById(id).subscribe({
+    this.bookingApi.fetchBookingById(id).subscribe({
       next: (data:any) => {
         // console.log(data);
         if (data.success) {
@@ -179,7 +189,7 @@ export class FormComponent implements OnInit {
     console.log(clientData);
     
 
-    this.api.sendClientDetails(clientData).subscribe({
+    this.clientApi.sendClientDetails(clientData).subscribe({
       next: (data: any) => {
         let clientId = data.data.id
 
@@ -192,7 +202,7 @@ export class FormComponent implements OnInit {
             appointment_id: target.aptId
           } 
           
-          this.api.sendReservation(bookingData).subscribe({
+          this.bookingApi.sendReservation(bookingData).subscribe({
             next: (data:any) => {
               if (data.success) {
                 this.bookingId = data.data.id
@@ -228,7 +238,7 @@ export class FormComponent implements OnInit {
   }
 
   fetchOpenApts(): any {
-    this.api.fetchOpenApts().subscribe({
+    this.appointmentApi.fetchOpenApts().subscribe({
       next: (data: any) => {
         let appointments = data.data
 
@@ -244,7 +254,7 @@ export class FormComponent implements OnInit {
       this.autoSelect()
     })
 
-    this.api.fetchOpenApts().subscribe({
+    this.appointmentApi.fetchOpenApts().subscribe({
       next: (data: any) => {
         this.appointments = data.data
 
@@ -260,7 +270,7 @@ export class FormComponent implements OnInit {
       }
     })
 
-    this.api.fetchServices().subscribe({
+    this.serviceApi.fetchServices().subscribe({
       next: (data: any) => {
         this.services = data.data
       },
@@ -269,7 +279,7 @@ export class FormComponent implements OnInit {
       }
     })
 
-    this.api.fetchTypes().subscribe({
+    this.typeApi.fetchTypes().subscribe({
       next: (data: any) => {
         this.types = data.data
       },

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import featuresJson from './features.json'
-import { Feature } from 'src/app/models/Feature';
+import { Feature } from 'src/app/models';
 
 @Component({
   selector: 'app-feature',

@@ -1,4 +1,4 @@
-export interface Booking {
+export default interface Booking {
     service_id: number,
     type_id: number
     client_id: number,

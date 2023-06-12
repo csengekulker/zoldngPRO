@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SuccessResponse as Res, ErrorResponse as Err } from 'src/app/models/HttpResponse';
+import { SuccessResponse as Res, ErrorResponse as Err } from 'src/app/models';
 import Service from 'src/app/models/Service';
-import { ApiService } from 'src/app/shared/api.service';
+import { ServiceApiService, TypeApiService } from 'src/app/shared/api';
 
 @Component({
   selector: 'app-pricelist',
@@ -14,11 +14,14 @@ export class PricelistComponent implements OnInit {
   types!:any
   serviceTypes!:any
 
-  constructor(private api: ApiService) { }
+  constructor(
+    private serviceApi: ServiceApiService,
+    private typeApi: TypeApiService
+    ) { }
 
   ngOnInit(): void { 
 
-    this.api.fetchServices().subscribe({
+    this.serviceApi.fetchServices().subscribe({
       next: (data:Res) => {
         this.services = data.data
       },
@@ -28,7 +31,7 @@ export class PricelistComponent implements OnInit {
       }
     })
 
-    this.api.fetchTypes().subscribe({
+    this.typeApi.fetchTypes().subscribe({
       next: (data:Res) => {
         this.types = data.data        
       },

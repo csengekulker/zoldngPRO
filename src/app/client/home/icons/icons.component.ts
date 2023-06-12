@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import iconsJson from './icons.json'
-import { Icon } from 'src/app/models/Icon';
+import { Icon } from 'src/app/models';
 
 @Component({
   selector: 'app-icons',

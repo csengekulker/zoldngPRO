@@ -5,7 +5,7 @@ import { environment as env } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class AppointmentApiService {
+export default class AppointmentApiService {
 
   constructor(private http: HttpClient) { }
 

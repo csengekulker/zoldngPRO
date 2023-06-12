@@ -1,9 +1,9 @@
-export interface SuccessResponse {
+export default interface SuccessResponse {
     data:any,
     message:string,
     success:boolean
 }
 
-export interface ErrorResponse {
+export default interface ErrorResponse {
 
 }

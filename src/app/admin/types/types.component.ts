@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Type } from 'src/app/models/Type';
-import { ApiService } from 'src/app/shared/api.service';
+import { Type } from 'src/app/models';
+import { TypeApiService } from 'src/app/shared/api';
 
 @Component({
   selector: 'app-types',
@@ -11,7 +11,7 @@ export class TypesComponent implements OnInit{
 
   types!:Type[]
 
-  constructor(private api: ApiService) { }
+  constructor(private api: TypeApiService) { }
 
   ngOnInit():void {
     this.api.fetchTypes().subscribe({

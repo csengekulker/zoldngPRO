@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { SuccessResponse as Res } from 'src/app/models/HttpResponse';
-import { Message } from 'src/app/models/Message';
-import { MessageApiService } from 'src/app/shared/api/messages/messageApi.service';
+import { 
+  Message,
+  SuccessResponse as Res
+ } from 'src/app/models';
+import { MessageApiService } from 'src/app/shared/api';
 
 @Component({
   selector: 'app-messages',

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppointmentApiService } from 'src/app/shared/api/appointments/appointmentApi.service';
+import { AppointmentApiService } from 'src/app/shared/api';
 
 @Component({
   selector: 'app-appointments',

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators as V } from '@angular/forms';
-import { ApiService } from '../../../shared/api.service';
-import { Message } from 'src/app/models/Message';
-import { SuccessResponse as Res, ErrorResponse as Err } from 'src/app/models/HttpResponse';
+import { ApiService } from '../../../shared/api';
+import { 
+  Message,
+  SuccessResponse as Res, 
+  ErrorResponse as Err } from 'src/app/models';
 
 @Component({
   selector: 'app-contact',

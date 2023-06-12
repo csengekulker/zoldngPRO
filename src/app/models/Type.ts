@@ -1,4 +1,4 @@
-export interface Type {
+export default interface Type {
     id: number,
     name: string,
     duration: number, 

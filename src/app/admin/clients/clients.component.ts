@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ClientApiService } from 'src/app/shared/api/client/clientApi.service';
+import { ClientApiService } from 'src/app/shared/api';
 
 @Component({
   selector: 'admin-clients',

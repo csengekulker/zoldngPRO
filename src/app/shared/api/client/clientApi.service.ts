@@ -1,11 +1,12 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Client } from 'src/app/models';
 import { environment as env } from 'src/environments/environment';
 
 @Injectable({
     providedIn: 'root'
 })
-export class ClientApiService {
+export default class ClientApiService {
     constructor(private http: HttpClient) { }
 
     fetchClients() {
@@ -31,6 +32,21 @@ export class ClientApiService {
 
         return this.http.get<any>(url, httpOptions)
     }
+
+    sendClientDetails(client: Client) {
+        let endpoint = 'clients'
+        let url = env.apihost + endpoint
+    
+        let headers = new HttpHeaders({
+          'Content-Type': 'application/json'
+        });
+    
+        let httpOption = {
+          headers: headers
+        };
+        
+        return this.http.post<any>(url, client, httpOption)
+      }
 
     addClient(client: any) {
         let url = env.apihost + 'clients';

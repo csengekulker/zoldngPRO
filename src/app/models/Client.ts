@@ -1,4 +1,4 @@
-export interface Client {
+export default interface Client {
     fullName: string,
     dob: string,
     email: string,
