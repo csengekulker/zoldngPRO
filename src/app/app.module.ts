@@ -34,7 +34,6 @@ import { AppComponent } from './app.component';
 import { ButtonComponent } from './client/info/button/button.component';
 import { BookingInfoComponent } from './client/booking/info/info.component';
 import { FormComponent } from './client/booking/form/form.component';
-import { EditModal } from './core/modals';
 import { SidebarComponent } from './admin/main/sidebar/sidebar.component';
 
 import { 
@@ -82,7 +81,6 @@ import { FormModalComponent } from './core/form-modal/form-modal.component';
     AdminServices,
     MainComponent,
     BlogComponent,
-    EditModal,
     BookingsComponent,
     SidebarComponent,
     AppointmentsComponent,
