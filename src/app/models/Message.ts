@@ -4,5 +4,6 @@ export default interface Message {
     name: string, 
     subject: string, 
     body: string,
-    short?:string
+    short?:string,
+    created_at?: string
 }

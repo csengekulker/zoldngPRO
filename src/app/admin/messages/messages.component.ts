@@ -48,9 +48,12 @@ export default class MessagesComponent implements OnInit {
   fetchMessages() {
     this.api.fetchMessages().subscribe({
       next: (data: Res) => {
+        console.log(data)
         data.data.forEach((msg: Message) => {
           let short = msg.body.slice(0, 100)
-          msg.short = short
+
+          msg.short = short      
+
         });
 
         this.messages = data.data
