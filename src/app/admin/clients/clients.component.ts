@@ -11,10 +11,69 @@ export default class ClientsComponent implements OnInit {
   constructor(private api: ClientApiService, private build: FormBuilder) {}
   clients!:any
   clientForm!:FormGroup
-  editForm !: FormGroup;
+  form !: FormGroup;
   keyword!:string
 
   editPanel: boolean = false;
+  modalTitle!:string
+  editing:boolean = false
+
+  formFields = [
+    {
+      forid: 'name',
+      label: 'Teljes nev',
+      formControlName: 'fullName',
+      type: 'text'
+    },
+    {
+      forid: 'dob',
+      label: 'Szuletesi ido',
+      formControlName: 'dob',
+      type: 'date'
+    },
+    {
+      forid: 'email',
+      label: 'Email',
+      formControlName: 'email',
+      type: 'email'
+    },
+    {
+      forid: 'phone',
+      label: 'Telefon',
+      formControlName: 'phone',
+      type: 'text'
+    },
+    {
+      forid: 'fullAddress',
+      label: 'Lakcim',
+      formControlName: 'fullAddress',
+      type: 'text'
+    }
+  ]
+
+  add():void { this.modalTitle = 'Uj vendeg felvetele'; this.editing = false}
+
+  edit(client: any) {
+    // FIXME: load values into form 
+    this.form.patchValue({id: client.id});
+    this.form.patchValue({fullName: client.fullName});
+    this.form.patchValue({dob: client.dob});
+    this.form.patchValue({email: client.email});
+    this.form.patchValue({phone: client.phone});
+    this.form.patchValue({fullAddress: client.fullAddress});
+
+    this.modalTitle = 'Adatok szerkesztese'
+    this.editing = true;
+  }
+
+  formSubmit(): void {
+    if (!this.editing) {
+      this.addClient()
+    } else {
+      this.updateClient()
+    }
+  }
+
 
   search(key: string): void {
     this.clients = this.clients.filter((val:any) =>
@@ -25,7 +84,6 @@ export default class ClientsComponent implements OnInit {
   fetchClients() {
     this.api.fetchClients().subscribe({
       next: (data:any) => {
-        console.log(data);
         this.clients = data.data
       },
       error: (e:any) => console.log(e)
@@ -46,6 +104,7 @@ export default class ClientsComponent implements OnInit {
       next: res => {
         console.log(res)
         // this.clients.push(res.data);
+        this.clientForm.reset()
         this.fetchClients()
       },
       error: (e:any) => {
@@ -57,12 +116,12 @@ export default class ClientsComponent implements OnInit {
 
   updateClient() {
     let client = {
-      id: this.editForm.value.id,
-      fullName: this.editForm.value.fullName,
-      dob: this.editForm.value.dob,
-      email: this.editForm.value.email,
-      phone: this.editForm.value.phone,
-      fullAddress: this.editForm.value.fullAddress
+      id: this.form.value.id,
+      fullName: this.form.value.fullName,
+      dob: this.form.value.dob,
+      email: this.form.value.email,
+      phone: this.form.value.phone,
+      fullAddress: this.form.value.fullAddress
     }
 
     this.api.updateClient(client).subscribe({
@@ -83,21 +142,13 @@ export default class ClientsComponent implements OnInit {
             this.clients.splice(index, 1)
           }
         })
- 
+        this.fetchClients()
+
       }
     });
   }
 
-  showEdit(client: any) {
-    this.editForm.patchValue({id: client.id});
-    this.editForm.patchValue({fullName: client.fullName});
-    this.editForm.patchValue({dob: client.dob});
-    this.editForm.patchValue({email: client.email});
-    this.editForm.patchValue({phone: client.phone});
-    this.editForm.patchValue({fullAddress: client.fullAddress});
 
-    this.editPanel = true;
-  }
 
   ngOnInit(): void {
     this.fetchClients()
@@ -110,7 +161,7 @@ export default class ClientsComponent implements OnInit {
         fullAddress: ['']
       });
 
-      this.editForm = this.build.group({
+      this.form = this.build.group({
         id: [''],
         fullName: [''],
         dob: [''],

@@ -5,7 +5,7 @@
 
     <div class="row mb-3">
         <div class="col-md-2">
-            <button type="button" class=" btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button (click)="add()" type="button" class=" btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modal">
                 Hozzadas
             </button>
         </div>
@@ -14,42 +14,31 @@
         </div>
     </div>
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Modal title</h5>
+                    <h5 class="modal-title">{{modalTitle}}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form [formGroup]="clientForm" (submit)="addClient()">
+                <form [formGroup]="clientForm" (submit)="formSubmit()">
                 <div class="modal-body">
-                        <div>
-                            <label for="name">Teljes név</label>
-                            <input class="form-control" type="text" id="name" formControlName="fullName">
-                        </div>
-                        <div>
-                            <label for="city">Születési idő</label>
-                            <input class="form-control" type="text" id="city" formControlName="dob">
-                        </div>
-                        <div>
-                            <label for="salary">E-mail cím</label>
-                            <input class="form-control" type="text" formControlName="email">
-                        </div>
-                        <div>
-                            <label for="salary">Telefon</label>
-                            <input class="form-control" type="text" formControlName="phone">
-                        </div>
-                        <div>
-                            <label for="salary">Lakcím</label>
-                            <input class="form-control" type="text" formControlName="fullAddress">
+                        <div 
+                        class="form-floating mb-2"
+                        *ngFor="let field of formFields">
+                            <input 
+                            class="form-control " 
+                            type="{{field.type}}" 
+                            id="{{field.forid}}" 
+                            formControlName="{{field.formControlName}}"
+                            placeholder="{{field.forid}}">
+                            <label for="{{field.forid}}">{{field.label}}</label>
                         </div>
 
                 </div>
                 <div class="modal-footer">
-                    <!-- TODO: buttons order -->
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-secondary">Clear</button>
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="submit" class="btn btn-primary"  data-bs-dismiss="modal" >Save</button>
                 </div>
             </form>
 
@@ -75,11 +64,9 @@
                 <td>{{ client.email }}</td>
                 <td>{{ client.phone }}</td>
                 <td>{{ client.fullAddress }}</td>
-                <!-- TODO: modal window for editing -->
                 <td>
-                    <!-- <button class="btn btn-warning" (click)="showEdit(client)">Szerkesztés</button> -->
-                    <button type="button" (click)="showEdit(client)" class="btn btn-outline-warning" data-bs-toggle="modal"
-                        data-bs-target="#editModal">
+                    <button type="button" (click)="edit(client)" class="btn btn-outline-warning" data-bs-toggle="modal"
+                        data-bs-target="#modal">
                         <i class="bi bi-pencil-fill"></i>
                     </button>
                 </td>
@@ -99,43 +86,34 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">{{modalTitle}}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <form [formGroup]="editForm" (submit)="updateClient()">
-                    <div>
-                        <label for="id">Id</label>
-                        <input type="text" id="id" formControlName="id">
-                    </div>
-                    <div>
-                        <label for="name">Név</label>
-                        <input type="text" id="name" formControlName="fullName">
-                    </div>
-                    <div>
-                        <label for="city">dob</label>
-                        <input type="text" id="city" formControlName="dob">
-                    </div>
-                    <div>
-                        <label for="salary">mail</label>
-                        <input type="text" formControlName="email">
-                    </div>
-                    <div>
-                        <label for="salary">tel</label>
-                        <input type="text" formControlName="phone">
-                    </div>
-                    <div>
-                        <label for="salary">cim</label>
-                        <input type="text" formControlName="fullAddress">
-                    </div>
+            <form [formGroup]="form" (submit)="formSubmit()">
 
-                    <button type="submit">Mentés</button>
-                </form>
+            <div class="modal-body">
+                    <div hidden>
+                        <label for="id">Id</label>
+                        <input type="text" id="id" formControlName="id"  >
+                    </div>
+                    <div 
+                        class="form-floating mb-2"
+                        *ngFor="let field of formFields">
+                            <input 
+                            class="form-control " 
+                            type="{{field.type}}" 
+                            id="{{field.forid}}" 
+                            formControlName="{{field.formControlName}}"
+                            placeholder="{{field.forid}}">
+                            <label for="{{field.forid}}">{{field.label}}</label>
+                        </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bezárás</button>
+                <button type="sumbit" class="btn btn-primary">Adatok mentése</button>
             </div>
+        </form>
+
         </div>
     </div>
 </div>
