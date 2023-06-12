@@ -6,13 +6,24 @@ import { environment as env } from 'src/environments/environment';
     providedIn: 'root'
 })
 export class BookingApiService {
+
     constructor(private http: HttpClient) { }
 
+
     fetchBookings() {
-        let endpoint = 'bookings'
-        let url = env.apihost + endpoint
+        let url = env.apihost + 'bookings'
+
+        let userData = <string> localStorage.getItem('userData')
+        let data = JSON.parse(userData)
+        
+
+        let httpOptions = {
+            headers: new HttpHeaders({
+                'Authorization': 'Bearer ' + data.data.token
+            })
+        }
     
-        return this.http.get<any>(url)
+        return this.http.get<any>(url, httpOptions)
     }
 
     addBookingManually(booking: any) {
@@ -34,8 +45,15 @@ export class BookingApiService {
     approveBooking(id: number) {
         let endpoint = 'bookings/approve/' + id
         let url = env.apihost + endpoint
-        const httpOptions = {
-            headers: new HttpHeaders()
+        
+        let userData = <string> localStorage.getItem('userData')
+        let data = JSON.parse(userData)
+        
+
+        let httpOptions = {
+            headers: new HttpHeaders({
+                'Authorization': 'Bearer ' + data.data.token
+            })
         }
 
 

@@ -10,10 +10,19 @@ export class MessageApiService {
     constructor(private http: HttpClient) { }
 
     fetchMessages() {
-        let endpoint = 'messages'
-        let url = env.apihost + endpoint
+        let url = env.apihost + 'messages'
 
-        return this.http.get<any>(url)
+        let userData = <string> localStorage.getItem('userData')
+        let data = JSON.parse(userData)
+        
+
+        let httpOptions = {
+            headers: new HttpHeaders({
+                'Authorization': 'Bearer ' + data.data.token
+            })
+        }
+
+        return this.http.get<any>(url, httpOptions)
     }
 
     fetchMessageById(id: number) {

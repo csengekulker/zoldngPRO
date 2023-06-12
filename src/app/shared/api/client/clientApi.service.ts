@@ -19,52 +19,64 @@ export class ClientApiService {
         let endpoint = 'clients/' + id
         let url = env.apihost + endpoint
 
-        return this.http.get<any>(url)
+        let userData = <string> localStorage.getItem('userData')
+        let data = JSON.parse(userData)
+        
+
+        let httpOptions = {
+            headers: new HttpHeaders({
+                'Authorization': 'Bearer ' + data.data.token
+            })
+        }
+
+        return this.http.get<any>(url, httpOptions)
     }
 
     addClient(client: any) {
-        let jsonUserData: any = localStorage.getItem('userData');
-        let userData = JSON.parse(jsonUserData);
+        let url = env.apihost + 'clients';
 
-        let httpHeaders = new HttpHeaders()
-            .set('Authorization', `none`);
+        let userData = <string> localStorage.getItem('userData')
+        let data = JSON.parse(userData)
+        
 
-        const httpOptions = {
-            headers: httpHeaders
+        let httpOptions = {
+            headers: new HttpHeaders({
+                'Authorization': 'Bearer ' + data.data.token
+            })
         }
-        let endpoint = 'clients';
-        let url = env.apihost + endpoint;
 
         return this.http.post<any>(url, client, httpOptions);
     }
 
     updateClient(client: any) {
-        // let jsonUserData: any = localStorage.getItem('userData');
-        // let userData = JSON.parse(jsonUserData);
+        let url = `${env.apihost}clients/${client.id}`
 
-        let httpHeaders = new HttpHeaders()
-            .set('Authorization', `none`);
+        let userData = <string> localStorage.getItem('userData')
+        let data = JSON.parse(userData)
+        
 
-        const httpOptions = {
-            headers: httpHeaders
+        let httpOptions = {
+            headers: new HttpHeaders({
+                'Authorization': 'Bearer ' + data.data.token
+            })
         }
-        let endpoint = 'clients';
-        let url = env.apihost + endpoint + '/' + client.id;
 
         return this.http.put<any>(url, client, httpOptions);
     }
 
     delClient(id: number) {
-        // let jsonUserData: any = localStorage.getItem('userData');
-        // let userData = JSON.parse(jsonUserData);  
-        let httpHeaders = new HttpHeaders()
-            .set('Authorization', `none`);
-        const httpOptions = {
-            headers: httpHeaders
+        let url = `${env.apihost}clients/${id}`
+
+        let userData = <string> localStorage.getItem('userData')
+        let data = JSON.parse(userData)
+        
+
+        let httpOptions = {
+            headers: new HttpHeaders({
+                'Authorization': 'Bearer ' + data.data.token
+            })
         }
 
-        let endpoint = 'clients';
-        let url = env.apihost + endpoint + '/' + id;
         return this.http.delete<any>(url, httpOptions);
     }
 }
