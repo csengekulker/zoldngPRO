@@ -32,32 +32,6 @@ h1 {
     font-size: 3.75rem;
 }
 
-.action {
-    color: #273036;
-}
-
-.action:hover {
-    background-color: #2b9777;
-    color: #fff;
-    border-color: #2b9777;
-}
-
-.primary {
-    border: solid 1px #2b9777;
-    color: #2b9777;
-}
-
-.secondary {
-    border: solid 1px #273036;
-    color: #273036;
-}
-
-.primary:hover{
-    background-color: #2b9777;
-    color: #f8f9fa
-}
-
-.secondary:hover{
-    background-color: #273036;
-    color: #f8f9fa;
+a:hover {
+    color: #fff
 }
