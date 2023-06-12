@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-editmodal',
+  selector: 'modal-edit',
   templateUrl: './editmodal.component.html',
-  styleUrls: ['./editmodal.component.scss']
+  styleUrls: []
 })
-export class EditmodalComponent {
+export default class EditModal {
+
+  fields!:any[]
   
 
   constructor () {

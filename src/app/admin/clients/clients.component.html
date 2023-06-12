@@ -5,46 +5,25 @@
 
     <div class="row mb-3">
         <div class="col-md-2">
-            <button (click)="add()" type="button" class=" btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modal">
+            <button (click)="add()" type="button" class=" btn btn-outline-primary" data-bs-toggle="modal"
+                data-bs-target="#addModal">
                 Hozzadas
             </button>
         </div>
         <div class="search col-md-6">
-                <input [(ngModel)]="keyword" (change)="search(keyword)" class="form-control " type="search" placeholder="Search" aria-label="Search">
+            <input [(ngModel)]="keyword" (change)="search(keyword)" class="form-control " type="search"
+                placeholder="Search" aria-label="Search">
         </div>
     </div>
 
-    <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">{{modalTitle}}</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form [formGroup]="clientForm" (submit)="formSubmit()">
-                <div class="modal-body">
-                        <div 
-                        class="form-floating mb-2"
-                        *ngFor="let field of formFields">
-                            <input 
-                            class="form-control " 
-                            type="{{field.type}}" 
-                            id="{{field.forid}}" 
-                            formControlName="{{field.formControlName}}"
-                            placeholder="{{field.forid}}">
-                            <label for="{{field.forid}}">{{field.label}}</label>
-                        </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary"  data-bs-dismiss="modal" >Save</button>
-                </div>
-            </form>
-
-            </div>
-        </div>
-    </div>
+    <form-modal
+    headerTitle="Uj vendeg hozzaadasa" 
+    refId="addModal" 
+    [formFields]="formFields"
+    (primaryEvent)="formSubmit()"
+    primaryBtn="Felvetel"
+    secondaryBtn="Megsem"
+    ></form-modal>
 
 
     <table class="table table-hover">
@@ -66,14 +45,26 @@
                 <td>{{ client.fullAddress }}</td>
                 <td>
                     <button type="button" (click)="edit(client)" class="btn btn-outline-warning" data-bs-toggle="modal"
-                        data-bs-target="#modal">
+                        data-bs-target="#editModal">
                         <i class="bi bi-pencil-fill"></i>
                     </button>
                 </td>
-                <!-- TODO: confirm deletion modal-->
                 <td>
-                    <button class="btn btn-outline-danger" (click)="delClient(client)"><i class="bi bi-trash-fill"></i>
+                    <button 
+                    (click)="storeId(client.id)"
+                    data-bs-toggle="modal" 
+                    data-bs-target="#deleteModal" 
+                    class="btn btn-outline-danger">
+                        <i class="bi bi-trash-fill"></i>
                     </button>
+                    <confirmation-modal 
+                    headerTitle="Biztos torlod?" 
+                    refId="deleteModal" 
+                    targetId="{{currentId}}"
+                    modalBody="Id {{currentId}} vendeg torlesre fog kerulni." 
+                    (primaryEvent)="delClient(currentId)"
+                    primaryBtn="Torles"
+                    secondaryBtn="Megsem"></confirmation-modal>
                 </td>
 
             </tr>
@@ -81,39 +72,12 @@
     </table>
 </div>
 
-<!-- editmodal -->
-<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">{{modalTitle}}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form [formGroup]="form" (submit)="formSubmit()">
-
-            <div class="modal-body">
-                    <div hidden>
-                        <label for="id">Id</label>
-                        <input type="text" id="id" formControlName="id"  >
-                    </div>
-                    <div 
-                        class="form-floating mb-2"
-                        *ngFor="let field of formFields">
-                            <input 
-                            class="form-control " 
-                            type="{{field.type}}" 
-                            id="{{field.forid}}" 
-                            formControlName="{{field.formControlName}}"
-                            placeholder="{{field.forid}}">
-                            <label for="{{field.forid}}">{{field.label}}</label>
-                        </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bezárás</button>
-                <button type="sumbit" class="btn btn-primary">Adatok mentése</button>
-            </div>
-        </form>
-
-        </div>
-    </div>
-</div>
+<!-- TODO: editmodal, patch values, include hidden id field or store in currentId -->
+<form-modal
+headerTitle="Vendeg adatok modositasa" 
+refId="editModal" 
+[formFields]="formFields"
+(primaryEvent)="formSubmit()"
+primaryBtn="Adatok mentese"
+secondaryBtn="Megsem"
+></form-modal>

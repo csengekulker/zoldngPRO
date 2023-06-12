@@ -7,3 +7,5 @@ export { default as Icon } from './Icon'
 export { default as Message } from './Message'
 export { default as Service } from './Service'
 export { default as Type } from './Type'
+
+export { default as FormField } from './FormField'

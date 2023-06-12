@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ClientApiService } from 'src/app/shared/api';
+import { FormField } from 'src/app/models'
 
 @Component({
   selector: 'admin-clients',
@@ -18,7 +19,9 @@ export default class ClientsComponent implements OnInit {
   modalTitle!:string
   editing:boolean = false
 
-  formFields = [
+  currentId!:number
+
+  formFields:FormField[] = [
     {
       forid: 'name',
       label: 'Teljes nev',
@@ -50,6 +53,8 @@ export default class ClientsComponent implements OnInit {
       type: 'text'
     }
   ]
+
+  storeId(id:string) {this.currentId = Number(id)}
 
   add():void { this.modalTitle = 'Uj vendeg felvetele'; this.editing = false}
 
@@ -133,18 +138,22 @@ export default class ClientsComponent implements OnInit {
     });    
   }
 
-  delClient(client: any) {
-    this.api.delClient(client.id).subscribe({
-      next: res => {
+  delClient(id: any) {
+    console.log(id);
+
+    this.api.delClient(id).subscribe({
+      next: (res:any) => {
         console.log(res);
-        this.clients.forEach( (emp: any, index: number) => {
-          if (emp.id === client.id ) {
-            this.clients.splice(index, 1)
-          }
-        })
+        
+        // this.clients.forEach( (emp: any, index: number) => {
+        //   if (emp.id === client.id ) {
+        //     this.clients.splice(index, 1)
+        //   }
+        // })
         this.fetchClients()
 
-      }
+      },
+      error: (err:any) => console.log(err)
     });
   }
 

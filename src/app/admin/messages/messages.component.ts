@@ -16,7 +16,11 @@ export default class MessagesComponent implements OnInit {
 
   messages!: Message[]
 
+  currentId!:number
+
   sender: any = {}
+
+  storeId(id:any) {this.currentId = Number(id)}
 
   expand(id: number|null) {
     var dots = document.getElementById(`dots${id}`); //span
@@ -38,7 +42,6 @@ export default class MessagesComponent implements OnInit {
   }
 
   displayMessage(id: number) {
-    
     // TODO: display message by id in modal
   }
 
@@ -65,6 +68,18 @@ export default class MessagesComponent implements OnInit {
       error: (e: any) => console.error(e)
 
 
+    })
+  }
+
+  reply() {}
+
+  delMessage(id:number) {
+    this.api.deleteMessage(id).subscribe({
+      next: (res:any) => {
+        console.log(res);
+        this.fetchMessages()
+      },
+      error: (err:any) => console.log(err)
     })
   }
 

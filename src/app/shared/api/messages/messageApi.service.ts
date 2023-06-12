@@ -12,9 +12,9 @@ export default class MessageApiService {
     fetchMessages() {
         let url = env.apihost + 'messages'
 
-        let userData = <string> localStorage.getItem('userData')
+        let userData = <string>localStorage.getItem('userData')
         let data = JSON.parse(userData)
-        
+
 
         let httpOptions = {
             headers: new HttpHeaders({
@@ -35,5 +35,18 @@ export default class MessageApiService {
     sendReplyEmail() { }
 
 
-    deleteMessage(id: number) {  }
+    deleteMessage(id: number) {
+        let url = `${env.apihost}messages/${id}`
+
+        let userData = <string>localStorage.getItem('userData')
+        let data = JSON.parse(userData)
+
+        let httpOptions = {
+            headers: new HttpHeaders({
+                'Authorization': 'Bearer ' + data.data.token
+            })
+        }
+
+        return this.http.delete<any>(url, httpOptions);
+    }
 }

@@ -34,7 +34,7 @@ import { AppComponent } from './app.component';
 import { ButtonComponent } from './client/info/button/button.component';
 import { BookingInfoComponent } from './client/booking/info/info.component';
 import { FormComponent } from './client/booking/form/form.component';
-import { EditmodalComponent } from './core/editmodal/editmodal.component';
+import { EditModal } from './core/modals';
 import { SidebarComponent } from './admin/main/sidebar/sidebar.component';
 
 import { 
@@ -51,6 +51,8 @@ import { ClientfilterPipe } from './shared/pipe/clientfilter.pipe';
 import { TypesComponent } from './admin/types/types.component';
 import { ClientComponent } from './client/client.component';
 import { AdminComponent } from './admin/admin.component';
+import { ConfirmationModalComponent } from './core/confirmation-modal/confirmation-modal.component';
+import { FormModalComponent } from './core/form-modal/form-modal.component';
 
 @NgModule({
   declarations: [
@@ -80,21 +82,23 @@ import { AdminComponent } from './admin/admin.component';
     AdminServices,
     MainComponent,
     BlogComponent,
-    EditmodalComponent,
+    EditModal,
     BookingsComponent,
     SidebarComponent,
     AppointmentsComponent,
     MessagesComponent,
     BookingfilterPipe,
     ClientfilterPipe,
-    TypesComponent
+    TypesComponent,
+    ConfirmationModalComponent,
+    FormModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
