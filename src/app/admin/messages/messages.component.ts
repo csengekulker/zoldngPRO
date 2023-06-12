@@ -13,6 +13,7 @@ export default class MessagesComponent implements OnInit {
   constructor(private api: MessageApiService) { }
 
   messages!: Message[]
+
   sender: any = {}
 
   expand(id: number|null) {
@@ -32,6 +33,11 @@ export default class MessagesComponent implements OnInit {
       }
     }
 
+  }
+
+  displayMessage(id: number) {
+    
+    // TODO: display message by id in modal
   }
 
   fetchMessages() {

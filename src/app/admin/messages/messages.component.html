@@ -5,9 +5,10 @@
 
     <div class="inbox">
 
+      <!-- TODO: (click)=displayMessage({each.id}) -->
         <div 
         *ngFor="let each of messages"
-        class="card m-2" style="flex-direction: row;">
+        class="card m-2 message" style="flex-direction: row;">
             <div class="card-body">
               <h5 class="card-title">{{each.name}}</h5>
               <h6 class="card-subtitle mb-2 text-muted"><i>{{each.email}}</i></h6>
